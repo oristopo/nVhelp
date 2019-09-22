@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>unbalanced bridge impedance sensitivity</title>
+</head>
+<body>
+<p align=center>
+<em>Wheatstone bridge schematic</em><br>
+<img src="bridge.gif">
+</p>
+<h4>For Wheatstone bridge with known resistances <code>R1, R3, R4</code> adjusted for <code>i<sub>m</sub> = 0</code>:</h4>
+<pre>	R2 = R1*R4/R3  </pre>
+
+For unbalanced bridges, given <code>v, i<sub>m</sub></code> and fixed resistors,<br>
+get unknown <code>i1, i2, i3, i4, R2</code> values<br>
+using equations <code>[1], [2], [3], [4], [5]</code> by Kirchhoff's circuit laws:<br>
+<pre>
+	i1 = i<sub>m</sub> + i2          [1]
+	i<sub>m</sub> = i4 - i3          [2]
+	i<sub>m</sub>*Rm = i3*R3 - i1*R1 [3]
+	i<sub>m</sub>*Rm = i2*R2 - i4*R4 [4]
+</pre>
+Instead of ideal EMF source <code>v</code>,<br>
+nanoVNA provides stimulus <code>Vf</code> with source impedance <code>Rs ~ Rm</code>:
+<pre>
+	Vf + (i1 + i3) * Rs + i1*R1 + i2*R2 = 0   [5]
+</pre>
+<details>
+<summary>click for <code>i<sub>m</sub></code> vs <code>R2</code> derivation</summary>
+If <code>R1 = R3 = R4 = Rm</code>, then:
+<pre>
+	i<sub>m</sub> = i3 - i1               [6] // from [3]
+	2*i<sub>m</sub> = i3 - i2             [7] // [6], [1]
+	2*i<sub>m</sub> = i4 - i1             [8] // [6], [2]
+	i3 = i2 + 2*i<sub>m</sub>             [9] // [7]
+	i4 = 2*i<sub>m</sub> + i1 = 3*i<sub>m</sub> + i2 [10] // [8], [1]
+</pre>
+Eliminate <code>i1, i3</code> using <code>[1], [9]</code>:
+<pre>
+	Vf + (i<sub>m</sub> + i2 + i2 + 2*i<sub>m</sub>)*Rs + (i<sub>m</sub> + i2)*R1 + i2*R2 = 0 // [5]
+	Vf + 3*i<sub>m</sub>*Rm + 2*i2*Rm + i<sub>m</sub>*Rm + i2*Rm + i2*R2 = 0  // Rs ~ Rm = R1
+	i2 = - (Vf + i<sub>m</sub>*3*Rm + i<sub>m</sub>*Rm)/(3*Rm + Rm)
+	   = -i<sub>m</sub> - Vf/(4*Rm)                      [11]
+
+	i2 = i<sub>m</sub>*Rm/R2 + i4*Rm/R2                        // [4]
+	   = i<sub>m</sub>*Rm/R2 + (3*i<sub>m</sub> + i2)*Rm/R2               // [10]
+	   = 4*i<sub>m</sub>*Rm/R2 + i2*Rm/R2
+</pre>
+Multiply by R2/Rm and rearrange:<br>
+<pre>
+	4*i<sub>m</sub> = (-1 + R2/Rm)*i2
+	     = (-1 + R2/Rm)*(-i<sub>m</sub> - Vf/(4*Rm))           // [11]
+	     = (1 - R2/Rm)*(i<sub>m</sub> + Vf/(4*i<sub>m</sub>))
+	     = i<sub>m</sub> + Vf/(4*i<sub>m</sub>) - i<sub>m</sub>*R2/Rm -Vf*R2/(4*i<sub>m</sub>*Rm)
+	3*i<sub>m</sub> = Vf/(4*i<sub>m</sub>) - i<sub>m</sub>*R2/Rm -Vf*R2/(4*i<sub>m</sub>*Rm)
+</pre>
+Multiple by <code>4*i<sub>m</sub>*Rm</code> and rearrange:  <br>
+<pre>
+	12*Rm*i<sub>m</sub>*i<sub>m</sub> = Vf*Rm - 4*R2*i<sub>m</sub>*i<sub>m</sub> - Vf*R2
+	i<sub>m</sub>*i<sub>m</sub>*(12*Rm + 4*R2) = Vf*(Rm - R2)
+	i<sub>m</sub> = sqrt(Vf*(Rm - R2)/(12*Rm + 4*R2))
+</pre>
+
+</details>
+<br>
+<em>Unbalanced bridge response</em><br>
+<a name="response"> </a>
+<img src="bplot.gif">
+<h3>observations</h3>
+<ol compact>
+<li>Bridge response from 0 to 50 Ohms matches 50 to 150 Ohms response.
+<li>Upper 50% of <code>R2</code> range provokes less than 10% response change.
+<li>Impedances farther from 50 Ohms provoke larger i<sub>m</sub> signals, improving signal-to-noise,
+but with less sensitivity to impedance <em>differences</em>.
+<li>Polarity change confounds response to AC stimulus of nonlinear 50 Ohm loads.
+</ol>
+<em><a href="http://gnuplot.sourceforge.net">gnuplot</a> commands for bridge response plot</em>
+<pre>
+set xrange [0:1000]
+set yrange [-4:2.5]
+set xtics 50
+set ytics 0.5
+set grid xtics ytics
+set ylabel "arbitrarily scaled 50 Ohm response"
+set xlabel "unknown R2 in Ohms"
+set title "unbalanced 50 Ohm bridge"
+p (x<50)?8*sqrt((50-x)/(600 + 4*x)) : -8*sqrt((x-50)/(600 + 4*x)) title "meter current i_m"
+<pre>
