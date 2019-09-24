@@ -23,21 +23,21 @@ While analog switch ICs have better linearity, dynamic range and GHz bandwidths,
 <h4><a href="https://www.youtube.com/watch?v=zw7Dp1nwvD8">nanoVNAsharp Windows software video</a></h4>
 <em>thanks to IMSAI Guy</em>  
 
-<h4><a href="https://www.youtube.com/watch?v=29yTVG8lg7s">2-port measurements video</a>
+<h4><a href="https://www.youtube.com/watch?v=29yTVG8lg7s">2-port measurements video</a></h4>
 <em>thanks to Volker Block</em>  
 
 <h3>Physical attributes</h3>
 <p>From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>,
 <sl compact>
 <li>Measurement range: `70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`
-<li>Port swr `< 1.1`
+<li>Port SWR `< 1.1`
 <li>Frequency error < 0.5ppm
 </sl>
 </p>
 Firmware employs third harmonics for 300M-900MHz:<br>
 <br>
 <em>thanks to Warren Allgyer</em>:
-<br clear>
+<br>
 <img src="html/nanoSpectrum.gif">
 <p>
 nanoVNA begins using the third harmonic, while boosting Si5351 output, when exceeding 300 MHz.<br>
@@ -49,13 +49,17 @@ The Si5351 internal VCO (Voltage Controlled Oscillator) specified maximum is 900
  for a divide-by-4-frequency output maximum of 225MHz.<br>
 To output 300MHz, that VCO is overclocked to 1200MHz, which not every Si5351 can.<br>
 Si5351 internal VCO operating frequency limit decreases with increasing temperature.<br>
-For significant spike artifacts (&gt0dB) at 300 MHz or 900 MHz, <a href="#F800">800MHz firmware is recommended</a>.
+For significant spike artifacts (< 0dB) at 300 MHz or 900 MHz,  
+   <a href="#F800">800MHz firmware is recommended</a>.
 </p>
-<b>This suggests that fully enclosed cases, raising component temperatures, may be problematic.</b>
-<p>Charging is by USB, which connector is Type C for black nanoVNAs and Micro-USB B for white gekkos.<br>
-One LED (between USB and power switch) blinks @ 1/2Hz while charging, then illuminates constantly;<br>
-    - this LED remains on for 40 seconds after USB removal or powering off, <em>perhaps discharging capacitors?</em><br>
-Another LED, between power switch and multi-directional switch, illuminates while nanoLED is powered;<br>
+<b>Fully enclosed cases, raising component temperatures, may be problematic.</b>
+<p>USB charging connector is Type C for black nanoVNAs and Micro-USB B for white gekkos.<br>
+One LED (between USB and power switch) blinks @ 1/2Hz while charging,  
+ then illuminates constantly;<br>
+    - this LED remains on for 40 seconds after disconnecting USB or powering off,
+      <em>perhaps discharging capacitors?</em><br>
+Another LED, between power switch and multi-directional switch,  
+    illuminates while nanoLED is powered;<br>
     - this may be vestigal, from early nanoVNA prototypes which lacked LCD displays.</p>
 
 <h3>multi-directional switch</h3>
@@ -63,7 +67,7 @@ Another LED, between power switch and multi-directional switch, illuminates whil
 Pressing this launches menu or selects menu item;<br>
 nudging left or right migrates among launched menu items or moves selected marker.
 </p>
-<h3><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%208-6-19.pdf>nanoVNA Console Commands</a></h3>
+<h3><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%208-6-19.pdf">nanoVNA Console Commands</a></h3>
 <h3 id="N4"><a href="https://groups.io/g/nanovna-users/attachment/896/0/NanoVNA%20Calibration%20Considerations%20and%20Procedure%20FINAL.pdf">nanoVNA Calibration Considerations</a></h3>
 <em>thanks to Larry Goga</em>
 <h3>Calibration for 4 track nanoVNA</h3>
@@ -113,11 +117,13 @@ Finally save to a desired register.<br>
 </ol>
 That's it. Check and be sure that the open, short and 50 ohm are on the proper
 side of the chart.<br>
- Note, the cables are CONNECTED to CH0 and CH1 and the calibration is to the end of the cables.<br>
- The reference plane for insertion loss measure magnitude is in place of the adapter.<br>
+ Note, the cables are CONNECTED to CH0 and CH1  
+ and the calibration is to the end of the cables.<br>
+ The reference plane for insertion loss measure magnitude is in plane of the adapter.<br>
  However, the phase is subject to error and that needs addressed in another message.<br>
 <br>
-Also, with a thru cable connection between CH0 and CH1, the loss measure, S21 should be nearly 0 dB.
+Also, with a thru cable connection between CH0 and CH1, 
+loss measure `S21` should be nearly 0 dB.
 </p>
 
 <h3 id="TSC">Touchscreen Calibration</h3>
@@ -128,11 +134,12 @@ which requires connection via its USB serial interface to your PC/MAC/Terminal.<
 <ol compact><li>install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.
 <li>connect the nanoVNA and determine which serial port has been assigned (e.g. COM5)
 <li>use a serial terminal emulator such as TeraTerm to access the nanoVNA console.
-<li>you may need to hit the ENTER key once or twice to bring up its command shell prompt.
+<li>you may need to hit the ENTER key once or twice  
+    to bring up its command shell prompt.
 <li>at the command prompt, enter:  touchcal
 <li>the nanoVNA should now display a calibration point at the upper-left corner of the display.  
 <li>touch that corner - a new calibration point will appear at the lower right corner of the display.
-<li>touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b>
+<li>touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b>  
 </ol>
 <dl compact><dt><b>touchcal</b>
 <dd>- produces calibration touch points in the upper left and lower right corners<br>
