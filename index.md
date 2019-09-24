@@ -1,7 +1,3 @@
-<html>
-<head>
-<title>nanoVNA Description</title>
-</head>
 <p id="U0">
 A VNA (Vector Network Analyzer) is distinguished from antenna analyzer<br>
 by having two ports instead of one,<br>
@@ -14,8 +10,8 @@ are largely as described in Michael Knitter DG5MK's YouTube video<br>
 <br>Instead of nanoVNA's SA612 mixer (also used by
 <a href="https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home">EU1KY analyzer</a>),<br>
  the FA-VA5 uses 74LVC4066 analog switches.<br>
-While analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br>
- switching times tend to be greater than 1ns, limiting local oscillators to 200MHz or so..
+Analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br>
+butswitching times tend to be > 1ns, limiting local oscillators to 200MHz or so..
 </p>
 <h4><a href="https://www.youtube.com/watch?v=mKi6s3WvBAM">beginners guide video</a></h4>
 <em>thanks to Joe Smith</em>  
