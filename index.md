@@ -5,7 +5,7 @@
 <body bgcolor=#cccccc>
 <font size=+1>
 <p id="U0">
-__VNA__ = __V__ector __N__etwork __A__nalyzer,  
+VNA = <b>V</b>ector <b>N</b>etwork <b>A</b>nalyzer,  
 distinguished from antenna analyzer by having two ports instead of one,<br>
 and from scaler analyzer e.g. SWR (Standing Wave Ratio) bridge by sorting resistance vs reactance instead of impedance magnitude.</p>
 <p>nanoVNA principles of operation are largely as described in this YouTube video by Michael Knitter DG5MK:<br>
@@ -33,7 +33,7 @@ Firmware employs third harmonics for 300M-900MHz:<br>
 <br>
 <em>thanks to Warren Allgyer</em>:
 <br clear>
-<img src="htmml/nanoSpectrum.gif">
+<img src="html/nanoSpectrum.gif">
 <p>
 nanoVNA begins using the third harmonic, while boosting Si5351 output, when exceeding 300 MHz.<br>
 <em>Perhaps,</em> power boost parameters are saved along with other correction factors. 
@@ -164,7 +164,7 @@ Lacking access to the famous July, 2015 QEX magazine article by DG5MK..
 </ul>
 
 <h3 id="bridge">nanoVNA bridge analysis</h3>
-<iframe src="bridge.htm" width="900" height="1200" style="border:none;"></iframe>
+<iframe src="html/bridge.htm" width="900" height="1200" style="border:none;"></iframe>
 
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
