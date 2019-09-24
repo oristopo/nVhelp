@@ -11,7 +11,7 @@ are largely as described in Michael Knitter DG5MK's YouTube video<br>
 <a href="https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home">EU1KY analyzer</a>),<br>
  the FA-VA5 uses 74LVC4066 analog switches.<br>
 Analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br>
-but switching times > 1ns, limit local oscillators to 200MHz or so..
+but switching times > 1ns, limit local oscillators to <code>200MHz</code> or so..
 </p>
 <h4><a href="https://www.youtube.com/watch?v=mKi6s3WvBAM">beginners guide video</a></h4>
 <em>thanks to Joe Smith</em>  
@@ -25,29 +25,30 @@ but switching times > 1ns, limit local oscillators to 200MHz or so..
 <h3>Physical attributes</h3>
 <p>From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>,
 <sl compact>
-<li>Measurement range: <code>70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)</code>
+<li>Measurement range:<br>
+ <code>70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)</code>
 <li>Port SWR <code>< 1.1</code>
-<li>Frequency error < 0.5ppm
+<li>Frequency error <code>< 0.5ppm</code>
 </sl>
 </p>
-Firmware employs third harmonics for 300M-900MHz:<br>
+Firmware employs third harmonics for <code>300-900MHz</code>:<br>
 <br>
 <em>thanks to Warren Allgyer</em>:
 <br>
 <img src="html/nanoSpectrum.gif">
 <p>
-Above <code>300MHz</code>, nanoVNA boosts Si5351 output and uses its 3rd harmonic<br>
+Above <code>300MHz</code>, nanoVNA boosts Si5351 output and uses its 3rd harmonic.<br>
 <em>Perhaps,</em> power parameters are saved along with other correction factors. 
 </p>
 <em>thanks to hugen@outlook.com:</em><br>
 <p>
 The Si5351 internal VCO (Voltage Controlled Oscillator) specified maximum<br>
-is 900MHz for a divide-by-4-frequency output maximum of 225MHz.<br>
-To output 300MHz, that VCO is overclocked to 1200MHz,<br>
+is <code>900MHz</code> for a divide-by-4-frequency output maximum of <code>225MHz</code>.<br>
+To output <code>300MHz</code>, that VCO is overclocked to <code>1200MHz</code>,<br>
 which not every Si5351 can.<br>
 Si5351 internal VCO operating frequency limit decreases with increasing temperature.<br>
-For significant spike artifacts (< 0dB) at 300MHz or 900MHz,<br><br>
-   <a href="#F800">800MHz firmware is recommended</a>.
+For significant spike artifacts (<code>< 0dB) at <code>300MHz</code> or <code>900MHz</code>,<br><br>
+   <a href="#F800"><code>800MHz</code> firmware is recommended</a>.
 </p>
 <b>Fully enclosed cases, raising component temperatures, may be problematic.</b>
 <p>USB charging connector is Type C except for Micro-USB B on white gekkos.<br>
@@ -153,8 +154,8 @@ You can verify touch calibration using the menu boxes.<br>
 </p>
 
 <h2>Software and Firmware</h2>
-<h3 id="F800">firmware mitigation for nanoVNA 300MHz, 600MHz spikes</h3>
-Some nanoVNAs fail when overclocked to 300MHz by standard firmware;<br>
+<h3 id="F800">firmware mitigation for nanoVNA <code>300MHz, 600MHz</code> spikes</h3>
+Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;<br>
 <a href="https://groups.io/g/nanovna-users/topic/defective_nanovna/32747641?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,32747641"><b>here</b></a> is a description of reflashing those problematic devices.
 
 <h3 id="DSP">FFT "quadrature mixing", Hilbert transform and filtering DSP</h3>
@@ -232,7 +233,7 @@ Tapping on a digit makes it adjustable;
 Tapping far right of numbers brings up a numeric keyboard.<br>
 This keyboard may be operated either by touchscreen taps<br>
 or by multi-directional switch movements.<br>
- ( With 2-trace 900MHz antenna analyser firmware,<br>
+ ( With 2-trace <code>900MHz</code> antenna analyser firmware,<br>
 multi-directional switch movements seem buggy.<br>
     In reference position adjust mode,<br>
     the 'enter' button doesn't seem to do anything<br>
@@ -240,7 +241,7 @@ multi-directional switch movements seem buggy.<br>
     The keyboard works fine when setting e.g. CW Freq.<br>
     Frequencies may be entered as GHz, MHz or kHz;<br>
     just enter the digits then tap G, M or k to enter the set value.<br>
-    (eg to set 800MHz you can enter 0.8G, 800M or 800000k.)
+    (eg to set <code>800MHz</code> you can enter 0.8G, 800M or 800000k.)
 
 </dl>
 </p>
@@ -253,8 +254,8 @@ multi-directional switch movements seem buggy.<br>
 <em>thanks to Mike Brown:</em><br>
 <dl>
 <dt>for e.g. LOGMAG</dt>
-<dd>Entering 1-8 (0001 to 0008) places the REFERENCE line
-<br>1 to 8 grid spaces from the BOTTOM.<br>
+<dd>Entering 1-8 (0001 to 0008)<br>
+ places the REFERENCE line 1 to 8 grid spaces from the BOTTOM.<br>
   With default setting 7 000, changing it to 8 000 moves the trace reference<br>
  (shown by a small marker at left of screen) up one grid space, to screen TOP.</dd>
 <br>
@@ -285,7 +286,7 @@ Better to use the multi-directional switch..<br>
 <dd>select (by push) any of MARKER 1 - 4<br>
 selecting that same marker again toggles it off.<br>
 Sliding the multi-directional switch moves the selected marker.<br>
-A selected marker may be used to change START, STOP or CENTER of sweeps.<br>
+A selected marker can change START, STOP or CENTER of sweeps.<br>
 SPAN changes sweeps when 2 markers are active.</dd></dl></p>
 
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
