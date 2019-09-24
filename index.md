@@ -4,14 +4,17 @@
 </head>
 <p id="U0">
 VNA = <b>V</b>ector <b>N</b>etwork <b>A</b>nalyzer,  
-distinguished from antenna analyzer by having two ports instead of one,<br>
-and from scaler analyzer e.g. SWR (Standing Wave Ratio) bridge by sorting resistance vs reactance instead of impedance magnitude.</p>
-<p>nanoVNA principles of operation are largely as described in this YouTube video by Michael Knitter DG5MK:<br>
+distinguished from antenna analyzer<br>
+by having two ports instead of one,<br>
+and from scaler analyzer e.g. SWR (Standing Wave Ratio) bridge<br>
+by sorting resistance vs reactance instead of impedance magnitude.</p>
+<p>nanoVNA principles of operation<br>
+are largely as described in Michael Knitter DG5MK's YouTube video<br>
 <a href="https://www.youtube.com/watch?v=X8Z7veGV57o">Hamradio 2018 FA-VA5 presentation-UK</a>
-<br>Instead of SA612 mixer
- (also used by <a href="https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home">EU1KY analyzer</a>),
+<br>Instead of SA612 mixer (also used by
+<a href="https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home">EU1KY analyzer</a>),<br>
  the FA-VA5 uses 74LVC4066 analog switches.<br>
-While analog switch ICs have better linearity, dynamic range and GHz switch bandwidths,<br>
+While analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br>
  switching times tend to be greater than 1ns, limiting local oscillators to 200MHz or so..
 </p>
 <h4><a href="https://www.youtube.com/watch?v=mKi6s3WvBAM">beginners guide video</a></h4>
@@ -24,7 +27,7 @@ While analog switch ICs have better linearity, dynamic range and GHz switch band
 <p>From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>,
 <sl compact>
 <li>Measurement range: 70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB(600M-900MHz)
-<li>Port swr &lt 1.1
+<li>Port swr < 1.1
 <li>Frequency error &lt 0.5ppm</sl>
 </p>
 Firmware employs third harmonics for 300M-900MHz:<br>
