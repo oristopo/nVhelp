@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>nanoVNA software</title>
+</head>
+<body>
+<h3>nanoVNA software</h3>
+<ul compact>
+<li><a href="#firm">firmware management</a>
+<li><a href="#PC">PC apps</a> for nanoVNA operation and data extraction via USB
+</ul>
+Much of this software is experimental;<br>
+a <em>good</em> uninstaller utility
+can monitor and log those software installations,<br>
+which enables more thorough clean up with any subsequent removals.<br>
+
+<details>
+<summary>click for uninstaller utility</summary>
+<br>
+<iframe src="Uninstaller.htm" width="620" height="1200" style="border:none;"></iframe>
+
+</details>
+
+<a name=firm><h3>firmware management</h3></a>
+nanoVNA employs STM32 firmware which may be read and rewritten<br>
+via USB using <a href="https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-stm32080.html">STMicroelectronics'</a> Device Firmware Upgrade (DFU) software,<br>
+which is included in the  
+<p>
+An ST-Link connector can be soldered to the NanoVNA.<br>
+ST-Link supports debugging as well as firmware management.
+</p>
+<h5><a href="https://zs1sci.com/blog/NanoVNA%20Build%20Source/">Building NanoVNA Source in Ubuntu 19.04</a></h5>
+<h4>firmware flavors</h4>
+<dl>
+<dt>by Erik, presumably for TAPR VNA
+<dd><a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">Groups.io Firmware folder</a>
+<dt>Sept 19 edy255 firmware with TDR and hugen touchscreen calibration
+<dd><a href="https://groups.io/g/nanovna-users/attachment/2671/0/NanoVNA_edy555_0.1.1.9.zip">zip file attached to email</a>
+</dl>
+<h4>loading firmware on macOS or linux</h4>
+Power nanoVNA off, jumper boot pins, power on.<br>
+<img src="NanoVNAboot.jpg">
+<br clear=all>
+<dl>
+<dt><code>$ cd to folder</code>
+<dd><code>$ dfu-util -v -d 0483:df11 --alt 0 -D nanoVNA_0.1.0_ch.dfu</code>
+</dl>
+Remove nanoVNA boot jumper and restart it.
+
+<a name="PC"><h3>PC apps for nanoVNA control</h3>
+<dl>
+<b><dt>NanoVNASharp</b>
+<dd>provided by Hugen, available on <a href="https://drive.google.com/drive/folders/1IZEtx2YdqchaTO8Aa9QbhQ8g_Pr5iNhr">Google Drive</a>
+<br><br><b><dt>NanoVNA Saver</b>
+<dd>written in Python and nominally platform agnostic.
+<br>source on <a href="https://github.com/mihtjel/nanovna-saver">GitHub</a>
+<br><br><b><dt>TAPR VNA</b>
+<dd><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20PC%20Software/TAPR%20VNA">groups.io folder</a>
+<br>source on <a href="https://github.com/erikkaashoek/Tapr-VNA">GitHub</a>
+<br>markdown instruction manual on <a href="https://github.com/oristopo/nanoTAPR/tree/nanoVNA">GitHub</a>
+<br><br><b><dt>NanoVNA-Web-Client</b>
+<dd>Available from cho45 on <a href="NanoVNA-Web-Client">GitHub</a>
+<br><br><b><dt>TDR</b>
+<dd>now supported by NanoVNA Saver: &nbsp
+<a href="https://imgur.com/eoLwv35">screen shot</a>
+<dd>edy555's nanovna.py on <a href="https://github.com/ttrftech/NanoVNA/blob/master/python/nanovna.py">GitHub</a> supports <code>./nanovna.py -T</code>
+<br><br><b><dt>USB command instablility</b>
+<dd><a href="https://groups.io/g/nanovna-users/topic/temporary_workaround_to/34127733">david mugridge</a> found problems with "freq", "scan", "offset", "power".
+commands.
+<br>one workaround was to instead use "info", "sweep", "data", "frequencies".
+<br>problem is related to LCD screen DMA while <code>set_frequency()</code> and <code>ili9341_bulk()</code> called in parallel 
+</dl>
+</body>
+</html>

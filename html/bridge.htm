@@ -14,7 +14,7 @@ For unbalanced bridges, given <code>v, i<sub>m</sub></code> and fixed resistors,
 get unknown <code>i1, i2, i3, i4, R2</code> values<br>
 using equations <code>[1], [2], [3], [4], [5]</code> by Kirchhoff's circuit laws:<br>
 <pre>
-	i1 = i<sub>m</sub>Â +Â i2          [1]
+	i1 = i<sub>m</sub> + i2          [1]
 	i<sub>m</sub> = i4 - i3          [2]
 	i<sub>m</sub>*Rm = i3*R3 - i1*R1 [3]
 	i<sub>m</sub>*Rm = i2*R2 - i4*R4 [4]
@@ -22,33 +22,33 @@ using equations <code>[1], [2], [3], [4], [5]</code> by Kirchhoff's circuit laws
 Instead of ideal EMF source <code>v</code>,<br>
 nanoVNA provides stimulus <code>Vf</code> with source impedance <code>Rs ~ Rm</code>:
 <pre>
-	Vf + (i1 + i3) * Rs + i1*R1 + i2*R2 = 0Â  Â [5]
+	Vf + (i1 + i3)*Rs + i1*R1 + i2*R2 = 0 [5]
 </pre>
 <details>
 <summary>click for <code>i<sub>m</sub></code> vs <code>R2</code> derivation</summary>
 If <code>R1 = R3 = R4 = Rm</code>, then:
 <pre>
-	i<sub>m</sub> = i3 - i1Â               [6]Â // from [3]
-	2*i<sub>m</sub> = i3 - i2             [7]Â // [6], [1]
-	2*i<sub>m</sub> = i4 - i1             [8]Â // [6], [2]
-	i3 = i2 + 2*i<sub>m</sub>             [9] // [7]
+	i<sub>m</sub> = i3 - i1                [6] // from [3]
+	2*i<sub>m</sub> = i3 - i2              [7] // [6], [1]
+	2*i<sub>m</sub> = i4 - i1              [8] // [6], [2]
+	i3 = i2 + 2*i<sub>m</sub>              [9] // [7]
 	i4 = 2*i<sub>m</sub> + i1 = 3*i<sub>m</sub> + i2 [10] // [8], [1]
 </pre>
 Eliminate <code>i1, i3</code> using <code>[1], [9]</code>:
 <pre>
 	Vf + (i<sub>m</sub> + i2 + i2 + 2*i<sub>m</sub>)*Rs + (i<sub>m</sub> + i2)*R1 + i2*R2 = 0 // [5]
-	Vf + 3*i<sub>m</sub>*Rm + 2*i2*Rm + i<sub>m</sub>*Rm + i2*Rm + i2*R2 = 0  // Rs ~ Rm = R1
+	Vf + 3*i<sub>m</sub>*Rm + 2*i2*Rm + i<sub>m</sub>*Rm + i2*Rm + i2*R2 = 0       // Rs ~ Rm = R1
 	i2 = - (Vf + i<sub>m</sub>*3*Rm + i<sub>m</sub>*Rm)/(3*Rm + Rm)
-	 Â  = -i<sub>m</sub> - Vf/(4*Rm)Â  Â  Â  Â  Â  Â  Â  Â  Â  Â   Â [11]
+	   = -i<sub>m</sub> - Vf/(4*Rm)                      [11]
 
-	i2 = i<sub>m</sub>*Rm/R2 + i4*Rm/R2Â  Â  Â  Â  Â  Â  Â Â  Â  Â  Â     // [4]
-	Â   = i<sub>m</sub>*Rm/R2 + (3*i<sub>m</sub> + i2)*Rm/R2Â  Â    Â  Â  Â     // [10]
+	i2 = i<sub>m</sub>*Rm/R2 + i4*Rm/R2                        // [4]
+	   = i<sub>m</sub>*Rm/R2 + (3*i<sub>m</sub> + i2)*Rm/R2               // [10]
 	   = 4*i<sub>m</sub>*Rm/R2 + i2*Rm/R2
 </pre>
 Multiply by R2/Rm and rearrange:<br>
 <pre>
 	4*i<sub>m</sub> = (-1 + R2/Rm)*i2
-	    Â = (-1 + R2/Rm)*(-i<sub>m</sub> - Vf/(4*Rm))           // [11]
+	     = (-1 + R2/Rm)*(-i<sub>m</sub> - Vf/(4*Rm))           // [11]
 	     = (1 - R2/Rm)*(i<sub>m</sub> + Vf/(4*i<sub>m</sub>))
 	     = i<sub>m</sub> + Vf/(4*i<sub>m</sub>) - i<sub>m</sub>*R2/Rm -Vf*R2/(4*i<sub>m</sub>*Rm)
 	3*i<sub>m</sub> = Vf/(4*i<sub>m</sub>) - i<sub>m</sub>*R2/Rm -Vf*R2/(4*i<sub>m</sub>*Rm)
