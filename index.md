@@ -5,13 +5,13 @@ and from a scaler analyzer e.g. SWR (Standing Wave Ratio) bridge<br>
 by sorting resistance vs reactance instead of impedance magnitude.</p>
 <p>nanoVNA principles of operation<br>
 are largely as described in Michael Knitter DG5MK's YouTube video<br>
-<a href="https://www.youtube.com/watch?v=X8Z7veGV57o">Hamradio 2018 FA-VA5 presentation-UK</a>  
+<a href="https://www.youtube.com/watch?v=X8Z7veGV57o">Hamradio 2018 FA-VA5 presentation-UK</a><br>
 
 <br>Instead of nanoVNA's SA612 mixer (also used by
 <a href="https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home">EU1KY analyzer</a>),<br>
  the FA-VA5 uses 74LVC4066 analog switches.<br>
 Analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br>
-butswitching times tend to be > 1ns, limiting local oscillators to 200MHz or so..
+but switching times > 1ns, limit local oscillators to 200MHz or so..
 </p>
 <h4><a href="https://www.youtube.com/watch?v=mKi6s3WvBAM">beginners guide video</a></h4>
 <em>thanks to Joe Smith</em>  
@@ -25,8 +25,8 @@ butswitching times tend to be > 1ns, limiting local oscillators to 200MHz or so.
 <h3>Physical attributes</h3>
 <p>From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>,
 <sl compact>
-<li>Measurement range: `70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`
-<li>Port SWR `< 1.1`
+<li>Measurement range: <code>70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)</code>
+<li>Port SWR <code>< 1.1</code>
 <li>Frequency error < 0.5ppm
 </sl>
 </p>
@@ -36,25 +36,26 @@ Firmware employs third harmonics for 300M-900MHz:<br>
 <br>
 <img src="html/nanoSpectrum.gif">
 <p>
-nanoVNA begins using the third harmonic, while boosting Si5351 output, when exceeding 300 MHz.<br>
-<em>Perhaps,</em> power boost parameters are saved along with other correction factors. 
+Above <code>300MHz</code>, nanoVNA boosts Si5351 output and uses its 3rd harmonic<br>
+<em>Perhaps,</em> power parameters are saved along with other correction factors. 
 </p>
 <em>thanks to hugen@outlook.com:</em><br>
 <p>
-The Si5351 internal VCO (Voltage Controlled Oscillator) specified maximum is 900MHz<br>
- for a divide-by-4-frequency output maximum of 225MHz.<br>
-To output 300MHz, that VCO is overclocked to 1200MHz, which not every Si5351 can.<br>
+The Si5351 internal VCO (Voltage Controlled Oscillator) specified maximum<br>
+is 900MHz for a divide-by-4-frequency output maximum of 225MHz.<br>
+To output 300MHz, that VCO is overclocked to 1200MHz,<br>
+which not every Si5351 can.<br>
 Si5351 internal VCO operating frequency limit decreases with increasing temperature.<br>
-For significant spike artifacts (< 0dB) at 300 MHz or 900 MHz,  
+For significant spike artifacts (< 0dB) at 300 MHz or 900 MHz,<br><br>
    <a href="#F800">800MHz firmware is recommended</a>.
 </p>
 <b>Fully enclosed cases, raising component temperatures, may be problematic.</b>
-<p>USB charging connector is Type C for black nanoVNAs and Micro-USB B for white gekkos.<br>
-One LED (between USB and power switch) blinks @ 1/2Hz while charging,  
+<p>USB charging connector is Type C except for Micro-USB B on white gekkos.<br>
+One LED (between USB and power switch) blinks @ 1/2Hz while charging,<br>
  then illuminates constantly;<br>
     - this LED remains on for 40 seconds after disconnecting USB or powering off,
       <em>perhaps discharging capacitors?</em><br>
-Another LED, between power switch and multi-directional switch,  
+Another LED, between power switch and multi-directional switch,<br>
     illuminates while nanoLED is powered;<br>
     - this may be vestigal, from early nanoVNA prototypes which lacked LCD displays.</p>
 
@@ -67,7 +68,7 @@ nudging left or right migrates among launched menu items or moves selected marke
 <h3 id="N4"><a href="https://groups.io/g/nanovna-users/attachment/896/0/NanoVNA%20Calibration%20Considerations%20and%20Procedure%20FINAL.pdf">nanoVNA Calibration Considerations</a></h3>
 <em>thanks to Larry Goga</em>
 <h3>Calibration for 4 track nanoVNA</h3>
-<em>thanks to Alan Victor</em>:
+<em>thanks to Alan Victor</em>
 <p>
 Some notes: If you can have on hand another 50 ohm termination<br>
 and another female-female SMA adapter, it is helpful.<br>
@@ -113,7 +114,7 @@ Finally save to a desired register.<br>
 </ol>
 That's it. Check and be sure that the open, short and 50 ohm are on the proper
 side of the chart.<br>
- Note, the cables are CONNECTED to CH0 and CH1  
+ Note, the cables are CONNECTED to CH0 and CH1<br>
  and the calibration is to the end of the cables.<br>
  The reference plane for insertion loss measure magnitude is in plane of the adapter.<br>
  However, the phase is subject to error and that needs addressed in another message.<br>
@@ -130,12 +131,12 @@ which requires connection via its USB serial interface to your PC/MAC/Terminal.<
 <ol compact><li>install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.
 <li>connect the nanoVNA and determine which serial port has been assigned (e.g. COM5)
 <li>use a serial terminal emulator such as TeraTerm to access the nanoVNA console.
-<li>you may need to hit the ENTER key once or twice  
+<li>you may need to hit the ENTER key once or twice<br>
     to bring up its command shell prompt.
 <li>at the command prompt, enter:  touchcal
-<li>the nanoVNA should now display a calibration point at the upper-left corner of the display.  
+<li>the nanoVNA should now display a calibration point at the upper-left corner of the display.<br>
 <li>touch that corner - a new calibration point will appear at the lower right corner of the display.
-<li>touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b>  
+<li>touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b><br>
 </ol>
 <dl compact><dt><b>touchcal</b>
 <dd>- produces calibration touch points in the upper left and lower right corners<br>
