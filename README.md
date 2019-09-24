@@ -1,3 +1,3 @@
 # nVhelp
 nanoVNA user documentation
-- [nVhelp.htm](html/nVhelp.htm)
+- [nVhelp.htm](https://oristopo.github.io/nVhelp)
