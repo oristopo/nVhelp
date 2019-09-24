@@ -2,8 +2,6 @@
 <head>
 <title>nanoVNA Description</title>
 </head>
-<body bgcolor=#cccccc>
-<font size=+1>
 <p id="U0">
 VNA = <b>V</b>ector <b>N</b>etwork <b>A</b>nalyzer,  
 distinguished from antenna analyzer by having two ports instead of one,<br>
