@@ -175,8 +175,7 @@ Lacking access to the famous July, 2015 QEX magazine article by DG5MK..
 
 </ul>
 
-<h3 id="bridge">nanoVNA bridge analysis</h3>
-<iframe src="html/bridge.htm" width="900" height="1200" style="border:none;"></iframe>
+<h3 id="bridge"><a href="html/bridge.htm">nanoVNA bridge analysis</a></h3>
 
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
