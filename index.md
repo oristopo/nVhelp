@@ -46,7 +46,7 @@ is 900MHz for a divide-by-4-frequency output maximum of 225MHz.<br>
 To output 300MHz, that VCO is overclocked to 1200MHz,<br>
 which not every Si5351 can.<br>
 Si5351 internal VCO operating frequency limit decreases with increasing temperature.<br>
-For significant spike artifacts (< 0dB) at 300 MHz or 900 MHz,<br><br>
+For significant spike artifacts (< 0dB) at 300MHz or 900MHz,<br><br>
    <a href="#F800">800MHz firmware is recommended</a>.
 </p>
 <b>Fully enclosed cases, raising component temperatures, may be problematic.</b>
@@ -70,10 +70,11 @@ nudging left or right migrates among launched menu items or moves selected marke
 <h3>Calibration for 4 track nanoVNA</h3>
 <em>thanks to Alan Victor</em>
 <p>
-Some notes: If you can have on hand another 50 ohm termination<br>
-and another female-female SMA adapter, it is helpful.<br>
+Some notes:<br>
+A second 50 ohm termination and female-female SMA adapter
+ are wanted for ISOLN and THRU calibration.<br>
 <br>
-Supplied and used are the TWO- matched cables, the LOADS and one SMA adapter.<br>
+Supplied and used are TWO matched cables, LOADS and one SMA adapter.<br>
 Each of the NUMBERED items below represent your PRESS (SOFT KEY TOUCH).<br>
 <br>
 Turn on the VNA and note register 0 is ON.<br>
@@ -87,8 +88,8 @@ CONNECT THE EQUAL LENGTH MALE-to-MALE COAX CABLES TO CH0 AND CH1.<br>
 Now we are displaying S11 and S22 ONLY both as LOGMAG.<br>
 
 <li> STIMULUS
-<li> START 100 KHz
-<li> STOP 500 MHz
+<li> START 100KHz
+<li> STOP 500MHz
 <li> BACK
 <li> CAL
 <li>RESET
@@ -100,20 +101,19 @@ Place an OPEN on end of CH0 cable and this will be followed by a SHORT.<br>
 <li>OPEN
 <li>SHORT
 <br>
-Place a 50 ohm LOAD(s) on the end of cables for CH0 and CH1.<br>
+Connect 50 ohm LOADs to ends of CH0 and CH1 cables.<br>
 
 <li>LOAD
 <li>ISOLN
 <br>
-Connect the 2-cables together using the female-female SMA adapter.<br>
+Connect cables, replacing LOADs with female-female SMA adapter.<br>
 
 <li>THRU
 <li>DONE
 <br>
 Finally save to a desired register.<br>
 </ol>
-That's it. Check and be sure that the open, short and 50 ohm are on the proper
-side of the chart.<br>
+That's it. Check that the open, short and 50 ohm display properly.<br>
  Note, the cables are CONNECTED to CH0 and CH1<br>
  and the calibration is to the end of the cables.<br>
  The reference plane for insertion loss measure magnitude is in plane of the adapter.<br>
@@ -240,7 +240,7 @@ multi-directional switch movements seem buggy.<br>
     The keyboard works fine when setting e.g. CW Freq.<br>
     Frequencies may be entered as GHz, MHz or kHz;<br>
     just enter the digits then tap G, M or k to enter the set value.<br>
-    (eg to set 800 MHz you can enter 0.8G, 800M or 800000k.)
+    (eg to set 800MHz you can enter 0.8G, 800M or 800000k.)
 
 </dl>
 </p>
@@ -253,10 +253,10 @@ multi-directional switch movements seem buggy.<br>
 <em>thanks to Mike Brown:</em><br>
 <dl>
 <dt>for e.g. LOGMAG</dt>
-<dd>An entry of 1-8 (0001 to 0008) places the REFERENCE line 1 to 8 grid spaces from the BOTTOM.<br>
-  An entry of 8 places the reference trace location to the very TOP of the screen.<br><br>
+<dd>Entering 1-8 (0001 to 0008) places the REFERENCE line
+<br>1 to 8 grid spaces from the BOTTOM.<br>
   With default setting 7 000, changing it to 8 000 moves the trace reference<br>
- (shown by a small marker at left of screen) up one grid space, to screen top.</dd>
+ (shown by a small marker at left of screen) up one grid space, to screen TOP.</dd>
 <br>
 <dt>for e.g SWR 1:1</dt>
 <dd>trace is below screen bottom.<br>
