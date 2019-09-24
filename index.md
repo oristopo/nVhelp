@@ -190,7 +190,8 @@ In addition to selecting values to be displayed,<br>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <h4 id="U1L1">linked from TRACE</h4>
-<p>Up to 4 simultaneous color-coded data can be plotted.  Some firmware instead supports only 2.<br>
+<p>Up to 4 simultaneous color-coded data can be plotted.<br>
+  Some firmware instead supports only 2.<br>
 OFF disables <em>this</em> trace;  SINGLE disables <em>all other</em> traces...?</p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
@@ -199,37 +200,48 @@ OFF disables <em>this</em> trace;  SINGLE disables <em>all other</em> traces...?
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <h3 id="U131">linked from SCALE/DIV</h3>
 watch this space
-<h3 id="U132">linked from NUM KEYS</h3>
+<h3 id="U133">linked from NUM KEYS</h3>
 <em>thanks to Mike Brown</em>
 <p>
-Numerical input seems a bit flaky, although it works better for e.g. CW frequency than position.<br>
+Numerical input seems a bit flaky,<br>
+although it works better for e.g. CW frequency than position.<br>
 Touchscreen calibration typically wants <a href="">calibration</a><br>
-Font larger with antenna analyser firmware making touchscreen [mis]calibration more critical on others..<br>
+Antenna analyser firmware has a larger font;
+touchscreen [mis]calibration is more critical for other firmware..<br>
 
-Numeric entry displays no decimal point, but one may be implied. eg:<ul compact><li>When in logmag reference adjust mode,
- digits appear to represent steps of 0.01dB,<br> so a change of +1000 moves the reference 10dB higher.
-<li>In CW Freq setting, digits seem to represent steps of 100Hz.</ul>
+Numeric entry displays no decimal point, but one may be implied. eg:
+<ul compact><li>When in logmag reference adjust mode,<br>
+ digits appear to represent steps of <code>0.01dB</code>,<br>
+ so a change of +1000 moves the reference <code>10dB</code> higher.
+<li>In CW Freq setting, digits seem to represent steps of <code>100Hz.</code></ul>
+
 <dl><dt>
 Rocker switch input
 <dd>
-Tapping on a digit makes it adjustable; step it up or down using the multi-directional switch.<br>
- If you hold the multi-directional switch in, that digit is 'highlighted' and its background goes black.<br>
- The multi-directional switch can be used to shift highlighting to another digit.<br>
+Tapping on a digit makes it adjustable;
+<br>step it up or down using the multi-directional switch.<br>
+ If you hold the multi-directional switch in,
+<br> that digit is 'highlighted' and its background goes black.<br>
+ The multi-directional switch can shift highlighting to another digit.<br>
  Press in again, highlighting disappears and the digit becomes adjustable.<br>
- Once set, briefly pressing the multi-directional switch in stores that numerical setting.<br>
+ Briefly pressing the multi-directional switch in stores that numerical setting.<br>
  <b>NB</b> It appears that you need to wait a few seconds between presses on the rocker switch or it ignores the input.
 
 <dt>Touchscreen input
 <dd>
 Tapping far right of numbers brings up a numeric keyboard.<br>
-This keyboard may be operated either by touchscreen taps or by multi-directional switch movements.<br>
- ( With 2-trace 900MHz antenna analyser firmware, multi-directional switch movements seem buggy.<br>
-    In reference position adjust mode, the 'enter' button doesn't seem to do anything<br>
+This keyboard may be operated either by touchscreen taps<br>
+or by multi-directional switch movements.<br>
+ ( With 2-trace 900MHz antenna analyser firmware,<br>
+multi-directional switch movements seem buggy.<br>
+    In reference position adjust mode,<br>
+    the 'enter' button doesn't seem to do anything<br>
     but if it is held the keyboard clears from the screen.<br>
     The keyboard works fine when setting e.g. CW Freq.<br>
     Frequencies may be entered as GHz, MHz or kHz;<br>
     just enter the digits then tap G, M or k to enter the set value.<br>
     (eg to set 800 MHz you can enter 0.8G, 800M or 800000k.)
+
 </dl>
 </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
@@ -255,9 +267,9 @@ This keyboard may be operated either by touchscreen taps or by multi-directional
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
-<h3 id="U133">linked from ELECTRICAL DELAY</h3>
-<p>Calibration data can only be modified with electrical delay specified in picoseconds.<br>
-For better accuracy, Hugen customized the shortest and most accurate calibrations kits possible. </p>
+<h3 id="U134">linked from ELECTRICAL DELAY</h3>
+<p>Calibration data can be modified by electrical delay in picoseconds.<br>
+Hugen customized short and accurate calibrations kits. </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
@@ -285,25 +297,30 @@ SPAN changes sweeps when 2 markers are active.</dd></dl></p>
 This button freezes data collection.<br>
 <br><em>thanks to Gary O'Neil</em>:
 <p>
-The nanoVNA must remain powered on at all times to work successfully capture data via USB.<br>
+The nanoVNA must remain powered on to successfully capture data via USB.<br>
 <ol compact>
-<li> With the data you wish to "save" and port to your remotely located workstation,<br>
- navigate to STIMULUS > PAUSE SWEEP. Data at the top of the screen will freeze, confirming sweep is paused.
+<li> With the data you wish to "save" and port to your workstation,<br>
+ navigate to STIMULUS > PAUSE SWEEP.<br>
+Data at the top of the screen will freeze, confirming sweep is paused.
 
 <li> Take care to not inadvertently alter the current state...<br>
  either by the toggle switch or touchscreen.<br>
- Remove the NanoVNA from the DUT,<br> observe that the desired data remains on the display,<br>
+ Remove the NanoVNA from the DUT,<br>
+ observe that the desired data remains on the display,<br>
  transport it to your workstation, hotplug the device into a USB port,<br>
  then tap on the display a couple of times.
-<br> This appears to initiate handshaking and establishes its connection with the workstation.
+<br> This appears to initiate handshaking<br>
+  and establishes a connection with the workstation.
 
 <li> Launch the nanoVNAsharp app and connect.<br>
-
 App display should match that on the nanoVNA.
-<li>Use nanoVNAsharp facilities to save the data. 
+<li>Use nanoVNAsharp facilities to save the data.
+ 
 </ol>
+
 To be clear, data is <em>not</em> otherwise saved within the NanoVNA.<br>
-Once PAUSE is cancelled or the nanoVNA is power cycled, data is flushed and replaced.</p>
+Once PAUSE is cancelled or the nanoVNA is power cycled,<br>
+data is flushed and replaced.</p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
