@@ -106,18 +106,17 @@ Place an OPEN on end of CH0 cable and this will be followed by a SHORT.
 Connect 50 ohm LOADs to ends of CH0 and CH1 cables.  
 14. LOAD
 15. ISOLN  
-Connect cables, replacing LOADs with female-female SMA adapter.  
+Connect cables, replacing LOADs with female-female SMA coupler.  
 16. THRU
 17. DONE  
 Finally save to a desired register.
 
 That's it. Check that the open, short and 50 ohm display properly.  
- **Note**, the cables are CONNECTED to CH0 and CH1  
- and the calibration is to the cables **ends**.
- The reference plane for insertion loss measure magnitude is in plane of the adapter.  
- However, the phase is subject to error and that needs addressed in another message.  
+ **Note**, the cables are CONNECTED to CH0 and CH1a,  
+ and calibration reference plane is at those cables **ends**.
+ However, phase is subject to error and needs addressing in another message.  
 
-Also, with a thru cable connection between CH0 and CH1,   
+Also, with SMA coupler connecting cables to CH0 and CH1,   
 `S21` should measure nearly `0dB`.
 
 
