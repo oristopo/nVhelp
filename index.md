@@ -135,7 +135,7 @@ which requires USB connection to your PC/MAC/Terminal.
 
 **touchcal**  
 - produces calibration touch points in the upper left and lower right corners  
-     outputs:  
+- outputs:  
 ```
     first touch upper left, then lower right...  
     done  
@@ -146,13 +146,15 @@ which requires USB connection to your PC/MAC/Terminal.
 
 
 #### Now, save this touchscreen calibration:  
-At the command prompt, enter `saveconfig`  
-
-- **saveconfig** - saves current configuration - outputs "Config saved"
+- **saveconfig** - saves current configuration
+```
+    saveconfig
+    Config saved
+```
 
 You can verify touch calibration using the menu boxes.  
 
-**NOTE**: at this time, it is not known what else the saveconfig command saves besides touchscreen calibration.
+**NOTE**: saveconfig command probably also saves calibration data
 
 
 Software and Firmware
