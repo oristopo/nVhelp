@@ -30,9 +30,7 @@ but switching times > 1ns limit local oscillators to <code>200MHz</code> or so..
 From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>,
 
 **Measurement range**:  
-```
-70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)
-```
+`  70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`  
 **Port SWR** `< 1.1`  
 **Frequency error** `< 0.5ppm`  
 
@@ -69,9 +67,6 @@ Another LED, between power switch and multi-directional switch,
 
 Pressing this launches menu or selects menu item;  
 nudging left or right migrates among menu items or moves selected marker.
-
-### nanoVNA Console Commands
-  [PDF @ groups.io](https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%208-6-19.pdf)
 
 <h3 id="N4">nanoVNA Calibration Considerations</h3>
 
@@ -154,7 +149,7 @@ which requires USB connection to your PC/MAC/Terminal.
 
 
 #### Now, save this touchscreen calibration:  
-    At the command prompt, enter `saveconfig`  
+> At the command prompt, enter `saveconfig`  
 
 - **saveconfig** - saves current configuration - outputs "Config saved"
 
@@ -169,9 +164,11 @@ Software and Firmware
 <h3 id="F800">firmware mitigation for nanoVNA <code>300MHz, 600MHz</code> spikes</h3>
 
 Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;  
-[Here](https://groups.io/g/nanovna-users/topic/defective_nanovna/32747641?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,32747641) is a description of reflashing those problematic devices.  
+[*Here*](https://groups.io/g/nanovna-users/topic/defective_nanovna/32747641?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,32747641) is a description of reflashing those problematic devices.  
 
 [*Here*](html/software.htm) is more software information.  
+
+[*Here*](https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%208-6-19.pdf) are Console Commands  
 
 ### technical
 
