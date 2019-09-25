@@ -2,7 +2,7 @@
 <head>
 <title>nanoVNA software</title>
 </head>
-<body>
+<body bgcolor=#bbccdd>
 <h3>nanoVNA software</h3>
 <ul compact>
 <li><a href="#firm">firmware management</a>
@@ -31,10 +31,10 @@ Logging may be accomplished by first installing NirSofts'
 Run this while running NanoVNA programs to watch<br>
 - what the program sends to the device<br>  
 - what the device sends back<br>  
+<a href="https://freeusbanalyzer.com">"Free" USB Analyzer</a><br>
 - Max session length: 10 minutes<br>
 - Max sessions per day: 5<br>
 - Grace Period: 4 days<br>
-<a href="https://freeusbanalyzer.com">"Free" USB Analyzer</a>
 <p>Other free possibilities:<br>
 - <a href="https://desowin.org/usbpcap/tour.html">USBPcap + Wireshark</a>
 <a href="https://osqa-ask.wireshark.org/questions/48789/usbpcap-tutorial">tutorial</a> <a href="https://wiki.wireshark.org/CaptureSetup/USB">wiki</a><br>
@@ -45,18 +45,24 @@ Run this while running NanoVNA programs to watch<br>
 <a name=firm><h3>firmware management</h3></a>
 nanoVNA employs STM32 firmware which may be read and rewritten<br>
 via USB using <a href="https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-stm32080.html">STMicroelectronics'</a> Device Firmware Upgrade (DFU) software,<br>
-which is included in the  
+which is included as <code>STSW_STM32080_V3.0.0.zip</code> on
+<a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">HuGen's Firmware Drive</a>  
 <p>
 An ST-Link connector can be soldered to the NanoVNA.<br>
-ST-Link supports debugging as well as firmware management.
+<a href="https://www.ebay.com/sch/i.html?_nkw=st-link">ST-Link</a> supports debugging as well as firmware management.
 </p>
 <h5><a href="https://zs1sci.com/blog/NanoVNA%20Build%20Source/">Building NanoVNA Source in Ubuntu 19.04</a></h5>
 <h4>firmware flavors</h4>
 <dl>
+<dt>by HuGen, nanoVNA developer
+<dd><a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1sz
+Y">HuGen's Firmware Drive</a>
 <dt>by Erik, presumably for TAPR VNA
 <dd><a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">Groups.io Firmware folder</a>
-<dt>Sept 19 edy255 firmware with TDR and hugen touchscreen calibration
-<dd><a href="https://groups.io/g/nanovna-users/attachment/2671/0/NanoVNA_edy555_0.1.1.9.zip">zip file attached to email</a>
+<dt>by Hugen, Sept 19 edy255 firmware with TDR and touchscreen calibration
+<dd><a href="https://groups.io/g/nanovna-users/message/2671">zip file attached to email</a>
+<dt>by XENOMORPH, experimental 256 point FFT Firmware
+<dd><a href="https://groups.io/g/nanovna-users/message/3028">email attachment</a>
 </dl>
 <h4>loading firmware on macOS or linux</h4>
 Power nanoVNA off, jumper boot pins, power on.<br>

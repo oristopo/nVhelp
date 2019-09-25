@@ -135,8 +135,9 @@ which requires USB connection to your PC/MAC/Terminal.
 
 **touchcal**  
 - produces calibration touch points in the upper left and lower right corners  
-- outputs:  
+- console output:  
 ```
+    touchcal
     first touch upper left, then lower right...  
     done  
     touch cal params: A B C D (upper left and lower right x-y co-ords)  
@@ -147,6 +148,7 @@ which requires USB connection to your PC/MAC/Terminal.
 
 #### Now, save this touchscreen calibration:  
 - **saveconfig** - saves current configuration
+- console output:  
 ```
     saveconfig
     Config saved
@@ -169,7 +171,7 @@ Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;
 
 [*Here*](html/software.htm) is more software information.  
 
-[*Here*](https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%208-6-19.pdf) are Console Commands  
+[*Here*](https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%209-5-25.pdf) are Console Commands  
 
 Technical
 ---------
