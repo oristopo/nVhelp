@@ -47,7 +47,7 @@ is <code>900MHz</code> for a divide-by-4-frequency output maximum of <code>225MH
 To output <code>300MHz</code>, that VCO is overclocked to <code>1200MHz</code>,<br>
 which not every Si5351 can.<br>
 Si5351 internal VCO operating frequency limit decreases with increasing temperature.<br>
-For significant spike artifacts (<code>< 0dB) at <code>300MHz</code> or <code>900MHz</code>,<br><br>
+For significant spike artifacts (<code>< 0dB</code>) at <code>300MHz</code> or <code>900MHz</code>,<br><br>
    <a href="#F800"><code>800MHz</code> firmware is recommended</a>.
 </p>
 <b>Fully enclosed cases, raising component temperatures, may be problematic.</b>
