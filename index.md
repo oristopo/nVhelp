@@ -91,40 +91,30 @@ Each NUMBERED step below represents your PRESS (SOFT KEY TOUCH).
 Turn on the VNA and note register 0 is ON.  
 CONNECT MATCHED CABLES to `CH0` and `CH1`.  
 
-<ol>
-<li> DISPLAY
-<li> TRACE 0
-<li> SINGLE
-<li> TRACE 1
-<br>Now <code>S11</code> and <code>S22</code> both display ONLY as LOGMAG.<br>
 
-<li> STIMULUS
-<li> START 100KHz
-<li> STOP 500MHz
-<li> BACK
-<li> CAL
-<li>RESET
-<li>CALIBRATE
-<br>
-<b>Note!</b> No softkeys (right side of touch screen) are highlighted.<br>
-Place an OPEN on end of CH0 cable and this will be followed by a SHORT.<br>
-
-<li>OPEN
-<li>SHORT
-<br>
-Connect 50 ohm LOADs to ends of CH0 and CH1 cables.<br>
-
-<li>LOAD
-<li>ISOLN
-<br>
-Connect cables, replacing LOADs with female-female SMA adapter.<br>
-
-<li>THRU
-<li>DONE
-<br>
-Finally save to a desired register.<br>
-
-</ol>
+1.   DISPLAY
+2.   TRACE 0
+3.   SINGLE
+4.   TRACE 1  
+Now `S11` and `S22` both display ONLY as LOGMAG.  
+5.   STIMULUS
+6.   START 100KHz
+7.   STOP 500MHz
+8.   BACK
+9.   CAL
+10. RESET
+11. CALIBRATE  
+**Note!** No softkeys (right side of touch screen) are highlighted.  
+Place an OPEN on end of CH0 cable and this will be followed by a SHORT.  
+12. OPEN
+13. SHORT  
+Connect 50 ohm LOADs to ends of CH0 and CH1 cables.  
+14. LOAD
+15. ISOLN  
+Connect cables, replacing LOADs with female-female SMA adapter.  
+16. THRU
+17. DONE  
+Finally save to a desired register.
 
 That's it. Check that the open, short and 50 ohm display properly.  
  **Note**, the cables are CONNECTED to CH0 and CH1  
@@ -140,50 +130,51 @@ Also, with a thru cable connection between CH0 and CH1,
 <em> thanks to Larry Rothman</em>:
 
 For best behavior, nanoVNA devices need touchscreen calibraton,<br>
-which requires USB connection to your PC/MAC/Terminal.<br>
-<ol compact><li>install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.
-<li>connect the nanoVNA and determine which serial port has been assigned (e.g. COM5)
-<li>use a serial terminal emulator such as TeraTerm to access the nanoVNA console.
-<li>you may need to hit the ENTER key once or twice<br>
+which requires USB connection to your PC/MAC/Terminal.  
+
+1.  install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.
+2.  connect the nanoVNA and determine which serial port has been assigned (e.g. COM5)
+3.  use a serial terminal emulator such as TeraTerm to access the nanoVNA console.
+4.  you may need to hit the ENTER key once or twice<br>
     to bring up its command shell prompt.
-<li>at the command prompt, enter:  <code>touchcal</code>
-<li>the nanoVNA should now display a calibration point at the upper-left corner of the display.<br>
-<li>touch that corner - a new calibration point will appear at the lower right corner of the display.
-<li>touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b><br>
+5.  at the command prompt, enter:  <code>touchcal</code>
+6.  the nanoVNA should now display a calibration point at the upper-left corner of the display.<br>
+7.  touch that corner - a new calibration point will appear at the lower right corner of the display.
+8.  touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b><br>
 
-</ol>
+**touchcal**  
+- produces calibration touch points in the upper left and lower right corners  
+     outputs:
+    first touch upper left, then lower right...
+    done
+    touch cal params: A B C D (upper left and lower right x-y co-ords)
 
-<dl compact>
-
-<dt><b>touchcal</b>
-<dd>- produces calibration touch points in the upper left and lower right corners<br>
-     outputs: "first touch upper left, then lower right..."<br>
-             "done"<br>
-             "touch cal params: A B C D (upper left and lower right x-y co-ords)"</dd>
-<br><dt><b>touchtest</b></dt><dd> - test touch accuracy - touch, hold and drag pointer</dd>
-
-</dl>
-
-<h4>Now, save this touchscreen calibration:</h4>
-    At the command prompt, enter <code>saveconfig</code>
-
-<ul compact><li><b>saveconfig</b> - saves current configuration - outputs "Config saved"</li></ul>
-
-You can verify touch calibration using the menu boxes.<br>
-<br>
-<b>NOTE</b>: at this time, it is not known what else the saveconfig command saves besides touchscreen calibration.
+**touchtest**  
+- test touch accuracy - touch, hold and drag pointer
 
 
-<h2>Software and Firmware</h2>
+#### Now, save this touchscreen calibration:  
+    At the command prompt, enter `saveconfig`  
+
+- **saveconfig** - saves current configuration - outputs "Config saved"
+
+You can verify touch calibration using the menu boxes.  
+
+**NOTE**: at this time, it is not known what else the saveconfig command saves besides touchscreen calibration.
+
+
+Software and Firmware
+---------------------
+
 <h3 id="F800">firmware mitigation for nanoVNA <code>300MHz, 600MHz</code> spikes</h3>
-Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;<br>
-<a href="https://groups.io/g/nanovna-users/topic/defective_nanovna/32747641?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,32747641"><b>here</b></a> is a description of reflashing those problematic devices.
-<br>
-<a href="html/software.htm"><em>Here</em></a> is more software information.
-<br>
-<br>
 
-<h3>technical</h3>
+Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;  
+[Here](https://groups.io/g/nanovna-users/topic/defective_nanovna/32747641?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,32747641) is a description of reflashing those problematic devices.  
+
+[*Here*](html/software.htm) is more software information.  
+
+### technical
+
 <h4 id="DSP">FFT "quadrature mixing", Hilbert transform and filtering DSP</h4>
 
 ... after quadrature sampling by Si5351 and SA612A.  
@@ -224,7 +215,8 @@ OFF disables <em>this</em> trace;  SINGLE disables <em>all other</em> traces...?
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <h3 id="U131">linked from SCALE/DIV</h3>
-watch this space
+watch this space  
+
 <h3 id="U133">linked from NUM KEYS</h3>
 <em>thanks to Mike Brown</em>
 
@@ -232,13 +224,13 @@ Numerical input seems a bit flaky,
 although it works better for e.g. CW frequency than position.  
 Touchscreen typically wants [calibration](#TSC).    
 Antenna analyser firmware has a larger font;
-touchscreen [mis]calibration is more critical for other firmware..<br>
+touchscreen [mis]calibration is more critical for other firmware..  
 
 Numeric entry displays no decimal point, but one may be implied. eg:
-<ul compact><li>When in logmag reference adjust mode,<br>
- digits appear to represent steps of <code>0.01dB</code>,<br>
- so a change of +1000 moves the reference <code>10dB</code> higher.
-<li>In CW Freq setting, digits seem to represent steps of <code>100Hz.</code></ul>
+- When in logmag reference adjust mode,  
+ digits appear to represent steps of `0.01dB`,  
+ so a change of +1000 moves the reference `10dB` higher.  
+- In CW Freq setting, digits seem to represent steps of `100Hz`.
 
 <dl><dt>
 Rocker switch input
@@ -305,13 +297,17 @@ Hugen customized short and accurate calibrations kits. </p>
 touch calibration inaccuracy typically frustrates that.<br>
 Better to use the multi-directional switch..<br>
 .. or try the <a href="https://groups.io/g/nanovna-users/wiki/Touch-Screen-Calibration-Procedure">touchscreen calibration</a> procedure.
-<dl compact>
+
+<dl>
+
 <dt>SELECT MARKER</dt>
 <dd>select (by push) any of MARKER 1 - 4<br>
 selecting that same marker again toggles it off.<br>
 Sliding the multi-directional switch moves the selected marker.<br>
 A selected marker can change START, STOP or CENTER of sweeps.<br>
-SPAN changes sweeps when 2 markers are active.</dd></dl></p>
+SPAN changes sweeps when 2 markers are active.</dd>
+
+</dl>
 
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
@@ -321,31 +317,32 @@ SPAN changes sweeps when 2 markers are active.</dd></dl></p>
 <h3 id="U36">link from PAUSE SWEEP</h3>
 This button freezes data collection.<br>
 <br><em>thanks to Gary O'Neil</em>:
-<p>
-The nanoVNA must remain powered on to successfully capture data via USB.<br>
-<ol compact>
-<li> With the data you wish to "save" and port to your workstation,<br>
+
+The nanoVNA must remain powered on to successfully capture data via USB.  
+
+1.  With the data you wish to "save" and port to your workstation,<br>
  navigate to STIMULUS > PAUSE SWEEP.<br>
 Data at the top of the screen will freeze, confirming sweep is paused.
 
-<li> Take care to not inadvertently alter the current state...<br>
+2.  Take care to not inadvertently alter the current state...<br>
  either by the toggle switch or touchscreen.<br>
  Remove the NanoVNA from the DUT,<br>
  observe that the desired data remains on the display,<br>
  transport it to your workstation, hotplug the device into a USB port,<br>
  then tap on the display a couple of times.
-<br> This appears to initiate handshaking<br>
+ This appears to initiate handshaking<br>
   and establishes a connection with the workstation.
 
-<li> Launch the nanoVNAsharp app and connect.<br>
+3.  Launch the nanoVNAsharp app and connect.<br>
 App display should match that on the nanoVNA.
-<li>Use nanoVNAsharp facilities to save the data.
+4.  Use nanoVNAsharp facilities to save the data.
  
-</ol>
+
 
 <br>To be clear, data is <em>not</em> otherwise saved within the NanoVNA.<br>
 Once PAUSE is cancelled or the nanoVNA is power cycled,<br>
-data is flushed and replaced.</p>
+data is flushed and replaced.
+
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
