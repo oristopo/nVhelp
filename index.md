@@ -29,12 +29,13 @@ but switching times > 1ns limit local oscillators to <code>200MHz</code> or so..
 <h3>Physical attributes</h3>
 From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>,
 
-<sl compact>
-<li>Measurement range:<br>
- <code>70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)</code>
-<li>Port SWR <code>< 1.1</code>
-<li>Frequency error <code>< 0.5ppm</code>
-</sl>
+**Measurement range**:  
+```
+70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)
+```
+**Port SWR** `< 1.1`  
+**Frequency error** `< 0.5ppm`  
+
 
 
 *thanks to Warren Allgyer*:  
