@@ -31,7 +31,6 @@ but switching times > 1ns, limit local oscillators to <code>200MHz</code> or so.
 <li>Frequency error <code>< 0.5ppm</code>
 </sl>
 </p>
-Firmware employs third harmonics for <code>300-900MHz</code>:<br>
 <br>
 <em>thanks to Warren Allgyer</em>:
 <br>
@@ -183,7 +182,7 @@ Lacking access to the famous July, 2015 QEX magazine article by DG5MK..
 <h3 id="U1">Linked from DISPLAY</h3>
 <p>
 In addition to selecting values to be displayed,<br>
- CHANNEL submenu selects whether signals displayed are from CH0 (TX) or CH1 (RX).
+ CHANNEL submenu selects whether signals are from CH0 (TX) or CH1 (RX).
 </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
