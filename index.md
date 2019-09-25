@@ -278,18 +278,20 @@ Numeric entry displays no decimal point, but one may be implied. eg:
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <h3 id="U134">linked from ELECTRICAL DELAY</h3>
-<p>Calibration data can be modified by electrical delay in picoseconds.<br>
-Hugen customized short and accurate calibrations kits. </p>
+Calibration data can be modified by electrical delay in picoseconds.  
+Hugen customized short and accurate calibrations kits.  
+
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
+
 <h2 id="U2">linked from MARKER</h2>
-<p>While displayed markers can in theory be manipulated by hand or stylus,<br>
-touch calibration inaccuracy typically frustrates that.<br>
-Better to use the multi-directional switch..<br>
-.. or try the [touchscreen calibration](#TSC) procedure.
+While displayed markers can in theory be manipulated by hand or stylus,  
+touch calibration inaccuracy typically frustrates that.  
+Better to use the multi-directional switch..  
+.. or try the [touchscreen calibration](#TSC) procedure.  
 
 **SELECT MARKER**  
 Select (by push) any of MARKER 1 - 4.  
@@ -303,6 +305,7 @@ SPAN changes sweeps when 2 markers are active.
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
+
 <h3 id="U36">link from PAUSE SWEEP</h3>
 
 This button freezes data collection.  
