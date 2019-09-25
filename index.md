@@ -43,11 +43,10 @@ From the [manual](https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20Us
 
 *thanks to Warren Allgyer*:  
 ![harminics](html/nanoSpectrum.gif "Si5351 harmonics")  
-Unlike traditional VNAs, nanoVNA stimulus waveform is square, rather than sine.
+Unlike traditional VNAs, nanoVNA stimulus waveform is square, rather than sine.  
 Above `300MHz`, nanoVNA boosts `Si5351` output and uses its 3rd harmonic.  
 
 *thanks to hugen@outlook.com:*  
-
 The `Si5351` internal VCO (Voltage Controlled Oscillator) maximum  
 operating frequency decreases with increasing temperature.  
 *Fully enclosed cases, raising component temperatures, may be problematic.*  
