@@ -60,7 +60,7 @@ Another LED, between power switch and multi-directional switch,
     illuminates while nanoLED is powered;  
     - this may be vestigal from  nanoVNA prototypes lackng LCD displays.
 
-#### multi-directional switch
+<h4>multi-directional switch</h4>
 
 Pressing this launches menu or selects menu item;  
 nudging left or right migrates among menu items or moves selected marker.
@@ -70,7 +70,7 @@ nudging left or right migrates among menu items or moves selected marker.
   [PDF @ groups.io](https://groups.io/g/nanovna-users/attachment/896/0/NanoVNA%20Calibration%20Considerations%20and%20Procedure%20FINAL.pdf)
 <em>thanks to Larry Goga</em>
 
-#### Calibration for 4 track nanoVNA
+<h4>Calibration for 4 track nanoVNA</h4>
 *thanks to Alan Victor*
 
 ###### Some notes:  
