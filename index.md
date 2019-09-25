@@ -26,9 +26,8 @@ but switching times > 1ns limit local oscillators to <code>200MHz</code> or so..
 <h4><a href="https://www.youtube.com/watch?v=29yTVG8lg7s">2-port measurements video</a></h4>
 <em>thanks to Volker Block</em>  
 
-<h3>Physical attributes</h3>
-From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>,
-
+<h2>Physical attributes</h2>
+From the [manual](https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf):  
 **Measurement range**:  
  `70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`  
 **Port SWR** `< 1.1`  
@@ -37,10 +36,8 @@ From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20Us
 
 
 *thanks to Warren Allgyer*:  
-
-![harminics](html/nanoSpectrum.gif "Si5351 harmonics")
-
-
+![harminics](html/nanoSpectrum.gif "Si5351 harmonics")  
+Unlike traditional VNAs, nanoVNA stimulus waveform is square, rather than sine.
 Above `300MHz`, nanoVNA boosts `Si5351` output and uses its 3rd harmonic.  
 
 *thanks to hugen@outlook.com:*  
@@ -68,7 +65,7 @@ Another LED, between power switch and multi-directional switch,
 Pressing this launches menu or selects menu item;  
 nudging left or right migrates among menu items or moves selected marker.
 
-<h3 id="N4">nanoVNA Calibration Considerations</h3>
+<h4 id="N4">nanoVNA Calibration Considerations</h4>
 
   [PDF @ groups.io](https://groups.io/g/nanovna-users/attachment/896/0/NanoVNA%20Calibration%20Considerations%20and%20Procedure%20FINAL.pdf)
 <em>thanks to Larry Goga</em>
@@ -120,7 +117,7 @@ Also, with SMA coupler connecting cables to CH0 and CH1,
 `S21` should measure nearly `0dB`.
 
 
-<h3 id="TSC">Touchscreen Calibration</h3>
+<h4 id="TSC">Touchscreen Calibration</h4>
 <em> thanks to Larry Rothman</em>:
 
 For best behavior, nanoVNA devices need touchscreen calibraton,<br>
@@ -149,7 +146,7 @@ which requires USB connection to your PC/MAC/Terminal.
 
 
 #### Now, save this touchscreen calibration:  
-> At the command prompt, enter `saveconfig`  
+At the command prompt, enter `saveconfig`  
 
 - **saveconfig** - saves current configuration - outputs "Config saved"
 
@@ -161,7 +158,7 @@ You can verify touch calibration using the menu boxes.
 Software and Firmware
 ---------------------
 
-<h3 id="F800">firmware mitigation for nanoVNA <code>300MHz, 600MHz</code> spikes</h3>
+<h4 id="F800">firmware mitigation for nanoVNA <code>300MHz, 600MHz</code> spikes</h4>
 
 Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;  
 [*Here*](https://groups.io/g/nanovna-users/topic/defective_nanovna/32747641?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,32747641) is a description of reflashing those problematic devices.  
@@ -170,7 +167,8 @@ Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;
 
 [*Here*](https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%208-6-19.pdf) are Console Commands  
 
-### technical
+Technical
+---------
 
 <h4 id="DSP">FFT "quadrature mixing", Hilbert transform and filtering DSP</h4>
 
@@ -192,7 +190,7 @@ Lacking access to the famous July, 2015 QEX magazine article by DG5MK..
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
-<h3 id="U1">Linked from DISPLAY</h3>
+<h4 id="U1">Linked from DISPLAY</h4>
 <p>
 In addition to selecting values to be displayed,<br>
  CHANNEL submenu selects whether signals are from CH0 (TX) or CH1 (RX).
@@ -211,10 +209,10 @@ OFF disables <em>this</em> trace;  SINGLE disables <em>all other</em> traces...?
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
-<h3 id="U131">linked from SCALE/DIV</h3>
+<h4 id="U131">linked from SCALE/DIV</h4>
 watch this space  
 
-<h3 id="U133">linked from NUM KEYS</h3>
+<h4 id="U133">linked from NUM KEYS</h4>
 <em>thanks to Mike Brown</em>
 
 Numerical input seems a bit flaky,  
@@ -259,7 +257,7 @@ Numeric entry displays no decimal point, but one may be implied. eg:
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
-<h3 id="U132">linked from REFERENCE POSITION</h3>
+<h4 id="U132">linked from REFERENCE POSITION</h4>
 <em>thanks to Mike Brown:</em><br>
 <dl>
 <dt>for e.g. LOGMAG</dt>
@@ -277,7 +275,7 @@ Numeric entry displays no decimal point, but one may be implied. eg:
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
-<h3 id="U134">linked from ELECTRICAL DELAY</h3>
+<h4 id="U134">linked from ELECTRICAL DELAY</h4>
 Calibration data can be modified by electrical delay in picoseconds.  
 Hugen customized short and accurate calibrations kits.  
 
@@ -287,7 +285,7 @@ Hugen customized short and accurate calibrations kits.
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 
-<h2 id="U2">linked from MARKER</h2>
+<h4 id="U2">linked from MARKER</h4>
 While displayed markers can in theory be manipulated by hand or stylus,  
 touch calibration inaccuracy typically frustrates that.  
 Better to use the multi-directional switch..  
@@ -306,7 +304,7 @@ SPAN changes sweeps when 2 markers are active.
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 
-<h3 id="U36">link from PAUSE SWEEP</h3>
+<h4 id="U36">link from PAUSE SWEEP</h4>
 
 This button freezes data collection.  
 *thanks to Gary O'Neil*:  
