@@ -157,7 +157,7 @@ You can verify touch calibration using the menu boxes.<br>
 Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;<br>
 <a href="https://groups.io/g/nanovna-users/topic/defective_nanovna/32747641?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,32747641"><b>here</b></a> is a description of reflashing those problematic devices.
 <br>
-[More software information](html/software.htm)  
+<a href="html/software.htm"><em>more software information</em></a>
 
 <h3 id="DSP">FFT "quadrature mixing", Hilbert transform and filtering DSP</h3>
 ... after quaderature sampling decoding by Si5351 and mixers.<br>
