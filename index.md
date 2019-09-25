@@ -232,34 +232,30 @@ Numeric entry displays no decimal point, but one may be implied. eg:
  so a change of +1000 moves the reference `10dB` higher.  
 - In CW Freq setting, digits seem to represent steps of `100Hz`.
 
-<dl><dt>
-Rocker switch input
-<dd>
-Tapping on a digit makes it adjustable;
-<br>step it up or down using the multi-directional switch.<br>
- If you hold the multi-directional switch in,
-<br> that digit is <b>'highlighted'</b> and its background goes black.<br>
- The multi-directional switch can shift highlighting to another digit.<br>
- Press in again, highlighting disappears and the digit becomes adjustable.<br>
- Press in <em>again briefly</em> to store that numerical setting.<br>
- <b>NB</b> waiting a few seconds between rocker switch presses seemingly helps.
+**Rocker switch input**  
+Tapping on a digit makes it adjustable;  
+step it up or down using the multi-directional switch.  
+If you hold the multi-directional switch in,  
+that digit is **'highlighted'** and its background goes black.  
+ The multi-directional switch can shift highlighting to another digit.  
+ Press in again, highlighting disappears and the digit becomes adjustable.  
+ Press in <em>again briefly</em> to store that numerical setting.  
+ **NB** waiting a few seconds between rocker switch presses seemingly helps.  
 
-<dt>Touchscreen input
-<dd>
-Tapping far right of numbers brings up a numeric keyboard.<br>
-This keyboard may be operated either by touchscreen taps<br>
-or by multi-directional switch movements.<br>
-   With 2-trace <code>900MHz</code> antenna analyser firmware,<br>
-    multi-directional switch movements seem buggy.<br>
-    In reference position adjust mode,<br>
-    the 'enter' button doesn't seem to do anything<br>
-    but if it is held the keyboard clears from the screen.<br>
-    The keyboard works fine when setting e.g. CW Freq.<br>
-    Frequencies may be entered as GHz, MHz or kHz;<br>
-    just enter the digits then tap G, M or k to enter the set value.<br>
+**Touchscreen input**  
+Tapping far right of numbers brings up a numeric keyboard.  
+This keyboard may be operated either by touchscreen taps  
+or by multi-directional switch movements.  
+   With 2-trace <code>900MHz</code> antenna analyser firmware,  
+    multi-directional switch movements seem buggy.  
+    In reference position adjust mode,  
+    the 'enter' button doesn't seem to do anything  
+    but if it is held the keyboard clears from the screen.  
+    The keyboard works fine when setting e.g. CW Freq.  
+    Frequencies may be entered as GHz, MHz or kHz;  
+    just enter the digits then tap G, M or k to enter the set value.  
     (eg to set <code>800MHz</code> you can enter 0.8G, 800M or 800000k.)
 
-</dl>
 
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
