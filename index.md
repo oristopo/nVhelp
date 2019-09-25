@@ -159,6 +159,7 @@ Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;
 <br>
 <a href="html/software.htm"><em>more software information</em></a>
 
+<h2>technical</h2>
 <h3 id="DSP">FFT "quadrature mixing", Hilbert transform and filtering DSP</h3>
 ... after quaderature sampling decoding by Si5351 and mixers.<br>
 Lacking access to the famous July, 2015 QEX magazine article by DG5MK..
