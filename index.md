@@ -123,6 +123,7 @@ Connect cables, replacing LOADs with female-female SMA adapter.<br>
 <li>DONE
 <br>
 Finally save to a desired register.<br>
+
 </ol>
 
 That's it. Check that the open, short and 50 ohm display properly.  
@@ -137,7 +138,7 @@ Also, with a thru cable connection between CH0 and CH1,
 
 <h3 id="TSC">Touchscreen Calibration</h3>
 <em> thanks to Larry Rothman</em>:
-<p>
+
 For best behavior, nanoVNA devices need touchscreen calibraton,<br>
 which requires USB connection to your PC/MAC/Terminal.<br>
 <ol compact><li>install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.
@@ -149,20 +150,29 @@ which requires USB connection to your PC/MAC/Terminal.<br>
 <li>the nanoVNA should now display a calibration point at the upper-left corner of the display.<br>
 <li>touch that corner - a new calibration point will appear at the lower right corner of the display.
 <li>touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b><br>
+
 </ol>
-<dl compact><dt><b>touchcal</b>
+
+<dl compact>
+
+<dt><b>touchcal</b>
 <dd>- produces calibration touch points in the upper left and lower right corners<br>
      outputs: "first touch upper left, then lower right..."<br>
              "done"<br>
              "touch cal params: A B C D (upper left and lower right x-y co-ords)"</dd>
-<br><dt><b>touchtest</b></dt><dd> - test touch accuracy - touch, hold and drag pointer</dd></dl>
+<br><dt><b>touchtest</b></dt><dd> - test touch accuracy - touch, hold and drag pointer</dd>
+
+</dl>
+
 <h4>Now, save this touchscreen calibration:</h4>
     At the command prompt, enter <code>saveconfig</code>
+
 <ul compact><li><b>saveconfig</b> - saves current configuration - outputs "Config saved"</li></ul>
+
 You can verify touch calibration using the menu boxes.<br>
 <br>
 <b>NOTE</b>: at this time, it is not known what else the saveconfig command saves besides touchscreen calibration.
-</p>
+
 
 <h2>Software and Firmware</h2>
 <h3 id="F800">firmware mitigation for nanoVNA <code>300MHz, 600MHz</code> spikes</h3>
