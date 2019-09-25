@@ -14,12 +14,13 @@ Largely as described in Michael Knitter DG5MK's YouTube video:
 Instead of nanoVNA's `SA612` mixer
 (also used by [EU1KY analyzer](https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home)),  
 the [FA-VA5](https://www.sdr-kits.net/VA5-Antenna-Analyzer-Kit) uses `74LVC4066` analog switches.  
-Analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br>
+Analog switch ICs have better linearity, dynamic range and GHz bandwidths,  
 but switching times > 1ns limit local oscillators to <code>200MHz</code> or so..  
+
 
 VNA Basics
 ----------
-<h4><a href="http://www.rvhfg.org/pdf/articles/55.pdf"><Keysight</a></h4>
+<h4><a href="http://www.rvhfg.org/pdf/articles/55.pdf">Keysight</a></h4>
 <h4><a href="http://hpmemoryproject.org/an/pdf/an_150-15.pdf">Agilent</a></h4>
 
 <h4><a href="https://www.youtube.com/watch?v=mKi6s3WvBAM">beginners guide video</a></h4>
