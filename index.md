@@ -31,6 +31,7 @@ From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20Us
 
 **Measurement range**:  
 `  70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`  
+ `70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`  
 **Port SWR** `< 1.1`  
 **Frequency error** `< 0.5ppm`  
 
@@ -138,11 +139,12 @@ which requires USB connection to your PC/MAC/Terminal.
 
 **touchcal**  
 - produces calibration touch points in the upper left and lower right corners  
-     outputs:
-    first touch upper left, then lower right...
-    done
-    touch cal params: A B C D (upper left and lower right x-y co-ords)
-
+     outputs:  
+```
+    first touch upper left, then lower right...  
+    done  
+    touch cal params: A B C D (upper left and lower right x-y co-ords)  
+```
 **touchtest**  
 - test touch accuracy - touch, hold and drag pointer
 
@@ -219,7 +221,7 @@ watch this space
 Numerical input seems a bit flaky,  
 although it works better for e.g. CW frequency than position.  
 Touchscreen typically wants [calibration](#TSC).    
-Antenna analyser firmware has a larger font;
+Antenna analyser firmware has a larger font;  
 touchscreen [mis]calibration is more critical for other firmware..  
 
 Numeric entry displays no decimal point, but one may be implied. eg:
@@ -229,25 +231,25 @@ Numeric entry displays no decimal point, but one may be implied. eg:
 - In CW Freq setting, digits seem to represent steps of `100Hz`.
 
 **Rocker switch input**  
-Tapping on a digit makes it adjustable;  
-step it up or down using the multi-directional switch.  
-If you hold the multi-directional switch in,  
-that digit is **'highlighted'** and its background goes black.  
- The multi-directional switch can shift highlighting to another digit.  
- Press in again, highlighting disappears and the digit becomes adjustable.  
- Press in <em>again briefly</em> to store that numerical setting.  
+- Tapping on a digit makes it adjustable;  
+  step it up or down using the multi-directional switch.  
+- If you hold the multi-directional switch in,  
+  that digit is **'highlighted'** and its background goes black.  
+- The multi-directional switch can shift highlighting to another digit.  
+- Press in again, highlighting disappears and the digit becomes adjustable.  
+- Press in <em>again briefly</em> to store that numerical setting.  
  **NB** waiting a few seconds between rocker switch presses seemingly helps.  
 
 **Touchscreen input**  
-Tapping far right of numbers brings up a numeric keyboard.  
-This keyboard may be operated either by touchscreen taps  
-or by multi-directional switch movements.  
-   With 2-trace <code>900MHz</code> antenna analyser firmware,  
+- Tapping far right of numbers brings up a numeric keyboard,  
+  which may be operated either by touchscreen taps  
+  or by multi-directional switch movements.  
+- With 2-trace <code>900MHz</code> antenna analyser firmware,  
     multi-directional switch movements seem buggy.  
     In reference position adjust mode,  
     the 'enter' button doesn't seem to do anything  
     but if it is held the keyboard clears from the screen.  
-    The keyboard works fine when setting e.g. CW Freq.  
+- The keyboard works fine when setting e.g. CW Freq.  
     Frequencies may be entered as GHz, MHz or kHz;  
     just enter the digits then tap G, M or k to enter the set value.  
     (eg to set <code>800MHz</code> you can enter 0.8G, 800M or 800000k.)
@@ -288,14 +290,14 @@ Hugen customized short and accurate calibrations kits. </p>
 <p>While displayed markers can in theory be manipulated by hand or stylus,<br>
 touch calibration inaccuracy typically frustrates that.<br>
 Better to use the multi-directional switch..<br>
-.. or try the <a href="https://groups.io/g/nanovna-users/wiki/Touch-Screen-Calibration-Procedure">touchscreen calibration</a> procedure.
+.. or try the [touchscreen calibration](#TS) procedure.
 
 <dl>
 
 <dt>SELECT MARKER</dt>
-<dd>select (by push) any of MARKER 1 - 4<br>
-selecting that same marker again toggles it off.<br>
-Sliding the multi-directional switch moves the selected marker.<br>
+<dd>Select (by push) any of MARKER 1 - 4.<br>
+Selecting that same marker again toggles it off.<br>
+Sliding the multi-directional switch moves a selected marker.<br>
 A selected marker can change START, STOP or CENTER of sweeps.<br>
 SPAN changes sweeps when 2 markers are active.</dd>
 
@@ -307,33 +309,32 @@ SPAN changes sweeps when 2 markers are active.</dd>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <h3 id="U36">link from PAUSE SWEEP</h3>
-This button freezes data collection.<br>
-<br><em>thanks to Gary O'Neil</em>:
+
+This button freezes data collection.  
+*thanks to Gary O'Neil*:  
 
 The nanoVNA must remain powered on to successfully capture data via USB.  
 
-1.  With the data you wish to "save" and port to your workstation,<br>
- navigate to STIMULUS > PAUSE SWEEP.<br>
-Data at the top of the screen will freeze, confirming sweep is paused.
+1.  With the data you wish to "save" and port to your workstation,  
+ navigate to STIMULUS > PAUSE SWEEP.  
+Data at the top of the screen will freeze, confirming sweep is paused.  
 
-2.  Take care to not inadvertently alter the current state...<br>
- either by the toggle switch or touchscreen.<br>
- Remove the NanoVNA from the DUT,<br>
- observe that the desired data remains on the display,<br>
- transport it to your workstation, hotplug the device into a USB port,<br>
- then tap on the display a couple of times.
- This appears to initiate handshaking<br>
-  and establishes a connection with the workstation.
+2.  Take care to not inadvertently alter the current state...  
+ either by the toggle switch or touchscreen.  
+ Remove the NanoVNA from the DUT,  
+ observe that the desired data remains on the display,  
+ transport it to your workstation, hotplug the device into a USB port,  
+ then tap on the display a couple of times.  
+ This appears to initiate handshaking  
+  and establishes a connection with the workstation.  
 
-3.  Launch the nanoVNAsharp app and connect.<br>
+3.  Launch the nanoVNAsharp app and connect.  
 App display should match that on the nanoVNA.
-4.  Use nanoVNAsharp facilities to save the data.
- 
+4.  Use nanoVNAsharp facilities to save the data.  
 
-
-<br>To be clear, data is <em>not</em> otherwise saved within the NanoVNA.<br>
-Once PAUSE is cancelled or the nanoVNA is power cycled,<br>
-data is flushed and replaced.
+To be clear, data is *not* otherwise saved within the NanoVNA.  
+Once PAUSE is cancelled or the nanoVNA is power cycled,  
+data is flushed and replaced.  
 
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
