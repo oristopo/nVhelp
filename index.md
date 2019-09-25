@@ -36,11 +36,11 @@ From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20Us
 <li>Frequency error <code>< 0.5ppm</code>
 </sl>
 
-<br>
-<em>thanks to Warren Allgyer</em>:
-<br>
-<img src="html/nanoSpectrum.gif">
-<br clear=all>
+
+*thanks to Warren Allgyer*:  
+
+![harminics](html/nanoSpectrum.gif "Si5351 harmonics")
+
 
 Above `300MHz`, nanoVNA boosts `Si5351` output and uses its 3rd harmonic.  
 
