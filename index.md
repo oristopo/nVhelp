@@ -30,7 +30,6 @@ but switching times > 1ns limit local oscillators to <code>200MHz</code> or so..
 From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>,
 
 **Measurement range**:  
-`  70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`  
  `70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`  
 **Port SWR** `< 1.1`  
 **Frequency error** `< 0.5ppm`  
@@ -290,18 +289,14 @@ Hugen customized short and accurate calibrations kits. </p>
 <p>While displayed markers can in theory be manipulated by hand or stylus,<br>
 touch calibration inaccuracy typically frustrates that.<br>
 Better to use the multi-directional switch..<br>
-.. or try the [touchscreen calibration](#TS) procedure.
+.. or try the [touchscreen calibration](#TSC) procedure.
 
-<dl>
-
-<dt>SELECT MARKER</dt>
-<dd>Select (by push) any of MARKER 1 - 4.<br>
-Selecting that same marker again toggles it off.<br>
-Sliding the multi-directional switch moves a selected marker.<br>
-A selected marker can change START, STOP or CENTER of sweeps.<br>
-SPAN changes sweeps when 2 markers are active.</dd>
-
-</dl>
+**SELECT MARKER**  
+Select (by push) any of MARKER 1 - 4.  
+Selecting that same marker again toggles it off.  
+Sliding the multi-directional switch moves a selected marker.  
+A selected marker can change START, STOP or CENTER of sweeps.  
+SPAN changes sweeps when 2 markers are active.  
 
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
