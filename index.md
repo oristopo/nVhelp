@@ -33,13 +33,12 @@ VNA Basics
 <em>thanks to Volker Block</em>  
 
 <h2>Physical attributes</h2>
+
 From the [manual](https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf):  
 **Measurement range**:  
  `70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`  
 **Port SWR** `< 1.1`  
 **Frequency error** `< 0.5ppm`  
-
-
 
 *thanks to Warren Allgyer*:  
 ![harminics](html/nanoSpectrum.gif "Si5351 harmonics")  
@@ -63,7 +62,7 @@ One LED (between USB and power switch) blinks @ 1/2Hz while charging,
 
 Another LED, between power switch and multi-directional switch,  
     illuminates while nanoLED is powered;  
-    - this may be vestigal from  nanoVNA prototypes lackng LCD displays.
+    - this may be vestigial from  nanoVNA prototypes lackng LCD displays.
 
 <h4>multi-directional switch</h4>
 
@@ -76,6 +75,7 @@ nudging left or right migrates among menu items or moves selected marker.
 <em>thanks to Larry Goga</em>
 
 <h4>Calibration for 4 track nanoVNA</h4>
+
 *thanks to Alan Victor*
 
 ###### Some notes:  
