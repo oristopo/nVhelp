@@ -161,7 +161,9 @@ Software and Firmware
 <h4 id="F800">firmware mitigation for nanoVNA <code>300MHz, 600MHz</code> spikes</h4>
 
 Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;  
-[*Here*](https://groups.io/g/nanovna-users/topic/defective_nanovna/32747641?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,32747641) is a description of reflashing those problematic devices.  
+[nanoVNA_800_aa_*.dfu firmware for reflashing problematic devices](https://groups.io/g/nanovna-users/message/793).  
+
+[How to load firmware](https://github.com/ttrftech/NanoVNA#flash-firmware)  
 
 [*Here*](html/software.htm) is more software information.  
 

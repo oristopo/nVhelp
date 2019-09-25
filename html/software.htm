@@ -27,6 +27,21 @@ Debugging may be facilitated by recording related Windows activity.<br>
 Logging may be accomplished by first installing NirSofts'
 <a href="http://www.nirsoft.net/utils/usb_log_view.html">USBLogView</a>.
 
+<h4>USB port serial monitor</h4>
+Run this while running NanoVNA programs to watch<br>
+- what the program sends to the device<br>  
+- what the device sends back<br>  
+- Max session length: 10 minutes<br>
+- Max sessions per day: 5<br>
+- Grace Period: 4 days<br>
+<a href="https://freeusbanalyzer.com">"Free" USB Analyzer</a>
+<p>Other free possibilities:<br>
+- <a href="https://desowin.org/usbpcap/tour.html">USBPcap + Wireshark</a>
+<a href="https://osqa-ask.wireshark.org/questions/48789/usbpcap-tutorial">tutorial</a> <a href="https://wiki.wireshark.org/CaptureSetup/USB">wiki</a><br>
+- <a href="https://github.com/djpnewton/busdog">busdog</a>
+<a href="https://stackoverflow.com/a/45990679">testimonial</a><br>
+- <a href="http://www.sysnucleus.com/usbtrace_download.html">SysNucleus USBTrace</a> 15 day eval, 257k per capture session<br>
+
 <a name=firm><h3>firmware management</h3></a>
 nanoVNA employs STM32 firmware which may be read and rewritten<br>
 via USB using <a href="https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-stm32080.html">STMicroelectronics'</a> Device Firmware Upgrade (DFU) software,<br>
