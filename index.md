@@ -62,7 +62,7 @@ nudging left or right migrates among menu items or moves selected marker.
 <h4>Calibration for 4 track nanoVNA</h4>
 
 <details>
-<summary click for calibration steps</summary>
+<summary>click for calibration steps</summary>
 
 
 <em>thanks to Alan Victor</em><br>
@@ -144,20 +144,23 @@ which requires USB connection to your PC/MAC/Terminal.<br>
 </code></pre></div>    </div>
 <br>
 <h4>touchtest</h4>
-- test touch accuracy - touch, hold and drag pointer
-
+- test touch accuracy - touch, hold and drag pointer<br>
+<br>
 
 <h4>Now, save this touchscreen calibration:</h4>  
-- <b>saveconfig<b> - saves current configuration
+- <b>saveconfig<b> - saves current configuration<br>
 - console output:<br>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  saveconfig
   Config saved
 
 </code></pre></div>    </div>
+
 <br>
 You can verify touch calibration using the menu boxes.<br>
 <br>
 <b>NOTE</b>: saveconfig command probably also saves calibration data<br>
+
 
 </details>
 
