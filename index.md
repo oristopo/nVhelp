@@ -116,51 +116,6 @@ That's it. Check that the open, short and 50 ohm display properly.<br>
 <br>
 <h4 id="TSC">Touchscreen Calibration</h4>
 
-<details>
-<summary>click for calibration procedure</summary>
-
-<em> thanks to Larry Rothman</em>:
-<br>
-For best behavior, nanoVNA devices need touchscreen calibraton,<br>
-which requires USB connection to your PC/MAC/Terminal.<br>
-<br>
-1.  install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.<br>
-2.  connect the nanoVNA and determine which serial port has been assigned (e.g. COM5)<br>
-3.  use a serial terminal emulator such as TeraTerm to access the nanoVNA console.<br>
-4.  you may need to hit the ENTER key once or twice<br>
-    to bring up its command shell prompt.<br>
-5.  at the command prompt, enter:  `touchcal`<br>
-6.  the nanoVNA should now display a calibration point at the upper-left corner of the display.<br>
-7.  touch that corner - a new calibration point will appear at the lower right corner of the display.<br>
-8.  touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b><br>
-<br>
-<h4>touchcal</h4>
-- produces calibration touch points in the upper left and lower right corners<br>
-- console output:<br>
-<pre class="highlight"><code>  touchcal
-  first touch upper left, then lower right...
-  done
-  touch cal params: A B C D (upper left and lower right x-y co-ords)
-</code></pre>
-
-<h4>touchtest</h4>
-- test touch accuracy - touch, hold and drag pointer<br>
-<br>
-
-<h4>Now, save this touchscreen calibration:</h4>  
-- <b>saveconfig<b> - saves current configuration<br>
-- console output:<br>
-
-<pre class="highlight"><code>  saveconfig
-  Config saved
-</code></pre>
-
-Verify touch calibration using the menu boxes.<br>
-<br>
-<b>NOTE</b>: saveconfig command probably also saves calibration data<br>
-
-
-</details>
 
 <br>
 
