@@ -75,23 +75,24 @@ by sorting resistance vs reactance instead of lumped <em>magnitude</em>.</li>
 <b>multi-directional switch</b> <code>K1-1502SA</code><br>
 <b>USB connectors</b> <code>Type C except for Micro-USB B on white gekkos.</code><br>
 <b><a href="https://github.com/hugen79/NanoVNA-H/blob/master/doc/Schematic_nanovna_3.3.1.png">schematic diagram</a></b><br>
-
+<br>
+<h4>VCO (Voltage Controlled Oscillator) harmonics</h4>
 <p><em>thanks to Warren Allgyer</em>:<br />
 <img src="https://raw.githubusercontent.com/oristopo/nVhelp/master/html/nanoSpectrum.gif" alt="harminics" title="Si5351 harmonics" /><br />
 Unusually, nanoVNA stimulus waveform is square, rather than sinusoidal.<br>
 Above <code class="highlighter-rouge">300MHz</code>, nanoVNA boosts <code class="highlighter-rouge">Si5351</code> output and uses its 3rd harmonic.</p>
 
-<p><em>thanks to hugen@outlook.com:</em></p>
-
-<p>The <code class="highlighter-rouge">Si5351</code> internal VCO (Voltage Controlled Oscillator) maximum<br />
+<em>thanks to hugen@outlook.com:</em><br>
+The <code class="highlighter-rouge">Si5351</code> internal VCO (Voltage Controlled Oscillator) maximum<br />
 operating frequency decreases with increasing temperature.<br />
 <em>Fully enclosed cases, raising component temperatures, may be problematic.</em><br />
 <code class="highlighter-rouge">Si5351</code> specified maximum is <code>900MHz</code> for a divide-by-4-frequency of <code>225MHz</code>.<br />
 For <code class="highlighter-rouge">300MHz</code> output, VCOs are overclocked to <code>1200MHz</code>, which some <strong>cannot</strong>.<br />
 If significant spike artifacts are noted (&gt; <code class="highlighter-rouge">0dB</code>) at <code class="highlighter-rouge">300MHz</code> or <code class="highlighter-rouge">900MHz</code>,<br />
-then <a href="#F800"><code class="highlighter-rouge">800MHz</code> firmware is recommended</a>.</p>
-
-One LED (between USB and power switch) blinks @ 1/2Hz while charging,<br />
+then <a href="#F800"><code class="highlighter-rouge">800MHz</code> firmware is recommended</a>.<br>
+<br>
+<h4>LEDs</h4>
+<p>One LED (between USB and power switch) blinks @ 1/2Hz while charging,<br />
  then illuminates constantly;<br />
     - remaining on for 40 seconds after disconnecting USB or powering off,<br />
           <em>perhaps discharging capacitors?</em></p>
