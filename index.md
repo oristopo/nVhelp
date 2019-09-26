@@ -69,7 +69,7 @@ nudging left or right migrates among menu items or moves selected marker.
 
 <h4>Some notes:</h4>
 A <em>second</em> 50 ohm termination and female-female SMA adapter<br>
-&nbsp are wanted for ISOLN and THRU calibration.<br>
+   are wanted for ISOLN and THRU calibration.<br>
 <br>
 Supplied and used are TWO matched cables, LOADS and one SMA adapter.<br>
 Each NUMBERED step below represents your PRESS (SOFT KEY TOUCH).<br>
@@ -82,7 +82,7 @@ CONNECT MATCHED CABLES to `CH0` and `CH1`.<br>
 2.   TRACE 0<br>
 3.   SINGLE<br>
 4.   TRACE 1<br>
-&nbsp Now `S11` and `S22` both display ONLY as LOGMAG.<br>
+   Now `S11` and `S22` both display ONLY as LOGMAG.<br>
 5.   STIMULUS<br>
 6.   START 100KHz<br>
 7.   STOP 500MHz<br>
@@ -104,11 +104,11 @@ Finally save to a desired register.<br>
 <br>
 That's it. Check that the open, short and 50 ohm display properly.<br>
 <b>Note</b>, the cables are CONNECTED to CH0 and CH1a,<br>
-&nbsp and calibration reference plane is at those cables <b>ends</b>.<br>
-&nbsp However, phase is subject to error and needs addressing in another message.<br>
+   and calibration reference plane is at those cables <b>ends</b>.<br>
+   However, phase is subject to error and needs addressing in another message.<br>
 <br>
-&nbsp Also, with SMA coupler connecting cables to CH0 and CH1, <br>
-&nbsp `S21` should measure nearly `0dB`.
+   Also, with SMA coupler connecting cables to CH0 and CH1, <br>
+   `S21` should measure nearly `0dB`.
 <br>
 
 </details>
@@ -137,12 +137,12 @@ which requires USB connection to your PC/MAC/Terminal.<br>
 <h4>touchcal</h4>
 - produces calibration touch points in the upper left and lower right corners<br>
 - console output:<br>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  touchcal
+<pre class="highlight"><code>  touchcal
   first touch upper left, then lower right...
   done
   touch cal params: A B C D (upper left and lower right x-y co-ords)
-</code></pre></div>    </div>
-<br>
+</code></pre>
+
 <h4>touchtest</h4>
 - test touch accuracy - touch, hold and drag pointer<br>
 <br>
@@ -151,13 +151,11 @@ which requires USB connection to your PC/MAC/Terminal.<br>
 - <b>saveconfig<b> - saves current configuration<br>
 - console output:<br>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  saveconfig
+<pre class="highlight"><code>  saveconfig
   Config saved
+</code></pre>
 
-</code></pre></div>    </div>
-
-<br>
-You can verify touch calibration using the menu boxes.<br>
+Verify touch calibration using the menu boxes.<br>
 <br>
 <b>NOTE</b>: saveconfig command probably also saves calibration data<br>
 
