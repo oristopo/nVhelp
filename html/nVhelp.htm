@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/nVhelp/assets/css/style.css?v=2d9008335fe0e13e54449ab00b40194ca09cde41">
+    <link rel="stylesheet" type="text/css" href="/nVhelp/assets/css/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>nVhelp | nanoVNA user documentation</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="nVhelp" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="nanoVNA user documentation" />
+<meta property="og:description" content="nanoVNA user documentation" />
+<link rel="canonical" href="https://oristopo.github.io/nVhelp/" />
+<meta property="og:url" content="https://oristopo.github.io/nVhelp/" />
+<meta property="og:site_name" content="nVhelp" />
+<script type="application/ld+json">
+{"@type":"WebSite","url":"https://oristopo.github.io/nVhelp/","headline":"nVhelp","name":"nVhelp","description":"nanoVNA user documentation","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body bgcolor=#99aaaa>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>nVhelp</h1>
+          <h2>nanoVNA user documentation</h2>
+        </header>
+        <section id="downloads" class="clearfix">
+          
+	
+        </section>
+        <hr>
+        <section id="main_content">
+          
+<h2 id="U0">VNA (Vector Network Analyzer)</h2>
+
+<ul>
+  <li>distinguished from antenna analyzer by having two ports instead of one</li>
+  <li>distinguished from scaler analyzer e.g. SWR (Standing Wave Ratio) bridge<br>
+by sorting resistance vs reactance instead of lumped <em>magnitude</em>.</li>
+</ul>
+
+<h2 id="nanovna-principles-of-operation">nanoVNA principles of operation</h2>
+<p>Largely as described in Michael Knitter DG5MK's YouTube video:<br />
+<a href="https://www.youtube.com/watch?v=X8Z7veGV57o&quot;">Hamradio 2018 FA-VA5 presentation-UK</a></p>
+
+<p>Instead of nanoVNA's <code class="highlighter-rouge">SA612</code> mixer
+(also used by <a href="https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home">EU1KY analyzer</a>),<br />
+the <a href="https://www.sdr-kits.net/VA5-Antenna-Analyzer-Kit">FA-VA5</a> uses <code class="highlighter-rouge">74LVC4066</code> analog switches.<br />
+Analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br />
+but switching times &gt; 1ns limit local oscillators to <code>200MHz</code> or so..</p>
+
+<h4><a href="https://www.youtube.com/watch?v=mKi6s3WvBAM">beginners guide video</a></h4>
+<p><em>thanks to Joe Smith</em></p>
+
+<h4><a href="https://www.youtube.com/watch?v=zw7Dp1nwvD8">nanoVNAsharp Windows software video</a></h4>
+<p><em>thanks to IMSAI Guy</em></p>
+
+<h4><a href="https://www.youtube.com/watch?v=29yTVG8lg7s">2-port measurements video</a></h4>
+<p><em>thanks to Volker Block</em></p>
+
+<h2>Physical attributes</h2>
+<p>From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>:<br />
+<strong>Measurement range</strong>:<br />
+ <code class="highlighter-rouge">70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)</code><br />
+<strong>Port SWR</strong> <code class="highlighter-rouge">&lt; 1.1</code><br />
+<strong>Frequency error</strong> <code class="highlighter-rouge">&lt; 0.5ppm</code></p>
+
+<p><em>thanks to Warren Allgyer</em>:<br />
+<img src="nanoSpectrum.gif" alt="harminics" title="Si5351 harmonics" /><br />
+Unlike traditional VNAs, nanoVNA stimulus waveform is square, rather than sine.<br>
+Above <code class="highlighter-rouge">300MHz</code>, nanoVNA boosts <code class="highlighter-rouge">Si5351</code> output and uses its 3rd harmonic.</p>
+
+<p><em>thanks to hugen@outlook.com:</em></p>
+
+<p>The <code class="highlighter-rouge">Si5351</code> internal VCO (Voltage Controlled Oscillator) maximum<br />
+operating frequency decreases with increasing temperature.<br />
+<em>Fully enclosed cases, raising component temperatures, may be problematic.</em><br />
+The specified maximum is <code>900MHz</code> for a divide-by-4-frequency of <code>225MHz</code>.<br />
+For <code class="highlighter-rouge">300MHz</code> output, VCOs are overclocked to <code>1200MHz</code>, which some <strong>cannot</strong>.<br />
+If significant spike artifacts are noted (&gt; <code class="highlighter-rouge">0dB</code>) at <code class="highlighter-rouge">300MHz</code> or <code class="highlighter-rouge">900MHz</code>,<br />
+then <a href="#F800"><code class="highlighter-rouge">800MHz</code> firmware is recommended</a>.</p>
+
+<p>USB connectors are Type C except for Micro-USB B on white gekkos.<br />
+One LED (between USB and power switch) blinks @ 1/2Hz while charging,<br />
+ then illuminates constantly;<br />
+    - remaining on for 40 seconds after disconnecting USB or powering off,<br />
+          <em>perhaps discharging capacitors?</em></p>
+
+<p>Another LED, between power switch and multi-directional switch,<br />
+    illuminates while nanoLED is powered;<br />
+    - this may be vestigal from  nanoVNA prototypes lackng LCD displays.</p>
+
+<h4>multi-directional switch</h4>
+
+<p>Pressing this launches menu or selects menu item;<br />
+nudging left or right migrates among menu items or moves selected marker.</p>
+
+<h4 id="N4">nanoVNA Calibration Considerations</h4>
+
+<p><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20Calibration%20Considerations%20and%20Procedure_v1.1.pdf">PDF @ groups.io</a>
+<em>thanks to Larry Goga</em></p>
+
+<h4>Calibration for 4 track nanoVNA</h4>
+<p><em>thanks to Alan Victor</em></p>
+
+<h6 id="some-notes">Some notes:</h6>
+<p>A <em>second</em> 50 ohm termination and female-female SMA adapter
+ are wanted for ISOLN and THRU calibration.</p>
+
+<p>Supplied and used are TWO matched cables, LOADS and one SMA adapter.<br />
+Each NUMBERED step below represents your PRESS (SOFT KEY TOUCH).</p>
+
+<p>Turn on the VNA and note register 0 is ON.<br />
+CONNECT MATCHED CABLES to <code class="highlighter-rouge">CH0</code> and <code class="highlighter-rouge">CH1</code>.</p>
+
+<ol>
+  <li>DISPLAY</li>
+  <li>TRACE 0</li>
+  <li>SINGLE</li>
+  <li>TRACE 1<br />
+Now <code class="highlighter-rouge">S11</code> and <code class="highlighter-rouge">S22</code> both display ONLY as LOGMAG.</li>
+  <li>STIMULUS</li>
+  <li>START 100KHz</li>
+  <li>STOP 500MHz</li>
+  <li>BACK</li>
+  <li>CAL</li>
+  <li>RESET</li>
+  <li>CALIBRATE<br />
+<strong>Note!</strong> No softkeys (right side of touch screen) are highlighted.<br />
+Place an OPEN on end of CH0 cable and this will be followed by a SHORT.</li>
+  <li>OPEN</li>
+  <li>SHORT<br />
+Connect 50 ohm LOADs to ends of CH0 and CH1 cables.</li>
+  <li>LOAD</li>
+  <li>ISOLN<br />
+Connect cables, replacing LOADs with female-female SMA coupler.</li>
+  <li>THRU</li>
+  <li>DONE<br />
+Finally save to a desired register.</li>
+</ol>
+
+<p>That's it. Check that the open, short and 50 ohm display properly.<br />
+ <strong>Note</strong>, the cables are CONNECTED to CH0 and CH1a,<br />
+ and calibration reference plane is at those cables <strong>ends</strong>.<br>
+ However, phase is subject to error and needs addressing in another message.</p>
+
+<p>Also, with SMA coupler connecting cables to CH0 and CH1, <br />
+<code class="highlighter-rouge">S21</code> should measure nearly <code class="highlighter-rouge">0dB</code>.</p>
+
+<h4 id="TSC">Touchscreen Calibration</h4>
+<p><em> thanks to Larry Rothman</em>:</p>
+
+<p>For best behavior, nanoVNA devices need touchscreen calibraton,<br />
+which requires USB connection to your PC/MAC/Terminal.</p>
+
+<ol>
+  <li>install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.</li>
+  <li>connect the nanoVNA and determine which serial port has been assigned (e.g. COM5)</li>
+  <li>use a serial terminal emulator such as TeraTerm to access the nanoVNA console.</li>
+  <li>you may need to hit the ENTER key once or twice<br />
+to bring up its command shell prompt.</li>
+  <li>at the command prompt, enter:  <code>touchcal</code></li>
+  <li>the nanoVNA should now display a calibration point at the upper-left corner of the display.<br /></li>
+  <li>touch that corner - a new calibration point will appear at the lower right corner of the display.</li>
+  <li>touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b><br /></li>
+</ol>
+
+<p><strong>touchcal</strong></p>
+<ul>
+  <li>produces calibration touch points in the upper left and lower right corners</li>
+  <li>console output:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  touchcal
+  first touch upper left, then lower right...  
+  done  
+  touch cal params: A B C D (upper left and lower right x-y co-ords)  
+</code></pre></div>    </div>
+    <p><strong>touchtest</strong></p>
+  </li>
+  <li>test touch accuracy - touch, hold and drag pointer</li>
+</ul>
+
+<h4 id="now-save-this-touchscreen-calibration">Now, save this touchscreen calibration:</h4>
+<ul>
+  <li><strong>saveconfig</strong> - saves current configuration
+  <li>console output:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  saveconfig
+  Config saved
+
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>You can verify touch calibration using the menu boxes.</p>
+
+<p><strong>NOTE</strong>: saveconfig command probably also saves calibration data</p>
+
+<h2 id="software-and-firmware">Software and Firmware</h2>
+
+<h4 id="F800">firmware mitigation for nanoVNA <code>300MHz, 600MHz</code> spikes</h4>
+
+<p>Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;<br />
+<a href="https://groups.io/g/nanovna-users/message/793">nanoVNA_800<em>aa</em>*.dfu firmware for reflashing problematic devices</a>.</p>
+
+<p><a href="https://github.com/ttrftech/NanoVNA#flash-firmware">How to load firmware</a></p>
+
+<p><a href="software.htm"><em>Here</em></a> is more software information.</p>
+
+<p><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%208-6-19.pdf"><em>Here</em></a> are Console Commands</p>
+
+<h2 id="technical">Technical</h2>
+
+<h4 id="DSP">FFT "quadrature mixing", Hilbert transform and filtering DSP</h4>
+
+<p>..after quadrature sampling by Si5351 and SA612A.<br />
+Lacking access to the famous July, 2015 QEX magazine article by DG5MK..</p>
+<ul>
+  <li>Richard Lyons' <a href="https://dspguru.com/files/QuadSignals.pdf">Quadrature Signals:  Complex, Not Complicated</a> is approachable theory referenced by DG5MK.</li>
+  <li><a href="https://www.youtube.com/watch?v=X8Z7veGV57o">Hamradio 2018 FA-VA5 presentation-UK</a> video</li>
+  <li>DG5MK's <a href="https://www.dg5mk.de/media/Labview%20SDR/FFT_SSB_MOD/English%20Version/FFT%20SSB%20mod%20demod%20DG5MK%20English%20V03.pdf">FFB SSB Modulation</a> PDF avoids digging into mathematics.</li>
+  <li>DG5MK's <a href="https://www.dg5mk.de/media/Labview%20SDR/SDR%20Kurzbeitrag/Labview_SDR_DG5MK_English_08_2012.pdf">Labview-based SDR</a> provides software insights.</li>
+  <li>DD4WH's detailed DSP description in <a href="https://github.com/df8oe/UHSDR/wiki/How-does-your-UHSDR-software-DSP-work">UHSDR wiki</a>, based on Teensy SDR</li>
+  <li>UHSDR <a href="https://github.com/df8oe/UHSDR/wiki/IQ---correction-and-mirror-frequencies">IQ correction and mirror frequencies</a> @ GitHub</li>
+  <li>relevant <a href="https://github.com/DD4WH/Teensy-ConvolutionSDR">Teensy-ConvolutionSDR</a> (Si5351, ARM) <a href="https://github.com/DD4WH/Teensy-ConvolutionSDR/blob/master/Teensy_Convolution_SDR.ino">Arduino source code</a></li>
+</ul>
+
+<h4 id="other-technical">Other technical</h4>
+<ul>
+  <li><a href="bridge.htm">Here</a> is nanoVNA bridge analysis</li>
+</ul>
+
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<h4 id="U1">Linked from DISPLAY</h4>
+<p>
+In addition to selecting values to be displayed,<br />
+ CHANNEL submenu selects whether signals are from CH0 (TX) or CH1 (RX).
+</p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<h4 id="U1L1">linked from TRACE</h4>
+<p>Up to 4 simultaneous color-coded data can be plotted.<br />
+  Some firmware instead supports only 2.<br />
+OFF disables <em>this</em> trace;  SINGLE disables <em>all other</em> traces...?</p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<h4 id="U131">linked from SCALE/DIV</h4>
+<p>watch this space</p>
+
+<h4 id="U133">linked from NUM KEYS</h4>
+<p><em>thanks to Mike Brown</em></p>
+
+<p>Numerical input seems a bit flaky,<br />
+although it works better for e.g. CW frequency than position.<br />
+Touchscreen typically wants <a href="#TSC">calibration</a>.  <br />
+Antenna analyser firmware has a larger font;<br />
+touchscreen [mis]calibration is more critical for other firmware..</p>
+
+<p>Numeric entry displays no decimal point, but one may be implied. eg:</p>
+<ul>
+  <li>When in logmag reference adjust mode,<br />
+ digits appear to represent steps of <code class="highlighter-rouge">0.01dB</code>,<br />
+ so a change of +1000 moves the reference <code class="highlighter-rouge">10dB</code> higher.</li>
+  <li>In CW Freq setting, digits seem to represent steps of <code class="highlighter-rouge">100Hz</code>.</li>
+</ul>
+
+<p><strong>Rocker switch input</strong></p>
+<ul>
+  <li>Tapping on a digit makes it adjustable;<br />
+step it up or down using the multi-directional switch.</li>
+  <li>If you hold the multi-directional switch in,<br />
+that digit is <strong>'highlighted'</strong> and its background goes black.</li>
+  <li>The multi-directional switch can shift highlighting to another digit.</li>
+  <li>Press in again, highlighting disappears and the digit becomes adjustable.</li>
+  <li>Press in <em>again briefly</em> to store that numerical setting.<br />
+ <strong>NB</strong> waiting a few seconds between rocker switch presses seemingly helps.</li>
+</ul>
+
+<p><strong>Touchscreen input</strong></p>
+<ul>
+  <li>Tapping far right of numbers brings up a numeric keyboard,<br />
+which may be operated either by touchscreen taps<br />
+or by multi-directional switch movements.</li>
+  <li>With 2-trace <code>900MHz</code> antenna analyser firmware,<br />
+  multi-directional switch movements seem buggy.<br />
+  In reference position adjust mode,<br />
+  the 'enter' button doesn't seem to do anything<br />
+  but if it is held the keyboard clears from the screen.</li>
+  <li>The keyboard works fine when setting e.g. CW Freq.<br />
+  Frequencies may be entered as GHz, MHz or kHz;<br />
+  just enter the digits then tap G, M or k to enter the set value.<br />
+  (eg to set <code>800MHz</code> you can enter 0.8G, 800M or 800000k.)</li>
+</ul>
+
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<h4 id="U132">linked from REFERENCE POSITION</h4>
+<p><em>thanks to Mike Brown:</em><br /></p>
+<dl>
+<dt>for e.g. LOGMAG</dt>
+<dd>Entering 1-8 (0001 to 0008)<br />
+ places the REFERENCE line 1 to 8 grid spaces from the BOTTOM.<br />
+  With default setting 7 000, changing it to 8 000 moves the trace reference<br />
+ (shown by a small marker at left of screen) up one grid space, to screen TOP.</dd>
+<br />
+<dt>for e.g SWR 1:1</dt>
+<dd>trace is below screen bottom.<br />
+  Changing reference position to 180 raises trace to screen bottom</dd>
+</dl>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<h4 id="U134">linked from ELECTRICAL DELAY</h4>
+<p>Calibration data can be modified by electrical delay in picoseconds.<br />
+Hugen customized short and accurate calibrations kits.</p>
+
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+
+<h4 id="U2">linked from MARKER</h4>
+<p>While displayed markers can in theory be manipulated by hand or stylus,<br />
+touch calibration inaccuracy typically frustrates that.<br />
+Better to use the multi-directional switch..<br />
+.. or try the <a href="#TSC">touchscreen calibration</a> procedure.</p>
+
+<p><strong>SELECT MARKER</strong><br />
+Select (by push) any of MARKER 1 - 4.<br />
+Selecting that same marker again toggles it off.<br />
+Sliding the multi-directional switch moves a selected marker.<br />
+A selected marker can change START, STOP or CENTER of sweeps.<br />
+SPAN changes sweeps when 2 markers are active.</p>
+
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+
+<h4 id="U36">link from PAUSE SWEEP</h4>
+
+<p>This button freezes data collection.<br />
+<em>thanks to Gary O'Neil</em>:</p>
+
+<p>The nanoVNA must remain powered on to successfully capture data via USB.</p>
+
+<ol>
+  <li>
+    <p>With the data you wish to 'save' and port to your workstation,<br />
+ navigate to STIMULUS &gt; PAUSE SWEEP.<br />
+Data at the top of the screen will freeze, confirming sweep is paused.</p>
+  </li>
+  <li>
+    <p>Take care to not inadvertently alter the current state...<br />
+ either by the toggle switch or touchscreen.<br />
+ Remove the NanoVNA from the DUT,<br />
+ observe that the desired data remains on the display,<br />
+ transport it to your workstation, hotplug the device into a USB port,<br />
+ then tap on the display a couple of times.<br />
+ This appears to initiate handshaking<br />
+  and establishes a connection with the workstation.</p>
+  </li>
+  <li>Launch the nanoVNAsharp app and connect.<br />
+App display should match that on the nanoVNA.</li>
+  <li>Use nanoVNAsharp facilities to save the data.</li>
+</ol>
+
+<p>To be clear, data is <em>not</em> otherwise saved within the NanoVNA.<br />
+Once PAUSE is cancelled or the nanoVNA is power cycled,<br />
+data is flushed and replaced.</p>
+
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+<p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
+
+        </section>
+
+        <footer>
+        
+          nVhelp is maintained by <a href="https://github.com/oristopo">oristopo</a><br>
+        </footer>
+
+      </div>
+    </div>
+
+    
+  </body>
+</html>
+
