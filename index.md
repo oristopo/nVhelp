@@ -6,20 +6,12 @@
    by sorting resistance vs reactance instead of lumped *magnitude*.  
 
 
-nanoVNA principles of operation
--------------------------------
-Largely as described in Michael Knitter DG5MK's YouTube video:  
-[Hamradio 2018 FA-VA5 presentation-UK](https://www.youtube.com/watch?v=X8Z7veGV57o")
-
-Instead of nanoVNA's `SA612` mixer
-(also used by [EU1KY analyzer](https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home)),  
-the [FA-VA5](https://www.sdr-kits.net/VA5-Antenna-Analyzer-Kit) uses `74LVC4066` analog switches.  
-Analog switch ICs have better linearity, dynamic range and GHz bandwidths,  
-but switching times > 1ns limit local oscillators to <code>200MHz</code> or so..  
-
 
 VNA Basics
 ----------
+<h3><a href="https://github.com/cho45/NanoVNA-manual/blob/master/index.md">unofficial user guide</a></h3>
+<em>thanks to cho45</em> 
+
 <h4><a href="http://www.rvhfg.org/pdf/articles/55.pdf">Keysight</a></h4>
 <h4><a href="http://hpmemoryproject.org/an/pdf/an_150-15.pdf">Agilent</a></h4>
 
@@ -32,25 +24,29 @@ VNA Basics
 <h4><a href="https://www.youtube.com/watch?v=29yTVG8lg7s">2-port measurements video</a></h4>
 <em>thanks to Volker Block</em>  
 
-<h2>Physical attributes</h2>
+<h4><a href="https://drive.google.com/file/d/1usvmcn4cR8Ltrb6fT05jA6g7O0uhJozL/view">"official" manual</a></h4>
 
-From the [manual](https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf):  
+Physical attributes
+-------------------
 **Measurement range**:  
  `70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`  
 **Port SWR** `< 1.1`  
 **Frequency error** `< 0.5ppm`  
-
-*thanks to Warren Allgyer*:  
+**Battery** `602035 3.7V 350mAh 20x35x6mm`  
+**multi-directional switch** `K1-1502SA`  
+[**schematic diagram**](https://github.com/hugen79/NanoVNA-H/blob/master/doc/Schematic_nanovna_3.3.1.png)  
+  
+*thanks to Warren Allgyer*:   
 ![harminics](html/nanoSpectrum.gif "Si5351 harmonics")  
-Unlike traditional VNAs, nanoVNA stimulus waveform is square, rather than sine.  
+Unusually, nanoVNA stimulus waveform is square, rather than sinusoidal.  
 Above `300MHz`, nanoVNA boosts `Si5351` output and uses its 3rd harmonic.  
 
 *thanks to hugen@outlook.com:*  
 The `Si5351` internal VCO (Voltage Controlled Oscillator) maximum  
 operating frequency decreases with increasing temperature.  
 *Fully enclosed cases, raising component temperatures, may be problematic.*  
-The specified maximum is <code>900MHz</code> for a divide-by-4-frequency of <code>225MHz</code>.  
-For `300MHz` output, VCOs are overclocked to <code>1200MHz</code>, which some **cannot**.  
+The specified maximum is `900MHz` for a divide-by-4-frequency of `225MHz`.  
+For `300MHz` output, VCOs are overclocked to `1200MHz`, which some **cannot**.  
 If significant spike artifacts are noted (> `0dB`) at `300MHz` or `900MHz`,  
 then [`800MHz` firmware is recommended](#F800).
 
@@ -133,7 +129,7 @@ which requires USB connection to your PC/MAC/Terminal.
 3.  use a serial terminal emulator such as TeraTerm to access the nanoVNA console.
 4.  you may need to hit the ENTER key once or twice<br>
     to bring up its command shell prompt.
-5.  at the command prompt, enter:  <code>touchcal</code>
+5.  at the command prompt, enter:  `touchcal`
 6.  the nanoVNA should now display a calibration point at the upper-left corner of the display.<br>
 7.  touch that corner - a new calibration point will appear at the lower right corner of the display.
 8.  touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b><br>
@@ -169,17 +165,28 @@ Software and Firmware
 
 <h4 id="F800">firmware mitigation for nanoVNA <code>300MHz, 600MHz</code> spikes</h4>
 
-Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;  
+Some nanoVNAs fail when overclocked to `300MHz` by standard firmware;  
 [nanoVNA_800_aa_*.dfu firmware for reflashing problematic devices](https://groups.io/g/nanovna-users/message/793).  
 
 [How to load firmware](https://github.com/ttrftech/NanoVNA#flash-firmware)  
 
 [*Here*](html/software.htm) is more software information.  
 
-[*Here*](https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%209-5-25.pdf) are Console Commands  
+[*Here*](https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%209-5-25.pdf) are Console Commands  [command instability workaround](https://groups.io/g/nanovna-users/topic/temporary_workaround_to/34127733)
 
 Technical
 ---------
+
+#### nanoVNA principles of operation
+Largely as described in Michael Knitter DG5MK's YouTube video:  
+[Hamradio 2018 FA-VA5 presentation-UK](https://www.youtube.com/watch?v=X8Z7veGV57o")
+
+Instead of nanoVNA's `SA612` mixer
+(also used by [EU1KY analyzer](https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home)),  
+the [FA-VA5](https://www.sdr-kits.net/VA5-Antenna-Analyzer-Kit) uses `74LVC4066` analog switches.  
+Analog switch ICs have better linearity, dynamic range and GHz bandwidths,  
+but switching times > 1ns limit local oscillators to `200MHz` or so..  
+
 
 <h4 id="DSP">FFT "quadrature mixing", Hilbert transform and filtering DSP</h4>
 
@@ -252,7 +259,7 @@ Numeric entry displays no decimal point, but one may be implied. eg:
 - Tapping far right of numbers brings up a numeric keyboard,  
   which may be operated either by touchscreen taps  
   or by multi-directional switch movements.  
-- With 2-trace <code>900MHz</code> antenna analyser firmware,  
+- With 2-trace `900MHz` antenna analyser firmware,  
     multi-directional switch movements seem buggy.  
     In reference position adjust mode,  
     the 'enter' button doesn't seem to do anything  
@@ -260,7 +267,7 @@ Numeric entry displays no decimal point, but one may be implied. eg:
 - The keyboard works fine when setting e.g. CW Freq.  
     Frequencies may be entered as GHz, MHz or kHz;  
     just enter the digits then tap G, M or k to enter the set value.  
-    (eg to set <code>800MHz</code> you can enter 0.8G, 800M or 800000k.)
+    (eg to set `800MHz` you can enter 0.8G, 800M or 800000k.)
 
 
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
