@@ -14,6 +14,7 @@ VNA Basics
 
 <h4><a href="http://www.rvhfg.org/pdf/articles/55.pdf">Keysight</a></h4>
 <h4><a href="http://hpmemoryproject.org/an/pdf/an_150-15.pdf">Agilent</a></h4>
+<br>
 
 <h4><a href="https://www.youtube.com/watch?v=mKi6s3WvBAM">beginners guide video</a></h4>
 <em>thanks to Joe Smith</em>  
@@ -25,6 +26,7 @@ VNA Basics
 <em>thanks to Volker Block</em>  
 
 <h4><a href="https://drive.google.com/file/d/1usvmcn4cR8Ltrb6fT05jA6g7O0uhJozL/view">"official" manual</a></h4>
+<br>
 
 Physical attributes
 -------------------
@@ -34,23 +36,10 @@ Physical attributes
 **Frequency error** `< 0.5ppm`  
 **Battery** `602035 3.7V 350mAh 20x35x6mm`  
 **multi-directional switch** `K1-1502SA`  
+**USB connectors** `Type C except for Micro-USB B on white gekkos`    
 [**schematic diagram**](https://github.com/hugen79/NanoVNA-H/blob/master/doc/Schematic_nanovna_3.3.1.png)  
-  
-*thanks to Warren Allgyer*:   
-![harminics](html/nanoSpectrum.gif "Si5351 harmonics")  
-Unusually, nanoVNA stimulus waveform is square, rather than sinusoidal.  
-Above `300MHz`, nanoVNA boosts `Si5351` output and uses its 3rd harmonic.  
-
-*thanks to hugen@outlook.com:*  
-The `Si5351` internal VCO (Voltage Controlled Oscillator) maximum  
-operating frequency decreases with increasing temperature.  
-*Fully enclosed cases, raising component temperatures, may be problematic.*  
-The specified maximum is `900MHz` for a divide-by-4-frequency of `225MHz`.  
-For `300MHz` output, VCOs are overclocked to `1200MHz`, which some **cannot**.  
-If significant spike artifacts are noted (> `0dB`) at `300MHz` or `900MHz`,  
-then [`800MHz` firmware is recommended](#F800).
-
-USB connectors are Type C except for Micro-USB B on white gekkos.  
+ 
+#### LEDs 
 One LED (between USB and power switch) blinks @ 1/2Hz while charging,  
  then illuminates constantly;  
     - remaining on for 40 seconds after disconnecting USB or powering off,  
@@ -60,7 +49,7 @@ Another LED, between power switch and multi-directional switch,
     illuminates while nanoLED is powered;  
     - this may be vestigial from  nanoVNA prototypes lackng LCD displays.
 
-<h4>multi-directional switch</h4>
+#### multi-directional switch
 
 Pressing this launches menu or selects menu item;  
 nudging left or right migrates among menu items or moves selected marker.
@@ -72,93 +61,107 @@ nudging left or right migrates among menu items or moves selected marker.
 
 <h4>Calibration for 4 track nanoVNA</h4>
 
-*thanks to Alan Victor*
-
-###### Some notes:  
-A *second* 50 ohm termination and female-female SMA adapter
- are wanted for ISOLN and THRU calibration.  
-
-Supplied and used are TWO matched cables, LOADS and one SMA adapter.  
-Each NUMBERED step below represents your PRESS (SOFT KEY TOUCH).  
-
-Turn on the VNA and note register 0 is ON.  
-CONNECT MATCHED CABLES to `CH0` and `CH1`.  
+<details>
+<summary click for calibration steps</summary>
 
 
-1.   DISPLAY
-2.   TRACE 0
-3.   SINGLE
-4.   TRACE 1  
-Now `S11` and `S22` both display ONLY as LOGMAG.  
-5.   STIMULUS
-6.   START 100KHz
-7.   STOP 500MHz
-8.   BACK
-9.   CAL
-10. RESET
-11. CALIBRATE  
-**Note!** No softkeys (right side of touch screen) are highlighted.  
-Place an OPEN on end of CH0 cable and this will be followed by a SHORT.  
-12. OPEN
-13. SHORT  
-Connect 50 ohm LOADs to ends of CH0 and CH1 cables.  
-14. LOAD
-15. ISOLN  
-Connect cables, replacing LOADs with female-female SMA coupler.  
-16. THRU
-17. DONE  
-Finally save to a desired register.
+<em>thanks to Alan Victor</em><br>
 
-That's it. Check that the open, short and 50 ohm display properly.  
- **Note**, the cables are CONNECTED to CH0 and CH1a,  
- and calibration reference plane is at those cables **ends**.
- However, phase is subject to error and needs addressing in another message.  
+<h4>Some notes:</h4>
+A <em>second</em> 50 ohm termination and female-female SMA adapter<br>
+&nbsp are wanted for ISOLN and THRU calibration.<br>
+<br>
+Supplied and used are TWO matched cables, LOADS and one SMA adapter.<br>
+Each NUMBERED step below represents your PRESS (SOFT KEY TOUCH).<br>
+<br>
+Turn on the VNA and note register 0 is ON.<br>
+CONNECT MATCHED CABLES to `CH0` and `CH1`.<br>
+<br>
 
-Also, with SMA coupler connecting cables to CH0 and CH1,   
-`S21` should measure nearly `0dB`.
+1.   DISPLAY<br>
+2.   TRACE 0<br>
+3.   SINGLE<br>
+4.   TRACE 1<br>
+&nbsp Now `S11` and `S22` both display ONLY as LOGMAG.<br>
+5.   STIMULUS<br>
+6.   START 100KHz<br>
+7.   STOP 500MHz<br>
+8.   BACK<br>
+9.   CAL<br>
+10. RESET<br>
+11. CALIBRATE<br>
+<b>Note!</b> No softkeys (right side of touch screen) are highlighted.<br>
+Place an OPEN on end of CH0 cable and this will be followed by a SHORT.<br>
+12. OPEN<br>
+13. SHORT<br>
+Connect 50 ohm LOADs to ends of CH0 and CH1 cables.<br>
+14. LOAD<br>
+15. ISOLN<br>
+Connect cables, replacing LOADs with female-female SMA coupler.<br>
+16. THRU<br>
+17. DONE<br>
+Finally save to a desired register.<br>
+<br>
+That's it. Check that the open, short and 50 ohm display properly.<br>
+<b>Note</b>, the cables are CONNECTED to CH0 and CH1a,<br>
+&nbsp and calibration reference plane is at those cables <b>ends</b>.<br>
+&nbsp However, phase is subject to error and needs addressing in another message.<br>
+<br>
+&nbsp Also, with SMA coupler connecting cables to CH0 and CH1, <br>
+&nbsp `S21` should measure nearly `0dB`.
+<br>
 
+</details>
 
+<br>
 <h4 id="TSC">Touchscreen Calibration</h4>
+
+<details>
+<summary>click for calibration procedure</summary>
+
 <em> thanks to Larry Rothman</em>:
-
+<br>
 For best behavior, nanoVNA devices need touchscreen calibraton,<br>
-which requires USB connection to your PC/MAC/Terminal.  
-
-1.  install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.
-2.  connect the nanoVNA and determine which serial port has been assigned (e.g. COM5)
-3.  use a serial terminal emulator such as TeraTerm to access the nanoVNA console.
+which requires USB connection to your PC/MAC/Terminal.<br>
+<br>
+1.  install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.<br>
+2.  connect the nanoVNA and determine which serial port has been assigned (e.g. COM5)<br>
+3.  use a serial terminal emulator such as TeraTerm to access the nanoVNA console.<br>
 4.  you may need to hit the ENTER key once or twice<br>
-    to bring up its command shell prompt.
-5.  at the command prompt, enter:  `touchcal`
+    to bring up its command shell prompt.<br>
+5.  at the command prompt, enter:  `touchcal`<br>
 6.  the nanoVNA should now display a calibration point at the upper-left corner of the display.<br>
-7.  touch that corner - a new calibration point will appear at the lower right corner of the display.
+7.  touch that corner - a new calibration point will appear at the lower right corner of the display.<br>
 8.  touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b><br>
-
-**touchcal**  
-- produces calibration touch points in the upper left and lower right corners  
-- console output:  
-```
-    touchcal
-    first touch upper left, then lower right...  
-    done  
-    touch cal params: A B C D (upper left and lower right x-y co-ords)  
-```
-**touchtest**  
+<br>
+<h4>touchcal</h4>
+- produces calibration touch points in the upper left and lower right corners<br>
+- console output:<br>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  touchcal
+  first touch upper left, then lower right...
+  done
+  touch cal params: A B C D (upper left and lower right x-y co-ords)
+</code></pre></div>    </div>
+<br>
+<h4>touchtest</h4>
 - test touch accuracy - touch, hold and drag pointer
 
 
-#### Now, save this touchscreen calibration:  
-- **saveconfig** - saves current configuration
-- console output:  
-```
-    saveconfig
-    Config saved
-```
+<h4>Now, save this touchscreen calibration:</h4>  
+- <b>saveconfig<b> - saves current configuration
+- console output:<br>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  saveconfig
+  Config saved
 
-You can verify touch calibration using the menu boxes.  
+</code></pre></div>    </div>
+<br>
+You can verify touch calibration using the menu boxes.<br>
+<br>
+<b>NOTE</b>: saveconfig command probably also saves calibration data<br>
 
-**NOTE**: saveconfig command probably also saves calibration data
+</details>
 
+<br>
 
 Software and Firmware
 ---------------------
@@ -176,6 +179,21 @@ Some nanoVNAs fail when overclocked to `300MHz` by standard firmware;
 
 Technical
 ---------
+
+#### VCO (Voltage Controlled Oscillator) harmonics
+*thanks to Warren Allgyer*:   
+![harminics](html/nanoSpectrum.gif "Si5351 harmonics")  
+Unusually, nanoVNA stimulus waveform is square, rather than sinusoidal.  
+Above `300MHz`, nanoVNA boosts `Si5351` output and uses its 3rd harmonic.  
+
+*thanks to hugen@outlook.com:*  
+The `Si5351` internal VCO (Voltage Controlled Oscillator) maximum  
+operating frequency decreases with increasing temperature.  
+*Fully enclosed cases, raising component temperatures, may be problematic.*  
+The specified maximum is `900MHz` for a divide-by-4-frequency of `225MHz`.  
+For `300MHz` output, VCOs are overclocked to `1200MHz`, which some **cannot**.  
+If significant spike artifacts are noted (> `0dB`) at `300MHz` or `900MHz`,  
+then [`800MHz` firmware is recommended](#F800).
 
 #### nanoVNA principles of operation
 Largely as described in Michael Knitter DG5MK's YouTube video:  
