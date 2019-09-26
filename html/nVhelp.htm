@@ -48,34 +48,31 @@
 by sorting resistance vs reactance instead of lumped <em>magnitude</em>.</li>
 </ul>
 
-<h2 id="nanovna-principles-of-operation">nanoVNA principles of operation</h2>
-<p>Largely as described in Michael Knitter DG5MK's YouTube video:<br />
-<a href="https://www.youtube.com/watch?v=X8Z7veGV57o&quot;">Hamradio 2018 FA-VA5 presentation-UK</a></p>
-
-<p>Instead of nanoVNA's <code class="highlighter-rouge">SA612</code> mixer
-(also used by <a href="https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home">EU1KY analyzer</a>),<br />
-the <a href="https://www.sdr-kits.net/VA5-Antenna-Analyzer-Kit">FA-VA5</a> uses <code class="highlighter-rouge">74LVC4066</code> analog switches.<br />
-Analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br />
-but switching times &gt; 1ns limit local oscillators to <code>200MHz</code> or so..</p>
+<h3><a href="https://github.com/cho45/NanoVNA-manual/blob/master/index.md">unofficial user guide</a></h3>
+<em>thanks to cho45</em> 
 
 <h4><a href="https://www.youtube.com/watch?v=mKi6s3WvBAM">beginners guide video</a></h4>
-<p><em>thanks to Joe Smith</em></p>
+<em>thanks to Joe Smith</em>
 
 <h4><a href="https://www.youtube.com/watch?v=zw7Dp1nwvD8">nanoVNAsharp Windows software video</a></h4>
-<p><em>thanks to IMSAI Guy</em></p>
+<em>thanks to IMSAI Guy</em>
 
 <h4><a href="https://www.youtube.com/watch?v=29yTVG8lg7s">2-port measurements video</a></h4>
-<p><em>thanks to Volker Block</em></p>
+<em>thanks to Volker Block</em>
+
+<h4><a href="https://drive.google.com/file/d/1usvmcn4cR8Ltrb6fT05jA6g7O0uhJozL/view">"official" manual</a></h4>
 
 <h2>Physical attributes</h2>
-<p>From the <a href="https://groups.io/g/nanovna-users/attachment/14/0/NanoVNA%20User%20Guide_20190527..pdf">manual</a>:<br />
 <strong>Measurement range</strong>:<br />
  <code class="highlighter-rouge">70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)</code><br />
 <strong>Port SWR</strong> <code class="highlighter-rouge">&lt; 1.1</code><br />
-<strong>Frequency error</strong> <code class="highlighter-rouge">&lt; 0.5ppm</code></p>
+<strong>Frequency error</strong> <code class="highlighter-rouge">&lt; 0.5ppm</code><br>
+<strong>Battery</strong> <code class="highlighter-rouge">602035 3.7V 350mAh 20x35x6mm</code><br>
+<strong>multi-directional switch</strong> <code class="highlighter-rouge">K1-1502SA</code><br>
+<strong><a href="https://github.com/hugen79/NanoVNA-H/blob/master/doc/Schematic_nanovna_3.3.1.png">schematic diagram</a></strong>
 
 <p><em>thanks to Warren Allgyer</em>:<br />
-<img src="nanoSpectrum.gif" alt="harminics" title="Si5351 harmonics" /><br />
+<img src="https://raw.githubusercontent.com/oristopo/nVhelp/master/html/nanoSpectrum.gif" alt="harminics" title="Si5351 harmonics" /><br />
 Unlike traditional VNAs, nanoVNA stimulus waveform is square, rather than sine.<br>
 Above <code class="highlighter-rouge">300MHz</code>, nanoVNA boosts <code class="highlighter-rouge">Si5351</code> output and uses its 3rd harmonic.</p>
 
@@ -84,7 +81,7 @@ Above <code class="highlighter-rouge">300MHz</code>, nanoVNA boosts <code class=
 <p>The <code class="highlighter-rouge">Si5351</code> internal VCO (Voltage Controlled Oscillator) maximum<br />
 operating frequency decreases with increasing temperature.<br />
 <em>Fully enclosed cases, raising component temperatures, may be problematic.</em><br />
-The specified maximum is <code>900MHz</code> for a divide-by-4-frequency of <code>225MHz</code>.<br />
+<code class="highlighter-rouge">Si5351</code> specified maximum is <code>900MHz</code> for a divide-by-4-frequency of <code>225MHz</code>.<br />
 For <code class="highlighter-rouge">300MHz</code> output, VCOs are overclocked to <code>1200MHz</code>, which some <strong>cannot</strong>.<br />
 If significant spike artifacts are noted (&gt; <code class="highlighter-rouge">0dB</code>) at <code class="highlighter-rouge">300MHz</code> or <code class="highlighter-rouge">900MHz</code>,<br />
 then <a href="#F800"><code class="highlighter-rouge">800MHz</code> firmware is recommended</a>.</p>
@@ -112,7 +109,7 @@ nudging left or right migrates among menu items or moves selected marker.</p>
 <h4>Calibration for 4 track nanoVNA</h4>
 <p><em>thanks to Alan Victor</em></p>
 
-<h6 id="some-notes">Some notes:</h6>
+<h5 id="some-notes">Some notes:</h5>
 <p>A <em>second</em> 50 ohm termination and female-female SMA adapter
  are wanted for ISOLN and THRU calibration.</p>
 
@@ -212,11 +209,21 @@ to bring up its command shell prompt.</li>
 
 <p><a href="https://github.com/ttrftech/NanoVNA#flash-firmware">How to load firmware</a></p>
 
-<p><a href="software.htm"><em>Here</em></a> is more software information.</p>
+<p><a href="https://oristopo.github.io/nVhelp/html/software.htm"><em>Here</em></a> is more software information.</p>
 
 <p><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%208-6-19.pdf"><em>Here</em></a> are Console Commands</p>
 
 <h2 id="technical">Technical</h2>
+
+<h4 id="nanovna-principles-of-operation">nanoVNA principles of operation</h4>
+<p>Largely as described in Michael Knitter DG5MK's YouTube video:<br />
+<a href="https://www.youtube.com/watch?v=X8Z7veGV57o&quot;">Hamradio 2018 FA-VA5 presentation-UK</a></p>
+
+<p>Instead of nanoVNA's <code class="highlighter-rouge">SA612</code> mixer
+(also used by <a href="https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home">EU1KY analyzer</a>),<br />
+the <a href="https://www.sdr-kits.net/VA5-Antenna-Analyzer-Kit">FA-VA5</a> uses <code class="highlighter-rouge">74LVC4066</code> analog switches.<br />
+Analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br />
+but switching times &gt; 1ns limit local oscillators to <code>200MHz</code> or so..</p>
 
 <h4 id="DSP">FFT "quadrature mixing", Hilbert transform and filtering DSP</h4>
 
@@ -234,7 +241,7 @@ Lacking access to the famous July, 2015 QEX magazine article by DG5MK..</p>
 
 <h4 id="other-technical">Other technical</h4>
 <ul>
-  <li><a href="bridge.htm">Here</a> is nanoVNA bridge analysis</li>
+  <li><a href="https://oristopo.github.io/nVhelp/html/bridge.htm">Here</a> is nanoVNA bridge analysis</li>
 </ul>
 
 <p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
