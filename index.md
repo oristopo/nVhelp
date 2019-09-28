@@ -179,7 +179,7 @@ On powered-off nanoVNA connected to PC by USB:
 -  jumper BOOT0 pins, then power on.  
 -  flash firmware from Command Prompt:  
 ```
-  dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D build/ch.bin
+  dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D ch.bin
 ```
 
 [*Here*](html/software.htm) is more software information.  
