@@ -32,12 +32,27 @@ Physical attributes
 -------------------
 **Measurement range**:  
  `70dB (50kHz-300MHz), 50dB (300M-600MHz), 40dB (600M-900MHz)`  
+**Measurements per scan** `101`  
 **Port SWR** `< 1.1`  
 **Frequency error** `< 0.5ppm`  
 **Battery** `602035 3.7V 350mAh 20x35x6mm`  
 **multi-directional switch** `K1-1502SA`  
 **USB connectors** `Type C except for Micro-USB B on white gekkos`    
 [**schematic diagram**](https://github.com/hugen79/NanoVNA-H/blob/master/doc/Schematic_nanovna_3.3.1.png)  
+**output signal**  *thanks to dk1vi*:  
+```
+ 10 MHz       -12,13 dBm
+ 50 MHz       -12,57 dBm
+100 MHz       -13,21 dBm
+200 MHz       -14,85 dBm
+300 MHz        -7,92 dBm
+400 MHz        -8,07 dBm
+500 MHz        -8,25 dBm
+600 MHz        -8,90 dBm
+700 MHz        -8,57 dBm
+800 MHz        -8,76 dBm
+```
+
  
 #### LEDs 
 One LED (between USB and power switch) blinks @ 1/2Hz while charging,  
@@ -255,7 +270,7 @@ OFF disables <em>this</em> trace;  SINGLE disables <em>all other</em> traces...?
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <h4 id="U131">linked from SCALE/DIV</h4>
-watch this space  
+Change vertical scale e.g. dB/div  
 
 <h4 id="U133">linked from NUM KEYS</h4>
 <em>thanks to Mike Brown</em>
