@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>nanoVNA DFU switch</title>
+</head>
+<body>
+<p align=center>
+The nanoVNA includes <a href="https://www.st.com/en/development-tools/stsw-stm32080.html">STM32 bootloader firmware</a> for downloading replacement nanoVNA firmware.
+<br>This bootloader firmware gets control by powering on a nanoVNA with P1 contacts connected:<br>
+<img align=center src="SPDTtoST.jpg"><br clear=all>
+</p><p align=center>
+While some suggest attemping to temporarily connect the P1 contacts using e.g. tweezers, less coordinated among us prefer a switch.<br>
+I already had SPDT switches with compatible pin spacing;  clipping either outer pin results in a suitable SPST switch:<br>
+<img align=center src="nanoDFUswitch.jpg"><br clear=all>
+</p><p align=center>
+The back cover needed notching for clearance:<br>
+<img aligh=center src="nanoNOTCH.jpg"><br clear=all>
+</p><p align=center>
+Firmware, DFU utilities and instructions for downloading it can be found on <a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">Hugen's Google Drive</a>.<br>
+
+</p>
+</body>
+</html>
