@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>nanoVNA hardware</title>
+</head>
+<body bgcolor=#bbddcc>
+<h3>nanoVNA hardware</h3>
+<em>thanks to hugen, NT7S Jason, hwalker, Rune / 5Q5R</em>
+<h4>the original nanoVNA by edy255 has elegant RF design</h3>
+<img src="https://i1.wp.com/nt7s.com/wp-content/uploads/2019/08/NanoVNA_Block_Diagram.jpg">
+<ul compact>
+<li>a single Si5351A clock
+<li>three SA612AD mixers (reference, port 0 + 1)
+<li>resistor bridge for port 0 "reflection"
+<li>stereo TLV320AUC3204 analog-to-digital converter
+  <ul compact>
+  <li>left, right channels for inline, quadrature
+  <li>three internally-switched single-ended input (IQ)pairs for reference, ports 0 + 1
+  </ul> 
+</ul>
+Other hobbyist VNA, antenna analyzer, and software defined radio
+designs share many of these design concepts.
+This open source design was in limited distribution as a kit.
+<h4>The commercialized nanoVNA-H by Hugen reduced cost and enhanced usability</h4>
+<ul>
+<li>working LiPo
+<li>refined touch screen
+<li>better PCB layout, RF shielding
+<li>standalone PC software
+</ul>
+<h5>At least 5 nanoVNA-H implementations</h5>
+<dl>
+<dt>black, shields, USB-C 
+<dd>Hugen gen111.taobao.com or close clone
+<br><br><dt>white, micro USB "gekko"
+<dd>initially most available on eBay
+<br><br><dt>black, unshielded, USB-C, missing CH0 script
+<dd>AKA "Worse clone"
+</dl>
+Variations may come
+<sl compact>
+<li>with or without batteries,
+<li>battery leads soldered or by connector,
+<li>better or worse calibration kits,
+<li>SMA connectors fully soldered or not,
+<li>different firmwares,
+<li>calibrated (touchscreen and/or OSLT) or not.
+<li>rear cover shielded or not
+<li>Many vendors may ship different units over time.
+</sl><br>
+<img src="https://groups.io/g/nanovna-users/attachment/158/0">
+<dl>
+<dt>Hugen mid-October 2019
+<dd><a href="https://groups.io/g/nanovna-users/message/3356">full case</a><br>
+<img src="NanoVNA-H.png"><br clear=all>
+<br><dt>NanoVNA-H V2
+<dd>V2 will use two synthesizers that overlap and allow it to exceed a 1 GHz measurement range
+<br>A preview @ <a href="https://www.rtl-sdr.com/a-nanovna-2-0-is-in-the-works-same-price-frequency-range-up-to-3-5-ghz-higher-dynamic-range/comment-page-1/">RTL-SDR.COM</a><br>
+<img src=https://groups.io/g/nanovna-users/attachment/3939/0/NanoVNA%20V2%20Preliminary%20Block%20Diagram.png">
+<br clear=all>
+<font size=-2>
+<em>Note the number of switches, making component selection and board layout more critical.</em></font>
+</dl>
+<h5>nanoVNA in name only</h5>
+<dl>
+<dt>NanoVNA-F
+<dd>Larger screen, different processor, RTOS (so obviously firmware), perhaps some similar commands.
+<br>There is a good reason that this has <a href="https://groups.io/g/nanovna-f">its own group</a>
+<dt>"NanoVNA 2"
+<dd>completely unrelated to "NanoVNA-H V2".<br>
+Just seem to have tagged onto the name
+because of its popularity.
+</body>
+</html>
