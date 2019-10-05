@@ -22,32 +22,52 @@
 <br><br><dt><a href="http://www.emcu.eu/how-to-program-the-stm32/#DFU"><b>DfuSe utility introduction</b></a>
 <dd>not specific to nanoVNA
 <br><br><dt><a href="https://www.st.com/en/development-tools/stsw-stm32080.html"><b>STSW-STM32080 package</b></a>
-<dd>drivers and DFU utilities for managing and installing firmware
-</dl>
+<dd>drivers and DFU utilities for managing and installing firmware<br>
+Same package is available <a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">here</a> without registering.<br>
 <details>
-<summary>click here for some firmware naming conventions</summary>
-A typical name is <code>NanoVNA-H_900_ch_20191003.dfu</code>
-
-<dl>
-<dt>NanoVNA-H
-<dd>owner or special purpose.  edy255 "owns" NanoVNA; Gen Hu "owns" NanoVNA-H
-<dt>900
-<dd>most devices can overclock for 900MHz third harmonic.  To avoid artifacts with others, use <code>800</code>
-<dt>aa
-<dd>"Antenna Analyzer" limited to 2 traces. Use <code>ch</code> for 4 traces, but smaller text
-<dt>20191003
-<dd>date code; newer is not always better.  Some group message report bugs..  
-<dt> .dfu
-<dd> format for DFU utilities, e.g. verify that firmware matches USB device ID<br>
-<code>.hex</code> is smaller, lacks ID matching.  DFU utility can convert either way.
+<summary>click here for STSW-STM32080 package description</summary>
+<br>
+STMicroelectronics wants package users to register,<br>
+then send confirmation to your email address for access.<br>
+This requires browser cookies for ST's website at least temporarily enabled...<br>
+Windows installation includes <a href="file:///C:/Program%20Files%20(x86)/STMicroelectronics/Software/DfuSe%20v3.0.6/Bin/Doc/UM0412.pdf">a User Guide</a><br>
+The installer is probably named <code>DfuSe_Demo_V3.0.6_Setup.exe</code> because ST expects<br>
+their target audience to create create custom firmware installers motivated by this.
 </details>
+
+<br><br>
+<dt>
+<details>
+<summary>click here for <code>hugen</code> firmware naming conventions</summary>
+<br>
+A typical name is <code>NanoVNA-H_900_ch_20191003.dfu</code>
+<br><br>
+Many special firmware are available with different naming,<br>
+and usually <em>without</em> <code>aa</code> versions with larger text<br>
+or <code>800</code> versions for devices with weaker high frequency performance<br>
+<br>
+<dt><code>NanoVNA-H</code>
+<dd>owner or special purpose.<br>  edy255 "owns" NanoVNA; Gen Hu "owns" NanoVNA-H
+<br>Gen Hu typically provides 4 versions for each release date.<br>
+<dt><code>900</code>
+<dd>most devices can overclock for 900MHz third harmonic. <br> To avoid artifacts with weaker devices, use <code>800</code>
+<dt><code>aa</code>
+<dd>"Antenna Analyzer" limited to 2 traces but usefully larger text. <br>Use <code>ch</code> for 4 traces, but smaller text
+<dt><code>20191003</code>
+<dd>date code; newer is not always better.  <br>Some group messages <a href="https://groups.io/g/nanovna-users/search?d=0&ev=false&q=firmware+bug">report bugs</a>..  
+<dt><code>.dfu</code>
+<dd> format for DFU utilities, e.g. verify that firmware matches USB device ID<br>
+<code>.hex</code> is simpler, lacks ID matching.  DFU utility can convert either way.
+</details>
+</dl>
 
 <h4>
 <dl>
 <br><dt><a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019/DMR/DMR-CLEAR_MEMORY_DFU.dfu">DMR-CLEAR_MEMORY_DFU.dfu</a> clears device flash memory.
-<dd>Your device will not again work until after re-load other firmware.<br>
-  It is used to "clean the slate" prior to installing new firmware.<br>
-Some firmware installations fail until after first loading "DMR-CLEAR_MEMORY_DFU.dfu"
+<dd>Your device will <em>not</em> again work until <em>after</em> re-load <em>some other</em> firmware.<br>
+  It is used to "clean the slate" prior to installing <em>other</em> firmware, but is <em>rarely</em> needed.<br>
+Some few firmware installations fail until after first loading "DMR-CLEAR_MEMORY_DFU.dfu",<br>
+which FWIW is identical to <code>DMR Aug 31</code> "Stuck on firmware?" append: <a href="https://groups.io/g/nanovna-users/message/1583">FILL FF DFU.dfu</a>
 
 <br><br><dt>Larry Rothman's <a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019">Firmware Archive</a>
 <dd>much of that content is described below
@@ -111,7 +131,5 @@ Some firmware installations fail until after first loading "DMR-CLEAR_MEMORY_DFU
 <br><br><dt>erik Sep 5 Firmware with arbitrary scan length 
 <dd><a href="https://groups.io/g/nanovna-users/message/1886">email</a>
 
-<br><br><dt>DMR Aug 31  Stuck on firmware FILL FF DFU 
-<dd><a href="https://groups.io/g/nanovna-users/message/1583">email</a>
 </dl></h4>
 </html>
