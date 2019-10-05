@@ -14,8 +14,8 @@ body {
   margin: 0;
   padding: 0px;
   color: #ffffff;
-  font: 12px Verdana, sans-serif;
-  background: #000000;
+  font: 11px Verdana, sans-serif;
+  background: #000043;
 }
 
 .tree {
@@ -324,8 +324,8 @@ a:visited {
  -->
 
 <body translate="no">
-<base href="nVhelp.htm">
-<h3 align=center><a href="#U0">nanoVNA</a> Menu for <em>original</em> firmware</h3>
+<base href="https://oristopo.github.io/nVhelp/html/nVhelp.htm">
+<h2 align=center><a href="#U0">nanoVNA</a> Menu for <font color=#999900><em>Sep 2019</em></font> firmware</h2>
 
 <div class="tree">
 <p>Press control or touch screen for menu</p>
@@ -335,49 +335,65 @@ a:visited {
       <li><p><tt>2/4 limit for aa/ch firmware</tt><a href="#U1L1">TRACE</a></p>
         <dl>
           <dt><p id="yel">
-	    <tt>enable if off, else goto OFF/SINGLE</tt>TRACE 0</p>
-		<dl><dd><p>OFF</p></dd><dt><p><tt>disable other traces</tt>SINGLE</p></dt></dl></dt>
+	    <tt>select, toggle off/on</tt>TRACE 0</p></dt>
           <dt><p id="blu">
-		<tt>enable if off, else goto OFF/SINGLE</tt>TRACE 1</p>
-	    <dl><dd><p>OFF</p></dd><dt><p><tt>disable other traces</tt>SINGLE</p></dt></dl></dt>
+	    <tt>select, toggle off/on</tt>TRACE 1</p></dt>
           <dt><p id="grn"><tt>{<i><b>4-trace firmware only</b></i>}<br>
-		enable if off, else goto OFF/SINGLE</tt>TRACE 2</p><dl>
-	    <dd><p>OFF</p></dd><dt><p><tt>disable other traces</tt>SINGLE</p></dt></dl></dt>
+	        select, toggle off/on</tt>TRACE 2</p></dt>
           <dt><p id="red"><tt>{<b><i>4-trace firmware only</i></b>}<br>
-		enable if off, else goto OFF/SINGLE</tt>TRACE 3</p>
-            <dl><dd><p>OFF</p></dd><dt><p><tt>disable other traces</tt>SINGLE</p></dt></dl>
-          </dt>
+	        select, toggle off/on</tt>TRACE 3</p></dt>
         </dl> 
       </li>
       <li><p>FORMAT</p>
+	<ul>
+	<li><p>MORE</p>
+	    <dl>
+	      <dt><p>POLAR</p></dt>
+	      <dt><p>LINEAR</p></dt>
+	      <dt><p>REAL</p></dt>
+	      <dt><p>IMAG</p></dt>
+	      <dt><p>RESISTANCE</p></dt>
+	      <dt><p>REACTANCE</p></dt>
+            </dl>
+	</li>
+ 	<li>
         <dl>
-          <dt><p>LOGMAG</p></dt>
+          <dd><p>LOGMAG</p></dd>
 	  <dt><p>PHASE</p></dt>
-	  <dt><p><tt>not implemented</tt>DELAY</p></dt>
+	  <dt><p>DELAY</p></dt>
 	  <dt><p>SMITH</p></dt>
 	  <dt><p>SWR</p></dt>
-	  <dt><p>MORE</p>
-	    <dl>
-	      <dd><p>POLAR</p></dd>
-	      <dt><p>LINEAR</p></dt>
-            </dl>
-	  </dt>
         </dl>
+        </li>
+ 	</ul>
       </li>
       <li><p>SCALE</p>
         <dl>
-          <dt id="p60"><p><a href="#U131">SCALE/DIV</a></p><p>
-		<tt>touch nanoVNA screen below menu to launch numeric keypad;<br>
-		click hyperlink for numeric input discussion</tt>
-		<a href="#U132">REFERENCE POSITION</a></p></dt>
-          <dt><p>
-          <tt>position trace vertically</tt>
-          <a href="#U133">NUM KEYS</a></p><p>
-	<tt>touch below menu to launch</tt>NUM KEYS</p></dt>
+          <dt id="p60">
+	    <p><a href="#U131">SCALE/DIV</a></p>
+	    <p><tt>position trace vertically</tt>
+               <a href="#U133">NUM KEYS</a></p>
+          </dt>
+          <dt><p><tt>touch nanoVNA screen below menu to launch numeric keypad;<br>
+		     click hyperlink for numeric input discussion</tt>
+		 <a href="#U132">REFERENCE POSITION</a></p>
+	      <p><tt>touch below menu to launch</tt>NUM KEYS</p>
+	  </dt>
 	  <dt><p><tt>compensate CAL by e.g. cable length in picoseconds</tt>
-		<a href="#U134">ELECTRICAL DELAY</a></p><p>
-		<tt>touch below menu to launch</tt>NUM KEYS</p></dt>
+		 <a href="#U134">ELECTRICAL DELAY</a></p>
+	      <p><tt>touch below menu to launch</tt>NUM KEYS</p>
+	  </dt>
         </dl>
+      </li>
+      <li><p><tt></tt>TRANSFORM</p>
+        <dl>
+          <dt><p><tt> </tt>TRANSFORM ON</p></dt>
+          <dt><p><tt> </tt>LOW PASS IMPULSE</p></dt>
+          <dt><p><tt> </tt>LOW PASS STEP</p></dt>
+          <dt><p><tt> </tt>BANDPASS</p></dt>
+          <dt><p><tt> </tt>WINDOW</p></dt>
+          <dt><p><tt> </tt>VELOCITY FACTOR</p></dt>
+        </dl> 
       </li>
       <li><p><tt>select port to measure;<br>
 	works for 2 and 4 trace firmware</tt>CHANNEL</p>
@@ -403,7 +419,7 @@ a:visited {
 	<li>
 	<dl id="li-child">
 	<dd><p><tt>increase minimum sweep frequency<br>
-	to selected marker</tt>START</p></dt>
+	to selected marker</tt>START</p></dd>
 	<dt><p><tt>decrease maximum sweep frequency<br>
 	to selected marker</tt>STOP</p></dt>
 	<dt><p><tt>shift center of frequency sweep<br>
@@ -432,29 +448,31 @@ a:visited {
       <li><p><tt>press RESET to clear data before calibrating.<br>
 	Make appropriate [dis]connections before touching associated button</tt>CALIBRATE</p>
         <dl>
-          <dd><p>OPEN</p></dt>
+          <dt><p>OPEN</p></dt>
           <dt><p>SHORT</p></dt>
           <dt><p><tt>attach 50 Ohm load to TX port</tt>LOAD</p></dt>
           <dt><p><tt>attach a 50 Ohm load to each port</tt>ISOLATION</p></dt>
           <dt><p><tt>connect SMA cable[s] between ports</tt>THRU</p></dt>
           <dt><p>DONE</p>
-            <ul>
-              <li><p>SAVE 0</p></li>
-              <li><p>SAVE 1</p></li>
-              <li><p>SAVE 2</p></li>
-              <li><p>SAVE 3</p></li>
-              <li><p>SAVE 4</p></li>
-            </ul>
           </dt>
         </dl>
       </li>
+      <li><p><tt>press after CALIBRATE or to preserve other settings</tt>SAVE</p>
+            <dl>
+              <dt><p>SAVE 0</p></dt>
+              <dt><p>SAVE 1</p></dt>
+              <dt><p>SAVE 2</p></dt>
+              <dt><p>SAVE 3</p></dt>
+              <dt><p>SAVE 4</p></dt>
+            </dl>
+      </li>
       <li><p><tt>press to clear data before CALIBRATE</tt>RESET</p></li>
-      <li id="u30"><p><tt>toggle calibration<br>on / off</tt>CORRECT</p></li>
+      <li id="u30"><p><tt>toggle calibration<br>on / off</tt>CORRECTION</p></li>
     </ul>
   </li>
   <li>
     <p>
-    <tt>DISPLAY+MARKER +STIMULUS+CAL settings</tt>
+    <tt>what is SAVE under CONFIG??</tt>
 	RECALL
     </p>
       <dl>
@@ -463,6 +481,19 @@ a:visited {
         <dt><p>RECALL 2</p></dt>
         <dt><p>RECALL 3</p></dt>
         <dt><p>RECALL 4</p></dt>
+      </dl>
+  </li>
+  <li>
+    <p>
+    <tt>TOUCH, SAVE, VERSION, DFU</tt>
+	CONFIG
+    </p>
+      <dl>
+        <dd><p>TOUCH CAL</p></dd>
+        <dt><p>TOUCH TEST</p></dt>
+        <dt><p><tt>no obvious effect</tt>SAVE</p></dt>
+        <dt><p>VERSION</p></dt>
+        <dt><p>DFU</p></dt>
       </dl>
   </li>
 </ul>
