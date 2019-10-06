@@ -27,8 +27,8 @@
 <dl><dt><b>
   Firmware replacement instructions:
   <ul>
-  <li><a href="https://groups.io/g/nanovna-users/attachment/381/0/NanoVNA%20DFU%20Firmware%20Upgrade%20Guide.pdf">Upgrade NanoVNA use DFU</a>
   <li><a href="https://dw1zws.com/how-to-change-nanovna-firmware/">How to change NanoVNA Firmware</a>
+  <li>original <a href="https://groups.io/g/nanovna-users/attachment/381/0/NanoVNA%20DFU%20Firmware%20Upgrade%20Guide.pdf">Upgrade NanoVNA use DFU</a>
   <li><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20User%20Guide-English-reformat-Oct-2-19.pdf">User Manual</a></b> Section 8.<br>
   </ul>
 <dd>Clicking <b>Table of Contents</b> links there is not helpful...<br>
@@ -37,7 +37,8 @@
 <dd>not specific to nanoVNA
 <br><br><dt><a href="https://www.st.com/en/development-tools/stsw-stm32080.html"><b>STSW-STM32080 package</b></a>
 <dd>drivers and DFU utilities for managing and installing firmware<br>
-Same package is available <a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">here</a> without registering.<br>
+The same package is available <a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">here</a> without registering.<br>
+
 <details>
 <summary>click here for STSW-STM32080 package description</summary>
 <br>
@@ -47,6 +48,33 @@ This requires browser cookies for ST's website at least temporarily enabled...<b
 Windows installation includes <a href="file:///C:/Program%20Files%20(x86)/STMicroelectronics/Software/DfuSe%20v3.0.6/Bin/Doc/UM0412.pdf">a User Guide</a><br>
 The installer is probably named <code>DfuSe_Demo_V3.0.6_Setup.exe</code> because ST expects<br>
 their target audience to create create custom firmware installers motivated by this.
+</details>
+
+<details>
+<summary>click here for converting e.g. edy255 firmware to DFU format</summary>
+<br>
+<em>thanks to  starbuck5250</em><br><br>
+<code>DfuSe_Demo_V3.0.6_Setup.exe</code> also installs <code>DfuFileMgr.exe</code> e.g. in<br>
+ &nbsp <code>C:\Program Files (x86)\STMicroelectronics\Software\DfuSe v3.0.6\Bin</code>
+<dl>
+<dt>First, get e.g. <a href="https://github.com/ttrftech/NanoVNA/releases">an edy555 file</a>
+  <dd>click e.g. <a href="https://github.com/ttrftech/NanoVNA/releases/download/0.2.2/nanovna-firmware-0.2.2.zip"><code>nanovna-firmware-0.2.2.zip</code></a> to download.
+  <br>e.g. in <code>C:\addons</code>
+<dt>Next, unzip it e.g. in <code>C:\addons\nanovna-firmware-0.2.2</code>
+<dt>Next, to convert e.g. that <code>C:\addons\nanovna-firmware-0.2.2\build\ch.bin</code> to DFU format:
+  <dd>Launch <code>DfuFileMgr.exe</code><br>
+  Choose <code>GENERATE DFU from BIN</code>. Click <code>OK</code>.<br>
+  <img src="DFUmgr.gif"><br clear=all>
+  Click <img align="middle" src="S19orHex.gif"> half way down on the right side.<br>
+  Navigate to e.g. <code>C:\addons\nanovna-firmware-0.2.2\build\</code><br>
+  Click on e.g. <code>ch.hex</code>, and then <code>Open</code>.<br>
+  Click <code>Generate...</code><br>
+  &nbsp  You will be asked to save the file e.g. as <code>edy255_0.2.2.dfu</code>,<br>
+  &nbsp and saved it in the same directory.<br>
+  &nbsp For message <code>Success for Image for alternate setting...</code>, click <code>OK</code>.<br>
+<dt>Use e.g. <code>C:\addons\nanovna-firmware-0.2.2\build\edy255_0.2.2.dfu</code>
+  to flash NanoVNA by <code>DfuSe Demo 3.0.6.exe</code>.
+</dl>
 </details>
 
 <br><br>
@@ -103,8 +131,12 @@ which FWIW is identical to <code>DMR Aug 31</code> "Stuck on firmware?" append: 
 <br><br><dt>"hugen_900_aa_aug-2-19.dfu" <a href="https://groups.io/g/nanovna-users/message/3587">clears memory</a> 
 <dd><a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019/hugen/hugen_900_aa_aug-2-19.dfu">DFU</a>
 
-<br><br><dt>Erik firmware files 
-<dd><a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">files folder</a> primarily intended for use with <a href="https://groups.io/g/nanovna-users/files/NanoVNA%20PC%20Software/TAPR%20VNA">TAPR VNA v4 PC software</a>
+<br><br><dt>Erik Kaashoek's firmware folder
+<dd><a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">firmware</a> primarily intended for use with <a href="https://groups.io/g/nanovna-users/files/NanoVNA%20PC%20Software/TAPR%20VNA">TAPR VNA v4 PC software</a>
+<ul compact>
+<li>Set SI5351 max fundamental frequency <a href="https://groups.io/g/nanovna-users/message/4175">message</a> and 
+<a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik/Release%200.2.22_1%20with%20modified%20scan%20command%20and%20harmonic%20threshold%20setting.zip">firmware</a>
+</ul>
 
 <br><br><dt>edy255 + cho45 nightly builds 
 <dd><a href="https://cho45.stfuawsc.com/NanoVNA/dfu.html">web page</a> and <a href="https://circleci.com/gh/ttrftech/NanoVNA">change log</a> which notes bug fixes and functional changes
