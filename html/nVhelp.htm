@@ -250,13 +250,13 @@ but switching times &gt; 1ns limit local oscillators to <code>200MHz</code> or s
 
 <h4 id="DSP">DSP</h4> <em>thanks to Erik Kaashoek</em><br><br>
 
-SA612 mixers convert uncorrelated signals (reference, Ch1, Ch0 bridge unbalance)<br>
+SA612 ICs mix uncorrelated reference, Ch1 and Ch0 bridge unbalance signals<br>
 to 5kHz intermediate frequency (IF) for Analog-to-Digital-Conversion (ADC).<br>
 To measure 3 independent signals,<br>
-stereo ADC internally switches one input between reflection and transmission signals.<br>
-DSP then quadrature mixes 5KHz IF to DC (so there is no mirror signal to suppress), and output is averaged,<br>
-which is a very effective low pass filter, eliminating the sum at 10kHz. &nbsp
-No need for other filters.<br>
+stereo ADC internally switches one input between reflection and transmission.<br>
+DSP then quadrature mixes 5KHz IF to DC (eliminating mirror signal),<br>
+and output is averaged, which is a very effective low pass filter,<br>
+eliminating the sum at 10kHz. &nbsp No need for other filters.<br>
 <br><br>
 Lacking access to the famous July, 2015 QEX magazine article by DG5MK..</p>
 <ul>
