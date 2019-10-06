@@ -48,12 +48,14 @@
 by sorting resistance vs reactance instead of lumped <em>magnitude</em>.</li>
 </ul>
 
-<h4><a href="https://github.com/cho45/NanoVNA-manual/blob/master/index.md">unofficial user guide</a></h4>
-<em>thanks to cho45</em><br>   
-<br>
-<h4>VNA Basics</h4>
-<h4><a href="http://www.rvhfg.org/pdf/articles/55.pdf">Keysight</a></h4>
-<h4><a href="http://hpmemoryproject.org/an/pdf/an_150-15.pdf">Agilent</a></h4>
+<font size=+1><a href="https://github.com/cho45/NanoVNA-manual/blob/master/index.md">unofficial user guide</a></font><br>
+<em>thanks to cho45</em><br><br>   
+<font size=+1><a href="https://groups.io/g/nanovna-users/wiki/User-Guides">user guides</a></font> <em>at groups.io</em>
+<br><br>
+<font size=+1>
+<b>VNA Basics</b><br>
+ &nbsp <a href="http://www.rvhfg.org/pdf/articles/55.pdf">Keysight</a><br>
+ &nbsp <a href="http://hpmemoryproject.org/an/pdf/an_150-15.pdf">Agilent</a></font><br>
 <br>     
 <h4><a href="https://www.youtube.com/watch?v=mKi6s3WvBAM">beginners guide video</a></h4>
 <em>thanks to Joe Smith</em>
@@ -75,6 +77,7 @@ by sorting resistance vs reactance instead of lumped <em>magnitude</em>.</li>
 <b>multi-directional switch</b> <code>K1-1502SA</code><br>
 <b>USB connectors</b> <code>Type C except for Micro-USB B on white gekkos.</code><br>
 <b><a href="https://github.com/hugen79/NanoVNA-H/blob/master/doc/Schematic_nanovna_3.3.1.png">schematic diagram</a></b><br>
+<b><a href="hardware.htm">hardware versions</a></b><br>
 <br>
 <h4>LEDs</h4>
 <p>One LED (between USB and power switch) blinks @ 1/2Hz while charging,<br />
@@ -211,11 +214,11 @@ to bring up its command shell prompt.</li>
 <p>Some nanoVNAs fail when overclocked to <code>300MHz</code> by standard firmware;<br />
 <a href="https://groups.io/g/nanovna-users/message/793">nanoVNA_800<em>aa</em>*.dfu firmware for reflashing problematic devices</a>.</p>
 
-<p><a href="https://github.com/ttrftech/NanoVNA#flash-firmware">How to load firmware</a></p>
+<p><a href="firmware.htm">firmware versions &amp installation</a></p>
 
-<p><a href="https://oristopo.github.io/nVhelp/html/software.htm"><em>Here</em></a> is more software information.</p>
+<p><a href="software.htm"><em>Software alternatives</em></a></p>
 
-<p><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%208-6-19.pdf"><em>Here</em></a> are Console Commands &nbsp <a href="https://groups.io/g/nanovna-users/topic/temporary_workaround_to/34127733">command instability workaround</a></p>
+<p><a href="https://groups.io/g/nanovna-users/wiki/shellcommands"><em>Here</em></a> are Console Commands &nbsp <a href="https://groups.io/g/nanovna-users/topic/temporary_workaround_to/34127733">command instability workaround</a></p>
 
 <h2 id="technical">Technical</h2>
 
@@ -235,27 +238,38 @@ If significant spike artifacts are noted (&gt; <code class="highlighter-rouge">0
 then <a href="#F800"><code class="highlighter-rouge">800MHz</code> firmware is recommended</a>.<br>
 <br>
 <h4 id="nanovna-principles-of-operation">nanoVNA principles of operation</h4>
-<p>Largely as described in Michael Knitter DG5MK's YouTube video:<br />
+<p>Somewhat as described in Michael Knitter DG5MK's YouTube video:<br />
 <a href="https://www.youtube.com/watch?v=X8Z7veGV57o&quot;">Hamradio 2018 FA-VA5 presentation-UK</a></p>
 
 <p>Instead of nanoVNA's <code class="highlighter-rouge">SA612</code> mixer
 (also used by <a href="https://bitbucket.org/kuchura/eu1ky_aa_v3/wiki/Home">EU1KY analyzer</a>),<br />
-the <a href="https://www.sdr-kits.net/VA5-Antenna-Analyzer-Kit">FA-VA5</a> uses <code class="highlighter-rouge">74LVC4066</code> analog switches.<br />
+the <a href="https://www.sdr-kits.net/VA5-Antenna-Analyzer-Kit">FA-VA5</a> uses <code class="highlighter-rouge">74LVC4066</code> analog switches<br>
 Analog switch ICs have better linearity, dynamic range and GHz bandwidths,<br />
 but switching times &gt; 1ns limit local oscillators to <code>200MHz</code> or so..</p>
 
-<h4 id="DSP">FFT "quadrature mixing", Hilbert transform and filtering DSP</h4>
 
-<p>..after quadrature sampling by Si5351 and SA612A.<br />
+<h4 id="DSP">DSP</h4> <em>thanks to Erik Kaashoek</em><br><br>
+
+SA612 mixers convert uncorrelated signals (reference, Ch1, Ch0 bridge unbalance)<br>
+to 5kHz intermediate frequency (IF) for Analog-to-Digital-Conversion (ADC).<br>
+To measure 3 independent signals,<br>
+stereo ADC internally switches one input between reflection and transmission signals.<br>
+DSP then quadrature mixes 5KHz IF to DC (so there is no mirror signal to suppress), and output is averaged,<br>
+which is a very effective low pass filter, eliminating the sum at 10kHz. &nbsp
+No need for other filters.<br>
+<br><br>
 Lacking access to the famous July, 2015 QEX magazine article by DG5MK..</p>
 <ul>
-  <li>Richard Lyons' <a href="https://dspguru.com/files/QuadSignals.pdf">Quadrature Signals:  Complex, Not Complicated</a> is approachable theory referenced by DG5MK.</li>
+  <li>Richard Lyons' <a href="https://dspguru.com/files/QuadSignals.pdf">Quadrature Signals:
+      Complex, Not Complicated</a> is approachable theory referenced by DG5MK.</li>
   <li><a href="https://www.youtube.com/watch?v=X8Z7veGV57o">Hamradio 2018 FA-VA5 presentation-UK</a> video</li>
-  <li>DG5MK's <a href="https://www.dg5mk.de/media/Labview%20SDR/FFT_SSB_MOD/English%20Version/FFT%20SSB%20mod%20demod%20DG5MK%20English%20V03.pdf">FFB SSB Modulation</a> PDF avoids digging into mathematics.</li>
+  <li>DG5MK's <a href="https://www.dg5mk.de/media/Labview%20SDR/FFT_SSB_MOD/English%20Version/FFT%20SSB%20mod%20demod%20DG5MK%20English%20V03.pdf">FFB
+      SSB Modulation</a> PDF avoids digging into mathematics.</li>
   <li>DG5MK's <a href="https://www.dg5mk.de/media/Labview%20SDR/SDR%20Kurzbeitrag/Labview_SDR_DG5MK_English_08_2012.pdf">Labview-based SDR</a> provides software insights.</li>
   <li>DD4WH's detailed DSP description in <a href="https://github.com/df8oe/UHSDR/wiki/How-does-your-UHSDR-software-DSP-work">UHSDR wiki</a>, based on Teensy SDR</li>
   <li>UHSDR <a href="https://github.com/df8oe/UHSDR/wiki/IQ---correction-and-mirror-frequencies">IQ correction and mirror frequencies</a> @ GitHub</li>
-  <li>relevant <a href="https://github.com/DD4WH/Teensy-ConvolutionSDR">Teensy-ConvolutionSDR</a> (Si5351, ARM) <a href="https://github.com/DD4WH/Teensy-ConvolutionSDR/blob/master/Teensy_Convolution_SDR.ino">Arduino source code</a></li>
+  <li>relevant <a href="https://github.com/DD4WH/Teensy-ConvolutionSDR">Teensy-ConvolutionSDR</a> (Si5351, ARM)
+      <a href="https://github.com/DD4WH/Teensy-ConvolutionSDR/blob/master/Teensy_Convolution_SDR.ino">Arduino source code</a></li>
 </ul>
 
 <h4 id="other-technical">Other technical</h4>
