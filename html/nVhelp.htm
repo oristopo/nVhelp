@@ -1,51 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="/nVhelp/assets/css/style.css?v=2d9008335fe0e13e54449ab00b40194ca09cde41">
-    <link rel="stylesheet" type="text/css" href="/nVhelp/assets/css/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Begin Jekyll SEO tag v2.5.0 -->
+<head>
 <title>nVhelp | nanoVNA user documentation</title>
-<meta name="generator" content="Jekyll v3.8.5" />
-<meta property="og:title" content="nVhelp" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="nanoVNA user documentation" />
-<meta property="og:description" content="nanoVNA user documentation" />
-<link rel="canonical" href="https://oristopo.github.io/nVhelp/" />
-<meta property="og:url" content="https://oristopo.github.io/nVhelp/" />
-<meta property="og:site_name" content="nVhelp" />
-<script type="application/ld+json">
-{"@type":"WebSite","url":"https://oristopo.github.io/nVhelp/","headline":"nVhelp","name":"nVhelp","description":"nanoVNA user documentation","@context":"http://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
+<style>
+  h3, h4 {
+   margin-bottom: 0px;
+  }
+  ul {
+   padding-top: 0px;
+   margin-top: 0px;
+  }
+</style>
+</head>
 
-  </head>
-
-  <body bgcolor=#99aaaa>
-    <div id="container">
-      <div class="inner">
-
-        <header>
-          <h1>nVhelp</h1>
-          <h2>nanoVNA user documentation</h2>
-        </header>
-        <section id="downloads" class="clearfix">
+<body leftmargin=50" bgcolor=#99aaaa>
           
-	
-        </section>
-        <hr>
-        <section id="main_content">
-          
-<h2 id="U0">VNA (Vector Network Analyzer)</h2>
+<h3 id="U0">nanoVNA (Vector Network Analyzer)</h3>
 
 <ul>
   <li>distinguished from antenna analyzer by having two ports instead of one</li>
   <li>distinguished from scaler analyzer e.g. SWR (Standing Wave Ratio) bridge<br>
-by sorting resistance vs reactance instead of lumped <em>magnitude</em>.</li>
+      by sorting resistance vs reactance instead of lumped <em>magnitude</em>.</li>
 </ul>
 
 <font size=+1><a href="https://github.com/cho45/NanoVNA-manual/blob/master/index.md">unofficial user guide</a></font><br>
@@ -80,7 +55,7 @@ by sorting resistance vs reactance instead of lumped <em>magnitude</em>.</li>
 <b><a href="hardware.htm">hardware versions</a></b><br>
 <br>
 <h4>LEDs</h4>
-<p>One LED (between USB and power switch) blinks @ 1/2Hz while charging,<br />
+<p>One LED (between USB and power switch) blinks @ <code>1/2Hz</code> while charging,<br />
  then illuminates constantly;<br />
     - remaining on for 40 seconds after disconnecting USB or powering off,<br />
           <em>perhaps discharging capacitors?</em></p>
@@ -223,11 +198,11 @@ to bring up its command shell prompt.</li>
 <h2 id="technical">Technical</h2>
 
 <h4>VCO (Voltage Controlled Oscillator) harmonics</h4>
-<p><em>thanks to Warren Allgyer</em>:<br />
+<em>thanks to Warren Allgyer</em>:<br>
 <img src="https://raw.githubusercontent.com/oristopo/nVhelp/master/html/nanoSpectrum.gif" alt="harminics" title="Si5351 harmonics" /><br />
 Unusually, nanoVNA stimulus waveform is square, rather than sinusoidal.<br>
-Above <code class="highlighter-rouge">300MHz</code>, nanoVNA boosts <code class="highlighter-rouge">Si5351</code> output and uses its 3rd harmonic.</p>
-
+Above <code class="highlighter-rouge">300MHz</code>, nanoVNA boosts <code class="highlighter-rouge">Si5351</code> output and uses its 3rd harmonic.<br>
+<br>
 <em>thanks to hugen@outlook.com:</em><br>
 The <code class="highlighter-rouge">Si5351</code> internal VCO (Voltage Controlled Oscillator) maximum<br />
 operating frequency decreases with increasing temperature.<br />
@@ -251,17 +226,18 @@ but switching times &gt; 1ns limit local oscillators to <code>200MHz</code> or s
 <h4 id="DSP">DSP</h4> <em>thanks to Erik Kaashoek</em><br><br>
 
 SA612 ICs mix reference, Ch1 and Ch0 bridge unbalance signals<br>
-to 5kHz intermediate frequency (IF) for Analog-to-Digital-Conversion (ADC).<br>
+to <code>5kHz</code> intermediate frequency (IF) for Analog-to-Digital-Conversion (ADC).<br>
 To measure 3 independent signals,<br>
 stereo ADC internally switches one input between reflection and transmission.<br>
-DSP then quadrature mixes 5KHz IF to DC (eliminating mirror signal),<br>
+<br>
+DSP then quadrature mixes <code>5KHz</code> IF to DC (eliminating mirror signal),<br>
 and output is averaged, which is a very effective low pass filter,<br>
-eliminating the sum at 10kHz. &nbsp No need for other filters.<br>
-<br><br>
-Lacking access to the famous July, 2015 QEX magazine article by DG5MK..</p>
+eliminating the sum at <code>10kHz</code>. &nbsp No need for other filters.<br>
+<br>
+Lacking access to the famous July, 2015 QEX magazine article by DG5MK..
 <ul>
   <li>Richard Lyons' <a href="https://dspguru.com/files/QuadSignals.pdf">Quadrature Signals:
-      Complex, Not Complicated</a> is approachable theory referenced by DG5MK.</li>
+      Complex, Not Complicated</a><br> is approachable theory referenced by DG5MK.</li>
   <li><a href="https://www.youtube.com/watch?v=X8Z7veGV57o">Hamradio 2018 FA-VA5 presentation-UK</a> video</li>
   <li>DG5MK's <a href="https://www.dg5mk.de/media/Labview%20SDR/FFT_SSB_MOD/English%20Version/FFT%20SSB%20mod%20demod%20DG5MK%20English%20V03.pdf">FFB
       SSB Modulation</a> PDF avoids digging into mathematics.</li>
@@ -305,7 +281,7 @@ OFF disables <em>this</em> trace;  SINGLE disables <em>all other</em> traces...?
 <p>watch this space</p>
 
 <h4 id="U133">linked from NUM KEYS</h4>
-<p><em>thanks to Mike Brown</em></p>
+<em>thanks to Mike Brown</em>
 
 <p>Numerical input seems a bit flaky,<br />
 although it works better for e.g. CW frequency than position.<br />
@@ -313,7 +289,7 @@ Touchscreen typically wants <a href="#TSC">calibration</a>.  <br />
 Antenna analyser firmware has a larger font;<br />
 touchscreen [mis]calibration is more critical for other firmware..</p>
 
-<p>Numeric entry displays no decimal point, but one may be implied. eg:</p>
+Numeric entry displays no decimal point, but one may be implied. eg:
 <ul>
   <li>When in logmag reference adjust mode,<br />
  digits appear to represent steps of <code class="highlighter-rouge">0.01dB</code>,<br />
@@ -321,7 +297,7 @@ touchscreen [mis]calibration is more critical for other firmware..</p>
   <li>In CW Freq setting, digits seem to represent steps of <code class="highlighter-rouge">100Hz</code>.</li>
 </ul>
 
-<p><strong>Rocker switch input</strong></p>
+<h4>Rocker switch input</h4>
 <ul>
   <li>Tapping on a digit makes it adjustable;<br />
 step it up or down using the multi-directional switch.</li>
@@ -333,7 +309,7 @@ that digit is <strong>'highlighted'</strong> and its background goes black.</li>
  <strong>NB</strong> waiting a few seconds between rocker switch presses seemingly helps.</li>
 </ul>
 
-<p><strong>Touchscreen input</strong></p>
+<h4>Touchscreen input</h4>
 <ul>
   <li>Tapping far right of numbers brings up a numeric keyboard,<br />
 which may be operated either by touchscreen taps<br />
@@ -355,7 +331,7 @@ or by multi-directional switch movements.</li>
 <p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
 <p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
 <h4 id="U132">linked from REFERENCE POSITION</h4>
-<p><em>thanks to Mike Brown:</em><br /></p>
+<em>thanks to Mike Brown:</em>
 <dl>
 <dt>for e.g. LOGMAG</dt>
 <dd>Entering 1-8 (0001 to 0008)<br />
@@ -440,17 +416,12 @@ data is flushed and replaced.</p>
 <p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
 <p>     <br />     <br />     <br />     <br />     <br />     <br />     <br />     <br /> </p>
 
-        </section>
 
         <footer>
         
           nVhelp is maintained by <a href="https://github.com/oristopo">oristopo</a><br>
         </footer>
 
-      </div>
-    </div>
-
-    
   </body>
 </html>
 
