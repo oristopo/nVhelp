@@ -92,7 +92,8 @@ a:visited {
 
 .tree ul {	/* sl fails */
   position: relative;
-  top: -35px;
+  top: 0px;
+  left: -50px;
   /* changing p width impacts this HHH */
   margin-left: 70px;
   margin-top: 0px;
@@ -126,20 +127,40 @@ a:visited {
   padding-bottom: 40px;
 }
 
+#p60 {
+  padding-bottom: 60px;
+}
+
+#p90 {
+  padding-bottom: 90px;
+}
+
+#p120 {
+  padding-bottom: 160px;
+}
+
+#u20 {
+  margin-bottom: -20px;
+}
+
 #u30 {
   margin-bottom: -30px;
+}
+
+#u45 {
+  margin-bottom: -45px;
 }
 
 #u60 {
   margin-bottom: -60px;
 }
 
-#p60 {
-  padding-bottom: 60px;
+#u90 {
+  margin-bottom: -90px;
 }
 
-#p150 {
-  padding-bottom: 150px;
+#u120 {
+  margin-bottom: -120px;
 }
 
 /* horizontal branches */
@@ -189,12 +210,6 @@ a:visited {
   left: -15px;
 }
 
-/* longer stem from first <li> to parent */
-.tree li:first-child::before  {
-  width: 30px;
-  left: -30px;
-}
-
 /* horizontal branches above <dt> entries */
 .tree dt::after, dd::after {
   position: absolute;
@@ -225,6 +240,12 @@ a:visited {
   min-height: 36px;  /* force vertical connections */
   left: -15px;
   top: 20px;
+}
+
+/* longer branch from first <li> to parent */
+.tree li:first-child::after  {
+  height: 160%;
+  top: 0px;
 }
 
 /* vertical stems to branches */
@@ -330,6 +351,10 @@ a:visited {
   z-index: 200;	/* does not help */
 }
 
+div {
+  position: absolute;
+  top: 20px;
+}
 </style>
 </head>
 <!--
@@ -347,9 +372,9 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
 <div class="tree">
 <p>Press control or touch screen for menu</p>
 <ul>
-  <li id="p40"><p><a href="#U1">DISPLAY</a></p>
+  <li id="p90"><p><a href="#U1">DISPLAY</a></p>
     <ul>
-      <li><p><tt>2/4 limit for aa/ch firmware</tt><a href="#U1L1">TRACE</a></p>
+      <li id="u30"><p><tt>2/4 limit for aa/ch firmware</tt><a href="#U1L1">TRACE</a></p>
         <dl>
           <dt><p id="yel">
 	    <tt>select, toggle off/on</tt>TRACE 0</p></dt>
@@ -380,7 +405,7 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
 	  </dt>
         </dl>
       </li>
-      <li><p>SCALE</p>
+      <li id="p40"><p>SCALE</p>
         <dl>
           <dt id="p60">
 	    <p><a href="#U131">SCALE/DIV</a></p>
@@ -404,14 +429,14 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
           <dt><p><tt>set REAL start 50kHz</tt>LOW PASS IMPULSE</p></dt>
           <dt><p><tt>set REAL start 50kHz</tt>LOW PASS STEP</p></dt>
           <dt><p><tt>set SWR, LINEAR or LOGMAG</tt>BANDPASS</p></dt>
-          <dt id="u60"><p><tt>modifies LOW/BANDPASS</tt>WINDOW</p>
+          <dt id="u120"><p><tt>modifies LOW/BANDPASS</tt>WINDOW</p>
 	    <ul>
 	      <li><p><tt>max resolution</tt>MINIMUM</p></li>
 	      <li><p>NORMAL</p></li>
 	      <li><p><tt>max dymanic range</tt>MAXIMUM</p></li>
             </ul>
           </dt>
-          <dt id="u30"><p><tt>tweak for actual distance</tt>VELOCITY FACTOR</p>
+          <dt id="u120"><p><tt>tweak for actual distance</tt>VELOCITY FACTOR</p>
 	      <p><tt>touch below menu to launch</tt>NUM KEYS</p>
           </dt>
         </dl> 
@@ -425,16 +450,16 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
       </li>
     </ul>
   </li>
-  <li id="u30"><p><a href="#U2">MARKER</a></p>
+  <li id="p120"><p><a href="#U2">MARKER</a></p>
     <dl>
-	<dt id="p150"><p><tt>increase minimum sweep frequency<br>
+	<dt><p><tt>increase minimum sweep frequency<br>
 	to selected marker</tt>START</p></dt>
 	<dt><p><tt>decrease maximum sweep frequency<br>
 	to selected marker</tt>STOP</p></dt>
 	<dt><p><tt>shift center of frequency sweep<br>
 	to selected marker</tt>CENTER</p></dt>
 	<dt><p><tt>sweep frequency between 2 current markers</tt>SPAN</p></dt>
-	<dt id="p20"><p><tt>with 2 markers enabled,
+	<dt><p><tt>with 2 markers enabled,
 	 marker 2 will read DELTA Frequency in relation to marker 1</tt>SELECT MARKER
 	  <ul>
 	  <li><p>MARKER 1</p></li>
@@ -446,9 +471,9 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
 	</dt>
     </dl>
   </li>
-  <li><p><tt>set sweep or single frequency</tt>STIMULUS</p>
+  <li id="u20"><p><tt>set sweep or single frequency</tt>STIMULUS</p>
     <dl>
-      <dt id="p40"><p><tt>sweep lower limit &gt 50kHz</tt>START</p><p>
+      <dt><p><tt>sweep lower limit &gt 50kHz</tt>START</p><p>
 	<tt>touch below menu to launch</tt>NUM KEYS</p></dt>
       <dt><p><tt>sweep upper limit &lt 900mHz</tt>STOP</p><p>
 		<tt>touch below menu to launch</tt>NUM KEYS</p></dt>
@@ -460,9 +485,9 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
 	click hyperlink for saving frozen data via USB</tt><a href="#U36">PAUSE SWEEP</a></p></dt>
     </dl>
   </li>
-  <li><p><a href="#N4">CAL</a></p>
+  <li id="p40"><p><a href="#N4">CAL</a></p>
     <ul>
-      <li><p><tt>press after CALIBRATE or to preserve other settings</tt>SAVE</p>
+      <li id="u45"><p><tt>press after CALIBRATE or to preserve other settings</tt>SAVE</p>
             <dl>
               <dt><p>SAVE 0</p></dt>
               <dt><p>SAVE 1</p></dt>
