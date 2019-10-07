@@ -317,6 +317,30 @@ a:visited {
   z-index: 200;	/* does not help */
 }
 
+/* CSS hover image overloading <i> */
+.tree i {
+  visibility: hidden;
+  display:block;
+  min-width: 20px;
+  border: 1px solid #111111;
+  background: url(smith.jpg) no-repeat;
+  min-width:64px;
+  min-height:51px;
+  border-radius: 6px;
+  padding: 5px 5px;
+
+  /* tooltip position */
+  position: absolute;
+  bottom: -10px;	/* up and left to avoid being obscured */
+  right: 80px;
+  z-index: 200;	/* does not help */
+}
+
+.tree p:hover i {
+  visibility: visible;
+  z-index: 200;	/* does not help */
+}
+
 </style>
 </head>
 <!--
@@ -342,27 +366,27 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
 	    <tt>select, toggle off/on</tt>TRACE 0</p></dt>
           <dt><p id="blu">
 	    <tt>select, toggle off/on</tt>TRACE 1</p></dt>
-          <dt><p id="grn"><tt>{<i><b>4-trace firmware only</b></i>}<br>
+          <dt><p id="grn"><tt>{<em><b>4-trace firmware only</b></em>}<br>
 	        select, toggle off/on</tt>TRACE 2</p></dt>
-          <dt><p id="red"><tt>{<b><i>4-trace firmware only</i></b>}<br>
+          <dt><p id="red"><tt>{<b><em>4-trace firmware only</em></b>}<br>
 	        select, toggle off/on</tt>TRACE 3</p></dt>
         </dl> 
       </li>
       <li><p>FORMAT</p>
         <dl>
-          <dd><p>LOGMAG</p></dd>
-	  <dt><p>PHASE</p></dt>
-	  <dt><p>DELAY</p></dt>
-	  <dt><p>SMITH</p></dt>
-	  <dt><p>SWR</p></dt>
-	  <dt><p>MORE</p>
+          <dd><p><tt>measured magnitude log scaled</tt>LOGMAG</p></dd>
+	  <dt><p><tt>-180<=linear degrees<=+180</tt>PHASE</p></dt>
+	  <dt><p><tt>see TRANSFORM</tt>DELAY</p></dt>
+	  <dt><p><i>    </i>SMITH</p></dt>
+	  <dt><p><tt>Standing Wave Ratio</tt>SWR</p></dt>
+	  <dt><p><tt>..but better?</tt>MORE</p>
 	    <ul>
-	      <li><p>POLAR</p></li>
-	      <li><p>LINEAR</p></li>
-	      <li><p>REAL</p></li>
-	      <li><p>IMAG</p></li>
-	      <li><p>RESISTANCE</p></li>
-	      <li><p>REACTANCE</p></li>
+	      <li><p><tt>(for S21) imaginary vs real</tt>POLAR</p></li>
+	      <li><p><tt>measured magnitude linear scaled</tt>LINEAR</p></li>
+	      <li><p><tt>inline component</tt>REAL</p></li>
+	      <li><p><tt>quaderature component</tt>IMAG</p></li>
+	      <li><p><tt>real impedance component</tt>RESISTANCE</p></li>
+	      <li><p><tt>imaginary impedance component</tt>REACTANCE</p></li>
             </ul>
 	  </dt>
         </dl>
