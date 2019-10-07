@@ -126,12 +126,16 @@ a:visited {
   padding-bottom: 40px;
 }
 
+#p60 {
+  padding-bottom: 60px;
+}
+
 #u30 {
   margin-bottom: -30px;
 }
 
-#p60 {
-  padding-bottom: 60px;
+#u60 {
+  margin-bottom: -60px;
 }
 
 /* horizontal branches */
@@ -341,6 +345,11 @@ a:visited {
   z-index: 200;	/* does not help */
 }
 
+div {
+  position: absolute;
+  top: 40px;
+}
+
 </style>
 </head>
 <!--
@@ -395,17 +404,18 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
         <dl>
           <dt id="p60">
 	    <p><a href="#U131">SCALE/DIV</a></p>
-	    <p><tt>position trace vertically</tt>
+	    <p><tt>rescale trace vertically</tt>
                <a href="#U133">NUM KEYS</a></p>
           </dt>
           <dt><p><tt>touch nanoVNA screen below menu to launch numeric keypad;<br>
 		     click link here for numeric input discussion</tt>
 		 <a href="#U132">REFERENCE POSITION</a></p>
-	      <p><tt>touch below menu to launch</tt>NUM KEYS</p>
+	    <p><tt>position trace vertically</tt>
+               <a href="#U133">NUM KEYS</a></p>
 	  </dt>
 	  <dt><p><tt>compensate CAL by e.g. cable length in picoseconds</tt>
 		 <a href="#U134">ELECTRICAL DELAY</a></p>
-	      <p><tt>touch below menu to launch</tt>NUM KEYS</p>
+	      <p>NUM KEYS</p>
 	  </dt>
         </dl>
       </li>
@@ -415,7 +425,7 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
           <dt><p><tt>set REAL start 50kHz</tt>LOW PASS IMPULSE</p></dt>
           <dt><p><tt>set REAL start 50kHz</tt>LOW PASS STEP</p></dt>
           <dt><p><tt>set SWR, LINEAR or LOGMAG</tt>BANDPASS</p></dt>
-          <dt><p><tt>modifies LOW/BANDPASS</tt>WINDOW</p>
+          <dt id="u60"><p><tt>modifies LOW/BANDPASS</tt>WINDOW</p>
 	    <ul>
 	      <li><p><tt>max resolution</tt>MINIMUM</p></li>
 	      <li><p>NORMAL</p></li>
@@ -423,7 +433,7 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
             </ul>
           </dt>
           <dt><p><tt>tweak for actual distance</tt>VELOCITY FACTOR</p>
-	      <p><tt>touch below menu to launch</tt>NUM KEYS</p>
+	      <p>NUM KEYS</p>
           </dt>
         </dl> 
       </li>
@@ -509,11 +519,7 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
       <li id="u30"><p><tt>toggle calibration<br>on / off</tt>CORRECTION</p></li>
     </ul>
   </li>
-  <li>
-    <p>
-    <tt>what is SAVE under CONFIG??</tt>
-	RECALL
-    </p>
+  <li><p>RECALL</p>
       <dl>
         <dt><p>RECALL 0</p></dt>
         <dt><p>RECALL 1</p></dt>
@@ -533,10 +539,10 @@ more <a href="">help is linked by selecting</a> for buttons with underlined text
         <dt><p><tt>touchscreen calibration</tt>SAVE</p></dt>
         <dt><p>VERSION</p></dt>
         <dt><p>DFU</p>
-	  <dl>
-	    <dd><p>RESET AND ENTER DFU</p></dd>
-	    <dt><p>CANCEL</p></dt>
-	  </dl>
+	  <ul>
+	    <li><p>RESET AND ENTER DFU</p></li>
+	    <li><p>CANCEL</p></li>
+	  </ul>
 	</dt>
       </dl>
   </li>
