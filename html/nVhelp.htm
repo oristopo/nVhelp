@@ -131,7 +131,7 @@ Finally save to a desired register.</li>
 <h4 id="TSC">Touchscreen Calibration</h4>
 
 <details>
-<summary>click for calibration procedure</summary>
+<summary>click for calibration procedure via USB from PC</summary>
 
 <p><em> thanks to Larry Rothman</em>:</p>
 
@@ -142,27 +142,13 @@ which requires USB connection to your PC/MAC/Terminal.</p>
   <li>install <a href="https://www.st.com/en/development-tools/stsw-stm32102.html">STM USB drivers</a>, if required.</li>
   <li>connect the nanoVNA and determine which serial port has been assigned (e.g. COM5)</li>
   <li>use a serial terminal emulator such as TeraTerm to access the nanoVNA console.</li>
-  <li>you may need to hit the ENTER key once or twice<br />
-to bring up its command shell prompt.</li>
+  <li>you may need to hit the ENTER key once or twice<br>
+      to bring up its command shell prompt.</li>
   <li>at the command prompt, enter:  <code>touchcal</code></li>
   <li>the nanoVNA should now display a calibration point at the upper-left corner of the display.<br /></li>
   <li>touch that corner - a new calibration point will appear at the lower right corner of the display.</li>
   <li>touch that corner - the screen is now calibrated - <b>BUT NOT SAVED</b><br /></li>
 </ol>
-
-<p><strong>touchcal</strong></p>
-<ul>
-  <li>produces calibration touch points in the upper left and lower right corners</li>
-  <li>console output:
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  touchcal
-  first touch upper left, then lower right...  
-  done  
-  touch cal params: A B C D (upper left and lower right x-y co-ords)  
-</code></pre></div>    </div>
-    <p><strong>touchtest</strong></p>
-  </li>
-  <li>test touch accuracy - touch, hold and drag pointer</li>
-</ul>
 
 <h4 id="now-save-this-touchscreen-calibration">Now, save this touchscreen calibration:</h4>
 <ul>
@@ -180,6 +166,20 @@ to bring up its command shell prompt.</li>
 <p><strong>NOTE</strong>: saveconfig command probably also saves calibration data</p>
 
 </details>
+<h5>TOUCH CAL</h5>
+<ul>
+  <li>produces calibration touch points in the upper left and lower right corners</li>
+  <li><span style="background-color: #000000"><font color="white">TOUCH UPPER LEFT</font></span>
+  <li><span style="background-color: #000000"><font color="white">TOUCH LOWER RIGHT</font></span>
+</ul> 
+<H5>TOUCH TEST</H5>
+<ul>
+  <li>test touch accuracy - touch, hold and drag pointer</li>
+  <li><span style="background-color: #000000"><font color="white">TOUCH TEST: DRAG PANEL</font></span>
+</ul>
+
+<br>
+<a href="https://groups.io/g/nanovna-users/message/2500">calibration and configuration backup</a>
 
 <br>
 <h2 id="software-and-firmware">Software and Firmware</h2>
