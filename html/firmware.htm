@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>NanoVNA versions</title>
+<title>NanoVNA versions Oct 11 2019</title>
 <style type="text/css">
   p,h2,dl {
     margin-left: 40;
@@ -17,31 +17,33 @@
 <li> Operation up to 1500 MHz (at reduced performance).
 <li> Switch into DFU mode without hardware jumper.
 <li> Change from 2 trace to 4 trace firmware (or vice versa).
-<li> Change to 800 MHz max operation for better device stability
+<li> better synergy with PC software, e.g. TAPR VNAR4 fast scan
 <li> Enable electrical delay setting
 <li> Bored and looking for trouble.
 </ol>
 </details>
 
 <h2>nanoVNA firmware versions</a></h2>
-<dl><dt><b>
+
+<dl>
+<h4>
+<dt>
   Firmware replacement instructions:
   <ul>
-  <li><a href="https://dw1zws.com/how-to-change-nanovna-firmware/">How to change NanoVNA Firmware</a>
-  <li>original <a href="https://groups.io/g/nanovna-users/attachment/381/0/NanoVNA%20DFU%20Firmware%20Upgrade%20Guide.pdf">Upgrade NanoVNA use DFU</a>
-  <li><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20User%20Guide-English-reformat-Oct-2-19.pdf">User Manual</a></b> Section 8.<br>
+  <li><a href="https://groups.io/g/nanovna-users/files/Firmware/Windows%20guide%20on%20how%20to%20write%20firmware.pdf">Replace NanoVNA Firmware from Windows</a>
+  <li><a href="https://cho45.github.io/NanoVNA-manual/">Replace NanoVNA Firmware from macOS or Ubuntu</a> <i>see Section 8.</i>
+  <li><a href="https://groups.io/g/nanovna-users/message/3487">Android DfuSe programming</a>
+  <li>DfuSe fails? Use <a href="https://www.ebay.com/itm/293210793177">ST-Link</a> and hex format to <a href="https://groups.io/g/nanovna-users/topic/34149616">recover bricked devices</a>
   </ul>
-<dd>Clicking <b>Table of Contents</b> links there is not helpful...<br>
- instead do browser search there for "How to write firmware"
-<br><br><dt><a href="http://www.emcu.eu/how-to-program-the-stm32/#DFU"><b>DfuSe utility introduction</b></a>
-<dd>not specific to nanoVNA
-<br><br><dt><a href="https://www.st.com/en/development-tools/stsw-stm32080.html"><b>STSW-STM32080 package</b></a>
+
+<br><dt><a href="https://www.st.com/en/development-tools/stsw-stm32080.html">STSW-STM32080 package</a>
 <dd>drivers and DFU utilities for managing and installing firmware<br>
 The same package is available <a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">here</a> without registering.<br>
 
 <details>
 <summary>click here for STSW-STM32080 package description</summary>
 <br>
+<p><a href="http://www.emcu.eu/how-to-program-the-stm32/#DFU">DfuSe utility introduction</a></p>
 STMicroelectronics wants package users to register,<br>
 then send confirmation to your email address for access.<br>
 This requires browser cookies for ST's website at least temporarily enabled...<br>
@@ -51,7 +53,7 @@ their target audience to create create custom firmware installers motivated by t
 </details>
 
 <details>
-<summary>click here for converting e.g. edy255 firmware to DFU format</summary>
+<summary>click here for converting other firmware formats to DFU</summary>
 <br>
 <em>thanks to  starbuck5250</em><br><br>
 <code>DfuSe_Demo_V3.0.6_Setup.exe</code> also installs <code>DfuFileMgr.exe</code> e.g. in<br>
@@ -76,13 +78,14 @@ their target audience to create create custom firmware installers motivated by t
   to flash NanoVNA by <code>DfuSe Demo 3.0.6.exe</code>.
 </dl>
 </details>
-<br>
-<dt><a href="https://groups.io/g/nanovna-users/message/3487">Android DfuSe programming</a>
 
-<br><br>
+</h4>
+
 <dt>
+
 <details>
-<summary>click here for <code>hugen</code> firmware naming conventions</summary>
+
+<summary>click here for <font color="green">hugen</font> firmware naming conventions</summary>
 <br>
 A typical name is <code>NanoVNA-H_900_ch_20191003.dfu</code>
 <br><br>
@@ -103,84 +106,57 @@ or <code>800</code> versions for devices with weaker high frequency performance<
 <dd> format for DFU utilities, e.g. verify that firmware matches USB device ID<br>
 <code>.hex</code> is simpler, lacks ID matching.  DFU utility can convert either way.
 </details>
-</dl>
 
-<h4>
-<dl>
+
 <br><dt><a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019/DMR/DMR-CLEAR_MEMORY_DFU.dfu">DMR-CLEAR_MEMORY_DFU.dfu</a> clears device flash memory.
 <dd>Your device will <em>not</em> again work until <em>after</em> re-loading <em>some other</em> firmware.<br>
   It is used to "clean the slate" prior to installing <em>other</em> firmware, but is <em>rarely</em> needed.<br>
-Some few firmware installations fail until after first loading "DMR-CLEAR_MEMORY_DFU.dfu",<br>
+Some few firmware installations fail until after first loading "DMR-CLEAR_MEMORY_DFU.dfu"
+<br>
 which FWIW is identical to <code>DMR Aug 31</code> "Stuck on firmware?" append: <a href="https://groups.io/g/nanovna-users/message/1583">FILL FF DFU.dfu</a>
-
-<br><br><dt>Larry Rothman's <a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019">Firmware Archive</a>
-<dd>some of that content is described below
-
-<br><br><dt>edy555 0.2.3 TRACE and MARKER menu toggle changes <em>Oct 7 2019</em>
-<dd>Larry Rothman <a href="https://groups.io/g/nanovna-users/message/4268">message append</a>
+</dl>
+<h4>
+<dl>
+<dt>Larry Rothman's <a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019">Firmware Archive</a>
+<dd>some of that content is linked below
 
 <br><br><dt>10KHz-1.5GHz_05.10.2019.rar
 <dd>DMR <a href="https://groups.io/g/nanovna-users/message/4073">message append</a>
 
-<br><br><dt>Gen Hu Google Drive 
+<br><br><dt>Gen Hu
 <dd><a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">Google Drive folder</a>
+    &nbsp <a href="https://github.com/hugen79/NanoVNA-H/releases">GitHub Releases</a>
 <ul compact>
-  <li><a href="https://drive.google.com/drive/folders/1B56yW4ZbJVwVTC_575KJnoCkvfjZQFtn">NanoVNA-H-20191003</a> Oct 3, 2109 by Gen Hu, nanoVNA-H owner
-  <li>Aug 2 Release Notes 
-   <a href="https://groups.io/g/nanovna-users/files/hugen%20-%20Release%20notes%20to%20Aug%202,%202019%20from%20Google%20Drive%20Firmware%20folder.pdf">PDF</a>
+  <li><a href="https://drive.google.com/drive/folders/1H_l_3vnXSgg6AOIngvMEsPpIvRVTG7hq">NanoVNA-H-20191009</a> Oct 9, 2109 by Gen Hu, nanoVNA-H owner
+  <li>Release Notes 
+   <a href="https://groups.io/g/nanovna-users/files/Firmware/hugen%27s%20firmware%20release%20notes.pdf">PDF</a>
+
+  <li>(product?) <a href="https://drive.google.com/drive/folders/1IZEtx2YdqchaTO8Aa9QbhQ8g_Pr5iNhr">Google Drive folder</a>
+
+  <li>latest "aa" (larger text, 2 trace) firmware no longer requires separate clear memory download
 </ul>
 
-<dt>Gen Hu (product?)
-<dd><a href="https://drive.google.com/drive/folders/1IZEtx2YdqchaTO8Aa9QbhQ8g_Pr5iNhr">Google Drive folder</a>
+<dt>edy255 <a href="https://github.com/ttrftech/NanoVNA/releases">GitHub Releases</a> &nbsp <a href="https://circleci.com/gh/ttrftech/NanoVNA">change log</a>
+ &nbsp <a href="https://cho45.stfuawsc.com/NanoVNA/dfu.html">nightly builds</a>
+<dd>most other firmwares sync to edy255..
 
-<br><br><dt>"hugen_900_aa_aug-2-19.dfu" <a href="https://groups.io/g/nanovna-users/message/3587">clears memory</a> 
-<dd><a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019/hugen/hugen_900_aa_aug-2-19.dfu">DFU</a>
+<br><br><dt>Erik Kaashoek's 
+<a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">firmware folder</a>
+<dd> primarily intended for use with <a href="https://groups.io/g/nanovna-users/files/NanoVNA%20PC%20Software/TAPR%20VNA">TAPR VNA v4 PC software</a>
 
-<br><br><dt>Erik Kaashoek's firmware folder
-<dd><a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">firmware</a> primarily intended for use with <a href="https://groups.io/g/nanovna-users/files/NanoVNA%20PC%20Software/TAPR%20VNA">TAPR VNA v4 PC software</a>
-<ul compact>
-<li>Set SI5351 max fundamental frequency <a href="https://groups.io/g/nanovna-users/message/4175">message</a> and 
-<a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik/Release%200.2.22_1%20with%20modified%20scan%20command%20and%20harmonic%20threshold%20setting.zip">firmware</a>
-</ul>
+<br><br><dt>Xenomorph
+<dd>hwalker Sep 25  256 point FFT Firmware 
+<a href="https://groups.io/g/nanovna-users/attachment/3028/1/XENOMORPH%20firmware%20with%20FFT%20256,%20instead%20of%20128_1500.rar">email RAR attachment</a>
 
-<br><br><dt>edy255 + cho45 nightly builds 
-<dd><a href="https://cho45.stfuawsc.com/NanoVNA/dfu.html">web page</a> and <a href="https://circleci.com/gh/ttrftech/NanoVNA">change log</a> which notes bug fixes and functional changes
-
-<br><br><dt>pluto backup Sep 29 
+</h4>
+<dl>
+<dt>pluto backup Sep 29 
 <dd><a href="https://groups.io/g/nanovna-users/message/3592">email</a>
-
-<br><br><dt>neb40gsm modified for TDR 
-<dd><a href="https://groups.io/g/nanovna-users/message/3272">email</a> Ask and <em>neb</em> will send
 
 <br><br><dt>DMR tweak colors to white 
 <dd><a href="https://groups.io/g/nanovna-users/attachment/3337/0/white.rar">email RAR attachment</a>
 
-<br><br><dt>DMR Sep 27 Calibration fix in Last edy555 firmware DFU. 27-09-2019 
-<dd><a href="https://groups.io/g/nanovna-users/attachment/3271/0/27.09.2019_edy555.rar">email RAR attachment</a>
+</dl>
+</dl>
 
-<br><br><dt>hwalker Sep 25 "XENOMORPH" 256 point FFT Firmware 
-<dd><a href="https://groups.io/g/nanovna-users/attachment/3028/1/XENOMORPH%20firmware%20with%20FFT%20256,%20instead%20of%20128_1500.rar">email RAR attachment</a>
-
-<br><br><dt>Rudi DL5FA edy255 nanoVNA_0.1.0_ch added USB Device ID DF11 
-<dd><a href="https://groups.io/g/nanovna-users/attachment/2508/1/nanoVNA_0.1.0_ch.dfu.zip">email RAR attachment</a>
-
-<br><br><dt>hugen Sep 19 Firmware summary edy555 that includes TDR 
-<dd><a href="https://groups.io/g/nanovna-users/message/2671">email</a>
-
-<br><br><dt>reuterr Sep 16 Recent new release of edy555 firmware 
-<dd><a href="https://groups.io/g/nanovna-users/message/2508">email</a>
-
-<br><br><dt>qrp Sep 15 2019 NanoVNA bricked ST-Link hex format 
-<dd><a href="https://groups.io/g/nanovna-users/message/2447">email</a>
-
-<br><br><dt>ohansmit Sep 14 2019 TD 
-<dd><a href="https://groups.io/g/nanovna-users/message/2409">email</a>
-
-<br><br><dt>DMR Sep 13 2019 RFpro 10KHz-1500MHz 
-<dd><a href="https://groups.io/g/nanovna-users/message/2391">email</a>
-
-<br><br><dt>erik Sep 5 Firmware with arbitrary scan length 
-<dd><a href="https://groups.io/g/nanovna-users/message/1886">email</a>
-
-</dl></h4>
 </html>
