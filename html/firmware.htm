@@ -2,15 +2,17 @@
 <head>
 <title>NanoVNA versions Oct 11 2019</title>
 <style type="text/css">
-  p,h2,dl {
+  body {
     margin-left: 40;
   }
 </style>
 </head>
 <body>
 
+<h2>nanoVNA firmware versions</a></h2>
+
 <details>
-<summary>click for reasons you might want to upgrade</summary>
+<summary>click here for reasons to upgrade</summary>
  (<em>thanks to Herb</em>)
 <ol compact>
 <li> TDR capability in firmware.
@@ -23,22 +25,17 @@
 </ol>
 </details>
 
-<h2>nanoVNA firmware versions</a></h2>
-
 <dl>
-<h4>
-<dt>
-  Firmware replacement instructions:
-  <ul>
-  <li><a href="https://groups.io/g/nanovna-users/files/Firmware/Windows%20guide%20on%20how%20to%20write%20firmware.pdf">Replace NanoVNA Firmware from Windows</a>
-  <li><a href="https://cho45.github.io/NanoVNA-manual/">Replace NanoVNA Firmware from macOS or Ubuntu</a> <i>see Section 8.</i>
-  <li><a href="https://groups.io/g/nanovna-users/message/3487">Android DfuSe programming</a>
-  <li>DfuSe fails? Use <a href="https://www.ebay.com/itm/293210793177">ST-Link</a> with hex format to <a href="https://groups.io/g/nanovna-users/topic/34149616">recover bricked devices</a>
-  </ul>
+<dt><font size=+1><b>Firmware replacement instructions:</b></font>
+  <dd>
+  <a href="https://groups.io/g/nanovna-users/files/Firmware/Windows%20guide%20on%20how%20to%20write%20firmware.pdf">Replace NanoVNA Firmware from Windows</a>
+  <br><a href="https://cho45.github.io/NanoVNA-manual/">Replace NanoVNA Firmware from macOS or Ubuntu</a> <i>see Section 8.</i>
+  <br><a href="https://groups.io/g/nanovna-users/message/3487">Android DfuSe programming</a>
+  <br>DfuSe fails? Use <a href="https://www.ebay.com/itm/293210793177">ST-Link</a> with hex format to <a href="https://groups.io/g/nanovna-users/topic/34149616">recover bricked devices</a>
 
-<br><dt><a href="https://www.st.com/en/development-tools/stsw-stm32080.html">STSW-STM32080 package</a>
+<br><br><dt><font size=+1><b><a href="https://www.st.com/en/development-tools/stsw-stm32080.html">STSW-STM32080 package</a></b></font>
 <dd>drivers and DFU utilities for managing and installing firmware<br>
-The same package is available <a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">here</a> without registering.<br>
+ &nbsp - available <a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY"><b><i>here</i></b></a> without registering.<br>
 
 <details>
 <summary>click here for STSW-STM32080 package description</summary>
@@ -79,14 +76,27 @@ their target audience to create create custom firmware installers motivated by t
 </dl>
 </details>
 
-</h4>
+</b></font>
 
-<dt>
+<br><dt>
 
-<details>
+<br><dt><font size=+1><b><a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019/DMR/DMR-CLEAR_MEMORY_DFU.dfu">DMR-CLEAR_MEMORY_DFU.dfu</a></b></font>
+<dd>
+A few firmware installations fail until after first loading "DMR-CLEAR_MEMORY_DFU.dfu".<br>
+After loading it, your nanoVNA will <em>not</em> again work until <em>after</em> installing <em>other</em> firmware.<br>
+  It is used to "clean the slate" prior to installing e.g. <a href="#DMR"><em>DMR</em> firmwares</a>, but should <em>otherwise rarely</em> be needed.<br>
+This is identical to <code>DMR Aug 31</code> "Stuck on firmware?" append: <a href="https://groups.io/g/nanovna-users/message/1583">FILL FF DFU.dfu</a>
+
+<br><br><dt><font size=+1><b>Larry Rothman's <a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019">Firmware Archive</a></b></font>
+<dd>some of that content is linked below
+
+<br><br><dt><font size=+1><b>HuGen's</b> <a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">Google Drive folder</a>,
+    &nbsp <a href="https://github.com/hugen79/NanoVNA-H/releases">GitHub Releases</a>, &nbsp
+   <a href="https://groups.io/g/nanovna-users/files/Firmware/hugen%27s%20firmware%20release%20notes.pdf">Release Notes</a> PDF</font>
+<br>
+<details  style="background-color:powderblue;">
 
 <summary>click here for <font color="green">HuGen</font> firmware naming conventions</summary>
-<br>
 A typical name is <code>NanoVNA-H_900_ch_20191003.dfu</code>
 <br><br>
 Many special firmware are available with different naming,<br>
@@ -105,37 +115,24 @@ or <code>800</code> versions for devices with weaker high frequency performance<
 <dt><code>.dfu</code>
 <dd> format for DFU utilities, e.g. verify that firmware matches USB device ID<br>
 <code>.hex</code> is simpler, lacks ID matching.  DFU utility can convert either way.
+<br>
+<br>
 </details>
 
-
-<br><dt><a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019/DMR/DMR-CLEAR_MEMORY_DFU.dfu">DMR-CLEAR_MEMORY_DFU.dfu</a> clears device flash memory.
-<dd>
-A few firmware installations fail until after first loading "DMR-CLEAR_MEMORY_DFU.dfu".<br>
-After loading it, your nanoVNA will <em>not</em> again work until <em>after</em> installing <em>other</em> firmware.<br>
-  It is used to "clean the slate" prior to installing e.g. <a href="#DMR"><em>DMR</em> firmwares</a>, but should <em>otherwise rarely</em> be needed.<br>
-This is identical to <code>DMR Aug 31</code> "Stuck on firmware?" append: <a href="https://groups.io/g/nanovna-users/message/1583">FILL FF DFU.dfu</a>
-</dl>
-<h4>
-<dl>
-<dt>Larry Rothman's <a href="https://groups.io/g/nanovna-users/files/Firmware/All%20%28known%29%20publicly%20available%20NanoVNA%20DFU%20files%20from%20May%205,%202019%20through%20to%20Sept%2029,%202019">Firmware Archive</a>
-<dd>some of that content is linked below
-
-<br><br><dt>HuGen's <a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">Google Drive folder</a>,
-    &nbsp <a href="https://github.com/hugen79/NanoVNA-H/releases">GitHub Releases</a>, &nbsp
-   <a href="https://groups.io/g/nanovna-users/files/Firmware/hugen%27s%20firmware%20release%20notes.pdf">Release Notes</a> PDF
-<dd> <a href="https://drive.google.com/drive/folders/1H_l_3vnXSgg6AOIngvMEsPpIvRVTG7hq">NanoVNA-H-20191009</a> Oct 9, 2109 by Gen Hu, nanoVNA-H owner
+<dd> <a href="https://drive.google.com/drive/folders/1H_l_3vnXSgg6AOIngvMEsPpIvRVTG7hq"><b>NanoVNA-H-20191009</b></a> Oct 9, 2109 by Gen Hu, nanoVNA-H owner
   <br> &nbsp - latest "aa" (larger text, 2 trace) firmware no longer requires separate clear memory download
   <br>(product?) <a href="https://drive.google.com/drive/folders/1IZEtx2YdqchaTO8Aa9QbhQ8g_Pr5iNhr">Google Drive folder</a>
 
-<br><br><dt>edy255's <a href="https://github.com/ttrftech/NanoVNA/releases">GitHub Releases</a> &nbsp <a href="https://circleci.com/gh/ttrftech/NanoVNA">change log</a>
+<br><br><dt><font size=+1><b>edy255's <a href="https://github.com/ttrftech/NanoVNA/releases">GitHub Releases</a> &nbsp <a href="https://circleci.com/gh/ttrftech/NanoVNA">change log</a>
  &nbsp <a href="https://cho45.stfuawsc.com/NanoVNA/dfu.html">nightly builds</a>
+</b></font>
 <dd>most other firmwares sync to edy255..
 
-<br><br><dt>Erik Kaashoek's 
-<a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">firmware folder</a>
+<br><br><dt><font size=+1><b>Erik Kaashoek's 
+<a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">firmware folder</a></b></font>
 <dd> primarily intended for use with <a href="https://groups.io/g/nanovna-users/files/NanoVNA%20PC%20Software/TAPR%20VNA">TAPR VNA v4 PC software</a>
 
-<br><br><dt id="DMR">DMR's firmwares
+<br><br><dt id="DMR"><font size=+1><b>DMR</b></font>
 <dd>10KHz-1.5GHz_05.10.2019.rar
 <a href="https://groups.io/g/nanovna-users/message/4073">message .rar attachment</a>
 
@@ -144,7 +141,7 @@ This is identical to <code>DMR Aug 31</code> "Stuck on firmware?" append: <a hre
  <a href="https://groups.io/g/nanovna-users/message/4666">voltmeter hack</a>
 <br><a href="https://groups.io/g/nanovna-users/message/4697">75-Ohm "device"</a> 12 Oct 2019
 
-<br><br><dt>Xenomorph
+<br><br><dt><font size=+1><b>Xenomorph</b></font>
 <dd>- 256 point FFT Firmware 
 <a href="https://groups.io/g/nanovna-users/attachment/3028/1/XENOMORPH%20firmware%20with%20FFT%20256,%20instead%20of%20128_1500.rar">email RAR attachment</a>
 (hwalker Sep 25)<br>
@@ -154,7 +151,7 @@ Z0-CENTER 75 Ohm:
 use 50-75 Ohm matching transformer at the input and output.
 <a href="http://www.cqham.ru/forum/showthread.php?40166-nanoVNA-%E8%E7-%CA%E8%F2%E0%FF&p=1673622&viewfull=1#post1673622"><img align=top src="75-50 Ohm.jpg"></a>
 
-</h4>
+</b></font>
 <dl>
 <dt>pluto backup Sep 29 
 <dd><a href="https://groups.io/g/nanovna-users/message/3592">email</a>
