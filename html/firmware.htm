@@ -68,10 +68,10 @@ their target audience to create create custom firmware installers motivated by t
   Navigate to e.g. <code>C:\addons\nanovna-firmware-0.2.2\build\</code><br>
   Click on e.g. <code>ch.hex</code>, and then <code>Open</code>.<br>
   Click <code>Generate...</code><br>
-  &nbsp  You will be asked to save the file e.g. as <code>edy255_0.2.2.dfu</code>,<br>
+  &nbsp  You will be asked to save the file e.g. as <code>edy555_0.2.2.dfu</code>,<br>
   &nbsp and saved it in the same directory.<br>
   &nbsp For message <code>Success for Image for alternate setting...</code>, click <code>OK</code>.<br>
-<dt>Use e.g. <code>C:\addons\nanovna-firmware-0.2.2\build\edy255_0.2.2.dfu</code>
+<dt>Use e.g. <code>C:\addons\nanovna-firmware-0.2.2\build\edy555_0.2.2.dfu</code>
   to flash NanoVNA by <code>DfuSe Demo 3.0.6.exe</code>.
 </dl>
 </details>
@@ -112,7 +112,7 @@ After loading this, your nanoVNA will <em>not</em> again work until <em>after</e
 <br>
 <details  style="background-color:powderblue;">
 
-<summary>click here for <font color="green">HuGen</font> firmware naming conventions and differences from edy255 firmware</summary>
+<summary>click here for <font color="green">HuGen</font> firmware naming conventions and differences from edy555 firmware</summary>
 A typical name is <code>NanoVNA-H_900_ch_20191003.dfu</code>
 <br><br>
 Many special firmware are available with different naming,<br>
@@ -120,7 +120,7 @@ and usually <em>without</em> <code>aa</code> versions with larger text<br>
 or <code>800</code> versions for devices with weaker high frequency performance<br>
 <br>
 <dt><code>NanoVNA-H</code>
-<dd>owner or special purpose.<br>  edy255 "owns" NanoVNA; HuGen "owns" NanoVNA-H
+<dd>owner or special purpose.<br>  edy555 "owns" NanoVNA; HuGen "owns" NanoVNA-H
 <br>HuGen typically provided 4 versions for each release date.<br>
 <dt><code>900</code> &nbsp <- <i><b>obsolete</b></i>
 <dd>most devices can overclock for 900MHz third harmonic. <br> To avoid artifacts with weaker devices, use <code>800</code> firmware versions
@@ -134,7 +134,7 @@ or <code>800</code> versions for devices with weaker high frequency performance<
 <dd> format for DFU utilities, e.g. verify that firmware matches USB device ID<br>
 <code>.hex</code> is simpler, lacks ID matching.  DFU utility can convert either way.
 <br>
-<dt><b>differences from edy255 firmware</b> <i>thanks to QRP</i>
+<dt><b>differences from edy555 firmware</b> <i>thanks to QRP</i>
 <dd>1) hugen79 firmware has imbalance gain correction, which is missing from edy555 firmware<br>
 2) hugen79 firmware has a little different logic for frequency band/gain change.<br>
 3) hugen79 firmware has correct default touch calibration,<br>
@@ -149,10 +149,10 @@ or <code>800</code> versions for devices with weaker high frequency performance<
   <br> &nbsp - latest "aa" (larger text, 2 trace) firmware no longer requires separate clear memory download
   <br>(product?) <a href="https://drive.google.com/drive/folders/1IZEtx2YdqchaTO8Aa9QbhQ8g_Pr5iNhr">Google Drive folder</a>
 
-<br><br><dt><font size=+1><b>edy255's <a href="https://github.com/ttrftech/NanoVNA/releases">GitHub Releases</a> &nbsp <a href="https://circleci.com/gh/ttrftech/NanoVNA">change log</a>
+<br><br><dt><font size=+1><b>edy555's <a href="https://github.com/ttrftech/NanoVNA/releases">GitHub Releases</a> &nbsp <a href="https://circleci.com/gh/ttrftech/NanoVNA">change log</a>
  &nbsp <a href="https://cho45.stfuawsc.com/NanoVNA/dfu.html">nightly builds</a>
 </b></font>
-<dd>most other firmwares sync to edy255..
+<dd>most other firmwares sync to edy555..
 
 <br><br><dt><font size=+1><b>Erik Kaashoek's 
 <a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">firmware folder</a></b></font>

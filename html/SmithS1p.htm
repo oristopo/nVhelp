@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Smith chart for Touchstone files by gnuplot</title>
+</head>
+<body>
+<h3>Smith chart for Touchstone files by gnuplot</h3>
+Touchstone S1p files include columns of complex S11 values,<br>
+while Smith Chart wants normalized complex impedance values.<br>
+<br>
+For alternating current circuits, including RF, phase and magnitude are both important.<br>
+No power is consumed when potential across a load is sine and current thru it is cosine.<br>
+Complex arithmatic accounts for that.<br>
+<br>
+To minimize getting too wrapped around an axle<br>
+by complex real with square root of minus one times imaginary,<br>
+let us instead focus on sin S and cos C.<br>
+<br>
+Normalized impedance Z<sub>in</sub> is defined for S1p value S11:<br>
+<br>
+Z<sub>in</sub> = (1 + S11)/(1 - S11)<br>
+<br>
+... where S11 is some complex value S + C:<br>
+<br>
+Z<sub>in</sub> = (1 + (S + C))/(1 - (S + C)) = ((1+S) + C)/((1-S) - C)<br>
+<br>
+For next steps, accept that:<ul>
+<li> division by so-called complex <code>sin + cos</code> involves<br>
+  multiplication by so-called complex conjugate <code>sin - cos</code>.
+<li> so-called <i>imaginary</i> <code>cos*cos</code> become <i>real negative</i> values:<br>
+<br> <code>(sin + cos)*(sin - cos) = sin*sin + cos*cos</code><br>
+</ul>
+This is known as <i>squared magnitude</i>.<br>
+Applying complex conjugate to calculate impedance from S11<br>
+and substituting <code>sin</code> = (1-S) and <code>cos</code> = C:<br>
+<br>
+Z<sub>in</sub> = ((1+S) + C)*((1-S) + C) / ((1-S)*(1-S) + C*C)<br>
+<br>
+Calculate denominator D magnitude:<br>
+<br>
+D = ((1-S)*(1-S) + C*C) = 1 - 2*S + S*S + C*C <br>
+<br>
+Collect numerator terms with single C factors separately from those without:<br>
+<br>
+Z<sub>in</sub> = (((1+S)*(1-S) - C*C) + C*((1-S) + (1+S)))/D<br>
+  &nbsp &nbsp &nbsp;= (1 - S*S - C*C)/D + 2*C/D <br>
+<br>
+<a href="http://www.gnuplot.info/">gnuplot</a> is very mature plotting software that interprets algebra</a>,<br>
+for which I have nearly always used it instead of Excel.<br>
+Touchstone files turn out to be compatible with gnuplot data format..<br>
+In gnuplot:
+<pre>set xlabel "real"
+set ylabel "imaginary"
+set title "file.s1p"
+# denominator magnitude
+D(S,C) = 1 - 2*S + S*S + C*C
+# real and imaginary impedances
+Zr(S,C) = (1 - S*S - C*C)/D(S,C)
+Zi(S,C) = 2*C/D(S,C)
+# Using second and third column values for S and C,
+# plot imaginary vs real as Y vs X with lines
+plot "file.s1p" u (S=$2, C=$3, Zr(S,C)):(S=$2, C=$3, Zi(S,C)) w l title "S11 Smith"
+
+#for s2p files, plot both S11 and S21:
+set title "file.s2p"
+plot "file.s2p" u (S=$2, C=$3, Zr(S,C)):(S=$2, C=$3, Zi(S,C)) w l title "S11 Smith"
+replot "file.s2p" u (S=$4, C=$5, Zr(S,C)):(S=$2, C=$3, Zi(S,C)) w l title "S21 Smith"
+</pre>
+
+<a href="http://thebeekeeper.net/sci/sparams.pdf">S-Parameters and Smith Charts</a> - Nick Gamroth, Oct 2004
+</body>
+</html>

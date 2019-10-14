@@ -189,7 +189,7 @@ Some nanoVNAs fail when overclocked to `300MHz` by standard firmware;
 
 [How to load firmware](https://github.com/ttrftech/NanoVNA#flash-firmware)  
 
-[Get latest edy255 firmware *here*](https://cho45.stfuawsc.com/NanoVNA/dfu.html) as `ch.bin`  
+[Get latest edy555 firmware *here*](https://cho45.stfuawsc.com/NanoVNA/dfu.html) as `ch.bin`  
 On powered-off nanoVNA connected to PC by USB:  
 -  jumper BOOT0 pins, then power on.  
 -  flash firmware from Command Prompt:  
