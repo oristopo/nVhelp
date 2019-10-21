@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Windows tricks</title>
+</head>
+<body>
+<h3>surviving M$ Windows</h3>
+<details>
+<summary>click for <b>background</b></summary>
+Long ago, I was paid to sort a Windows XP subsystem.<br>
+Even longer ago, I brought to graduate school an IBM XT (hard drive upgraded to 20MB)<br>
+ with both mono and color displays, PC-DOS, 
+<a href="https://www.researchgate.net/publication/234806082_An_APL_system_for_the_IBM_personal_computer">IBM PC APL</a>, Turbo Pascal and <a href="http://desmet-c.com/">DeSmet C</a><br>
+Grad school led to Unix (eventually HP/UX, AIX, IRIX, SunOS, slackware, red hat, fedora)<br>
+with a few Macs for e.g. PhotoShop and eventually iOS development.<br>
+As a part time system administrator, shell usage was unavoidable,<br>
+ and xterm with bash and vim became my weapons of choice.<p>
+Windows was mostly for new or obscure hardware unsupported elsewhere<br>
+and recovering family and friends' PCs from bloat- and malware.<br>
+I bought a refurbished Windows 8 PC (because cheap: few wanted it)<br>
+ to experiment with dual-booting linux on UEFI, which ultimately failed<br>
+but led to regular Windows 8.1 use with Cygwin,
+which with <a href="https://en.wikipedia.org/wiki/X_Window_selection">X mouse</a> remains my go-to desktop.<br>
+</details>
+<br>
+<i>FWIW, <a href="https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm">X-Mouse Button Control</a> may be the best
+free Windows mouse tamer</i>.<br>
+Windows 10 with WSL is promising, but frequently problematic M$ updates<br> make
+Windows 8.1 a more stable fully supported platform.</p>
+The scientific method wants repeatable results,<br>
+and processing by shell scripts minimizes randomizing by GUI fumbles.<br>
+Since Cygwin is relatively obscure, most scripts get translated
+into .bat files for Windows' cmd.exe 
+<h5>divide and conquer</h5>
+A UEFI PC can boot among multiple Windows installations,<br>
+with multiple user accounts on each customized for different purposes.<br>
+Sparse Desktops, with a single folder for commonly used utilities<br>
+and the rest consumed by Chrome browser, shell windows, file explorer <br>
+and e.g. <a href="https://desktop.github.com/">GitHub Desktop</a> minimize confusing window overlaps.<br><br>
+For Mac and linux users, utilities with cross-platform support are preferred..<br>
+Windows user account home folders containing .bat files<br>
+help set custom PATH and work directory for various tasks.<br>
+If not with Cygwin, some PATH should include a Ruby msys64\usr\bin\ for grep, find, cat, paste etc.<br><br>
+With projects on a separate e.g. G: drive shared by all userids and booted Windows partitions,<br>
+typing <code>C:</code> in cmd.exe returns to home directory.<br>
+Since e.g. GitHub Desktop frequently changes its path name for AppData resources,<br>
+modularize custom tool paths in a single bat file, e.g.:
+<pre>C:\Users\ormpoa>type hdp.bat
+@echo off
+set GHDP=C:\Users\ormpoa\AppData\Local\GitHubDesktop
+:app- version number changes frequently
+set GV=%GHDP%\app-2.2.1\resources\app\git
+set GIT=%GHDP%\bin;%GV%\usr\bin;%GV%\mingw64\bin
+set PY36S=C:\Users\ormpoa\AppData\Roaming\Python\Python36\Scripts
+set PY=G:\Gateway\my\VS\Shared\Python36_64;%PY36S%
+set WIN=C:\WINDOWS\system32;C:\WINDOWS
+set RUBY=G:\Ruby25-x64\msys64\usr\bin
+set DOT=C:\Program Files\dotnet
+set GP=C:\Program Files (x86)\gnuplot\bin
+</pre>
+.. so that e.g. a .bat file for gnuplot activity is:
+<pre>
+C:\Users\ormpoa>type gplot.bat
+@call hdp.bat
+path=%GP%;%WIN%;%RUBY%
+g:
+cd \Gateway\GitHub\oristo\altervista\gnuplot
+</pre>
+For tab completion, .bat filenames beginning uniquely is important..
+</p>
+</body>
+</html>

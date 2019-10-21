@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>DIY nanoVNA graphs</title>
+</head>
+<body>
+<h3>DIY nanoVNA graphs</h3>
+Consider:
+<dl>
+
+<dt>Programs' communications with nanoVNA is
+   <a href="https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%20Oct-16-19.pdf">simple and documented</a>
+<dd>nanoVNA command behaviors and interactions can be unobvious..
+
+<dt> nanoVNA is conceptually simple
+<dd>It measures for some devices changes in RF signals phase and amplitude, for ranges of frequency samples.
+<br>It returns those in S11 (input impedance mismatch from 50 Ohms resistive) and S21 (gain and phase shift) format.
+
+<dt>Software to communicate with nanoVNA <a href="nVargs.py">need not be complicated</a>
+<dd>Pass commands to nanoVNA from cmd.exe or other terminal or shell scripts and capture results.
+<dd>Combine captured nanoVANA data into gnuplot (<i>almost</i> <a href="https://en.wikipedia.org/wiki/Touchstone_file">Touchstone</a>) file format
+    using e.g. <a href="https://www.howtoforge.com/linux-paste-command"><code>cat</code> and <code>paste</code></a>
+<dd>Render Touchstone format to <a href="http://ormpoa.altervista.org/gnuplot/Smith.htm">Smith</a>
+    and <a href="http://ormpoa.altervista.org/gnuplot/S1pZ.htm">rectangular plots</a> by <a href="http://www.gnuplot.info">gnuplot</a><br>
+    Calculate and plot e.g. resistance and reactance values from S11 data using <a href="http://gnuplot.info/scripts/index.html">gnuplot</a>
+    <a href="https://www.qsl.net/4nec2/">scripts</a>
+
+<dt>Batch processing advantages:
+<dd>task-oriented, easily duplicated, "self-documenting"
+<dd>let the OS handle multi-threading and process scheduling
+<dd>powerful and fairly easy using <a href="https://linuxconfig.org/bash-scripting-tutorial-for-beginners">bash</a>
+and not necessarily horrible by <a href="win.htm">Windows</a> .bat scripts
+
+<dt>No commercial softwares (other than Window$) are injured during this production.
+<dd>Relatively simple scripts flexibly combine data for plots of interest.
+<dd>Batch and gnuplot scripting requires use of some text editor.
+<dd>Python edits only for changing USB port from 'COM3' in <a href="nVargs.py">nVargs.py</a>
+
+<dt>nanoVNA shell command scripting constraints:
+<dd><code>reset</code> interrupts communications and should be avoided
+<dd><code>clearconfig</code> wipes out calibrations and should be avoided
+<dd><a href="nVargs.py">nVargs.py</a> will prefix <code>pause</code> and append <code>resume</code> to nanoVNA commands passed to it.
+<br>Otherwise, <a href="nVargs.py">nVargs.py</a> is intended to be so 'dumb' that any new nanoVNA shell commands should already work.
+</dl>
+</body>
+</html>
