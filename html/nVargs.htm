@@ -15,7 +15,7 @@ Consider:
 <dd>It measures for some devices changes in RF signals phase and amplitude, for ranges of frequency samples.
 <br>It returns those in S11 (input impedance mismatch from 50 Ohms resistive) and S21 (gain and phase shift) format.
 
-<dt>Software to communicate with nanoVNA <a href="nVargs.py">need not be complicated</a>
+<dt>Software to communicate with nanoVNA <a href="https://github.com/oristopo/nVhelp/blob/master/html/nVargs.py">need not be complicated</a>
 <dd>Pass commands to nanoVNA from cmd.exe or other terminal or shell scripts and capture results.
 <dd>Combine captured nanoVANA data into gnuplot (<i>almost</i> <a href="https://en.wikipedia.org/wiki/Touchstone_file">Touchstone</a>) file format
     using e.g. <a href="https://www.howtoforge.com/linux-paste-command"><code>cat</code> and <code>paste</code></a>
@@ -38,7 +38,7 @@ and not necessarily horrible by <a href="win.htm">Windows</a> .bat scripts
 <dt>nanoVNA shell command scripting constraints:
 <dd><code>reset</code> interrupts communications and should be avoided
 <dd><code>clearconfig</code> wipes out calibrations and should be avoided
-<dd><a href="nVargs.py">nVargs.py</a> will prefix <code>pause</code> and append <code>resume</code> to nanoVNA commands passed to it.
+<dd><a href="nVargs.py">nVargs.py</a> will <i>eventually</i> prefix <code>pause</code> and append <code>resume</code> to nanoVNA commands passed to it.
 <br>Otherwise, <a href="nVargs.py">nVargs.py</a> is intended to be so 'dumb' that any new nanoVNA shell commands should already work.
 </dl>
 </body>
