@@ -21,7 +21,6 @@ if 1 < len(sys.argv) :
             command = str(sys.argv[1])+"\r"
             ser.write(command.encode('ascii'))
             sleep(0.1)
-# echo'ed command becomes a comment in gnuplot-able results
             result = ""
 # collect results until nanoVNA returns its shell prompt
             while "ch>" not in data:
@@ -33,9 +32,9 @@ if 1 < len(sys.argv) :
             d = re.search("\n", result)
             if d is None :
                 sys.stderr.write("no lines returned from nanoVNA")
-                print(result)
+                print('['+result+']')
             else :
-                print(result[1+d.start():])
+                print(result[1+d.start():], end = '')
 
         except ser.SerialException:
             sys.stderr.write('nanoVNA could not be read')
