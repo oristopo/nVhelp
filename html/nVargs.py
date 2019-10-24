@@ -18,7 +18,8 @@ def serIO ( command ):
     sleep(0.1)
 # collect results until nanoVNA returns its shell prompt
     while "ch>" not in data:
-        result += data
+# strip "\r"
+        result += data.replace("\r", "") 
         data = ser.readline().decode('ascii')
     return result
 
