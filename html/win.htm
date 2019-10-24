@@ -17,7 +17,7 @@ As a part time system administrator, shell usage was unavoidable,<br>
 Windows was mostly for new or obscure hardware unsupported elsewhere<br>
 and recovering family and friends' PCs from bloat- and malware.<br>
 I bought a refurbished Windows 8 PC (because cheap: few wanted it)<br>
- to experiment with dual-booting linux on UEFI, which ultimately failed<br>
+ to experiment with dual-booting Linux on UEFI, which ultimately failed<br>
 but led to regular Windows 8.1 use with Cygwin,
 which with <a href="https://en.wikipedia.org/wiki/X_Window_selection">X mouse</a> remains my go-to desktop.<br>
 </details>
@@ -28,32 +28,44 @@ Windows 10 with WSL is promising, but frequently problematic M$ updates<br> make
 Windows 8.1 a more stable fully supported platform.</p>
 The scientific method wants repeatable results,<br>
 and processing by shell scripts minimizes randomizing by GUI fumbles.<br>
-Since Cygwin is relatively obscure, most scripts get translated
-into .bat files for Windows' cmd.exe 
+Since Cygwin and <a href="https://gist.github.com/roblogic/b401aa68d0a7c7c96095fa64a7c9f684">MSYS2</a> are relatively obscure, most scripts get translated
+into .bat files for Windows' cmd.exe <br>
+Practically, <a href="https://www.booleanworld.com/get-unix-linux-environment-windows-msys2">msys2.exe</a> is more powerful (resizeable and uses bash) than cmd.exe,<br>
+(with IMO less hassle than Linux distros) except that it does not recognize .bat files as executable.<br>
+However, msys2.exe console may run .bat files by e.g. <code>$ cmd "/C trivial.bat"</code>.<br>
+<a href="https://www.vim.org/download.php#pc">GVIM</a> can be configured for compatible copy and paste by mouse with Mys2.exe terminals..
+
 <h5>divide and conquer</h5>
 A UEFI PC can boot among multiple Windows installations,<br>
 with multiple user accounts on each customized for different purposes.<br>
-Sparse Desktops, with a single folder for commonly used utilities<br>
-and the rest consumed by Chrome browser, shell windows, file explorer <br>
-and e.g. <a href="https://desktop.github.com/">GitHub Desktop</a> minimize confusing window overlaps.<br><br>
-For Mac and linux users, utilities with cross-platform support are preferred..<br>
+Sparse Desktops minimize confusing window overlaps,<br>
+e.g. with a single folder for commonly used utilities and the rest consumed by<br>
+web browser, file explorer and shell windows
+and e.g. <a href="https://desktop.github.com/">GitHub Desktop</a>
+<br><br>
+
+For Mac and Linux users, utilities with cross-platform support are preferred..<br>
 Windows user account home folders containing .bat files<br>
 help set custom PATH and work directory for various tasks.<br>
-If not with Cygwin, some PATH should include a Ruby msys64\usr\bin\ for grep, find, cat, paste etc.<br><br>
-With projects on a separate e.g. G: drive shared by all userids and booted Windows partitions,<br>
+If not with Cygwin, some PATH should include a usr\bin\ for git, grep, find, cat, paste etc.<br>
+Many applications bundle msys and or mingw; &nbsp separately installing another IMO<br>
+mostly wastes spaces and increases update maintenance.<br>
+A Ruby installation on my PC had the largest and most complete MSYS, so goes in PATHs.<br>
+<br>
+With projects on a separate e.g. G: drive shared by all user ids and booted Windows partitions,<br>
 typing <code>C:</code> in cmd.exe returns to home directory.<br>
 Since e.g. GitHub Desktop frequently changes its path name for AppData resources,<br>
 modularize custom tool paths in a single bat file, e.g.:
 <pre>C:\Users\ormpoa>type hdp.bat
 @echo off
 set GHDP=C:\Users\ormpoa\AppData\Local\GitHubDesktop
-:app- version number changes frequently
-set GV=%GHDP%\app-2.2.1\resources\app\git
-set GIT=%GHDP%\bin;%GV%\usr\bin;%GV%\mingw64\bin
+: GitHub Desktop version number changes frequently
+set GV=%GHDP%\app-2.2.1
+set GIT=%GHDP%\bin;%GV%\resources\app\git\mingw64\bin
 set PY36S=C:\Users\ormpoa\AppData\Roaming\Python\Python36\Scripts
 set PY=G:\Gateway\my\VS\Shared\Python36_64;%PY36S%
 set WIN=C:\WINDOWS\system32;C:\WINDOWS
-set RUBY=G:\Ruby25-x64\msys64\usr\bin
+set MSYS=G:\Ruby25-x64\msys64\usr\bin
 set DOT=C:\Program Files\dotnet
 set GP=C:\Program Files (x86)\gnuplot\bin
 </pre>
@@ -61,11 +73,52 @@ set GP=C:\Program Files (x86)\gnuplot\bin
 <pre>
 C:\Users\ormpoa>type gplot.bat
 @call hdp.bat
-path=%GP%;%WIN%;%RUBY%
+path=%GP%;%WIN%;%MSYS%
 g:
 cd \Gateway\GitHub\oristo\altervista\gnuplot
 </pre>
 For tab completion, .bat filenames beginning uniquely is important..
 </p>
+<h5>MSYS2 testimonial</h5>
+By comparison, here are corresponding lines in <code>.bash_profile</code> for <code>msys2.exe</code> consoles:
+<pre>PATH=/bin:/c/Windows/System32:/c/Windows:/usr/bin/core_perl
+
+# include user's private bin if it exists
+if [ -d "${HOME}/bin" ] ; then
+  PATH="${HOME}/bin:${PATH}"
+fi
+
+if [ -z "$GIT" ] ; then
+# for compatibility with GitHub Desktop, use its binary
+  GHDP="/c/Users/ormpoa/AppData/Local/GitHubDesktop"
+# Version numbers change frequently:
+  GV="${GHDP}/app-2.2.1"
+  export GIT="${GV}/resources/app/git/mingw64/bin"
+# if `where git` reports another, then delete or rename it
+fi
+
+if [ -z "$PY" ] ; then
+# use Python from shared Visual Studio Community
+  PY36S="/c/Users/ormpoa/AppData/Roaming/Python/Python36/Scripts"
+  PY="/g/Gateway/my/VS/Shared/Python36_64:${PY36S}"
+fi
+PATH="${PATH}:${GIT}:${PY}" 
+</pre> Regular
+<a href="https://sourceforge.net/projects/gnuplot/files/gnuplot/">gnuplot for Windows</a> does not run from <code>msys2.exe</code>;<br>
+rather than installing <a href="http://tmacchant3.starfree.jp/gnuplot/Eng/winbin/">gnuplot for mingw</a>,<br>
+ simply launch that Windows version in another window.
+<p><code>msys2.exe</code> bash shell supports <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions">aliases</a>, which can also be defined in <code>.bash_profile</code>, e.g.
+<pre>alias nv='python nVargs.py'
+alias pip='python -m pip'
+# https://packages.msys2.org/base
+alias install='pacman -S'
+alias spell='aspell -c'
+alias mn='cd /g/Gateway/my/nanoVNAsaver/'
+if [ -d /g/Gateway/GitHub/oristo ] ; then
+  alias g='cd /g/Gateway/GitHub/oristo'
+fi
+</pre>
+</p>
+
 </body>
 </html>
