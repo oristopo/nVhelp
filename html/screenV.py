@@ -36,15 +36,14 @@ if 2 > len(sys.argv) :
 cmd = "capture\r"
 ser = open()
 ser.write(cmd.encode())
-ser.readline() # discard echo'ed prompt
 
 b = ser.read(320 * 240 * 2)
 # unlikely to grab entire screen buffer in one read()
-while (153600 > (len(b))):
+while (153610 > (len(b))):
     b += ser.read(320 * 240 * 2)
 
-# prune trailing "ch>"
-b = b[:153600]
+# prune  leading and trailing
+b = b[9:153609]
 
 # ">" for big-endian 16-bit
 x = struct.unpack("<76800H", b)
@@ -52,7 +51,7 @@ x = struct.unpack("<76800H", b)
 # unpack uint16 to uint32
 arr = np.array(x, dtype=np.uint32)
 # convert pixel format 565(RGB) to 8888(RGBA)
-arr = 0xFF000000 + ((arr & 0xF800) >> 8) + ((arr & 0x07E0) << 5) + ((arr & 0x001F) << 19)
+arr = 0xFF000000 + ((arr & 0xF800) << 8) + ((arr & 0x07E0) << 5) + ((arr & 0x001F) << 3)
 
 img = Image.frombuffer('RGBA', (320, 240), arr, 'raw', 'RGBA', 0, 1)
 img.save(str(sys.argv[1])+'.png')
