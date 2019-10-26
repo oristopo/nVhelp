@@ -37,20 +37,26 @@ cmd = "capture\r"
 ser = open()
 ser.write(cmd.encode())
 
-b = ser.read(320 * 240 * 2)
+# will need to prune leading bytes
+prune = 9
+# nanoVNA has 320 x 240 RGB565 screen buffer
+blen = prune + 320 * 240 * 2
+b = ser.read(blen)
 # unlikely to grab entire screen buffer in one read()
-while (153610 > (len(b))):
-    b += ser.read(320 * 240 * 2)
+while (blen > (len(b))):
+    b += ser.read(blen)
 
-# prune  leading and trailing
-b = b[9:153609]
+# prune leading and trailing
+b = b[prune:blen]
 
 # ">" for big-endian 16-bit
 x = struct.unpack("<76800H", b)
 
 # unpack uint16 to uint32
 arr = np.array(x, dtype=np.uint32)
-# convert pixel format 565(RGB) to 8888(RGBA)
+# convert pixel format 565(RGB) to 8888(ARGB)
+# while A (alpha) is unused, numpy does not directly support 24-bit color values
+# could in theory use stride_tricks https://stackoverflow.com/a/34128171
 arr = 0xFF000000 + ((arr & 0xF800) << 8) + ((arr & 0x07E0) << 5) + ((arr & 0x001F) << 3)
 
 img = Image.frombuffer('RGBA', (320, 240), arr, 'raw', 'RGBA', 0, 1)
