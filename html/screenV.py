@@ -3,6 +3,7 @@ import numpy as np
 import struct
 import sys
 from PIL import Image
+from time import sleep
 
 # https://github.com/ttrftech/NanoVNA/blob/master/python/nanovna.py
 
@@ -36,28 +37,34 @@ if 2 > len(sys.argv) :
 cmd = "capture\r"
 ser = open()
 ser.write(cmd.encode())
-
-# will need to prune leading bytes
+sleep(0.1)
+# need to prune leading bytes
 prune = 9
 # nanoVNA has 320 x 240 RGB565 screen buffer
 blen = prune + 320 * 240 * 2
 b = ser.read(blen)
+#print(len(b))
+#print(b[0:prune])
+#print(b.find(b"\n"))
+#recalculate prune and blen based on newline
+#prune = 1 + b.find(b"\n")
+#blen = prune + 320 * 240 * 2
 # unlikely to grab entire screen buffer in one read()
 while (blen > (len(b))):
+    sleep(0.1)
     b += ser.read(blen)
 
 # prune leading and trailing
-b = b[prune:blen]
-
 # ">" for big-endian 16-bit
-x = struct.unpack("<76800H", b)
+x = struct.unpack("<76800H", b[prune:blen])
 
 # unpack uint16 to uint32
 arr = np.array(x, dtype=np.uint32)
-# convert pixel format 565(RGB) to 8888(ARGB)
+# convert pixel format 565(RGB) to 8888(RGBA)
 # while A (alpha) is unused, numpy does not directly support 24-bit color values
 # could in theory use stride_tricks https://stackoverflow.com/a/34128171
 arr = 0xFF000000 + ((arr & 0xF800) << 8) + ((arr & 0x07E0) << 5) + ((arr & 0x001F) << 3)
 
+# wants alpha as most significant byte
 img = Image.frombuffer('RGBA', (320, 240), arr, 'raw', 'RGBA', 0, 1)
 img.save(str(sys.argv[1])+'.png')
