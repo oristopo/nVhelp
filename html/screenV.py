@@ -37,7 +37,9 @@ if 2 > len(sys.argv) :
 cmd = "capture\r"
 ser = open()
 ser.write(cmd.encode())
-sleep(0.1)
+# create a gamma LUT while nanoVNA churns
+lut = np.array(np.rint(255*np.float_power(np.arange(256)/255,1/2.4)), dtype=np.uint32)
+
 # need to prune leading bytes
 prune = 9
 # nanoVNA has 320 x 240 RGB565 screen buffer
@@ -63,7 +65,7 @@ arr = np.array(x, dtype=np.uint32)
 # convert pixel format 565(RGB) to 8888(RGBA)
 # while A (alpha) is unused, numpy does not directly support 24-bit color values
 # could in theory use stride_tricks https://stackoverflow.com/a/34128171
-arr = 0xFF000000 + ((arr & 0xF800) << 8) + ((arr & 0x07E0) << 5) + ((arr & 0x001F) << 3)
+arr = 0xFF000000 + (lut[(arr & 0xF800) >> 8]<<16) + (lut[(arr & 0x07E0) >> 3]<<8) + lut[(arr & 0x001F) << 3]
 
 # wants alpha as most significant byte
 img = Image.frombuffer('RGBA', (320, 240), arr, 'raw', 'RGBA', 0, 1)
