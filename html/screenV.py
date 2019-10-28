@@ -61,13 +61,13 @@ while (blen > (len(buffer))):
 # expand 16-bit RGB half-words from buffer to np.array of 32-bit words
 # prune leading and trailing buffer:  buffer[prune:blen]
 # ">" for big-endian, "H" for 16-bit half-words
-xBGR = np.array(struct.unpack(">76800H", buffer[prune:blen]), dtype=np.uint32)
+aBGR = np.array(struct.unpack(">76800H", buffer[prune:blen]), dtype=np.uint32)
 
-# convert nanoVNA pixel format 565(RGB) to 8888(RGBX)
-# X is unused and ignored; numpy cannot directly support 24-bit color words
+# convert nanoVNA pixel format 565(RGB) to 8888(RGBA)
+# A is unused and ignored; numpy cannot directly support 24-bit color words
 # could in theory use stride_tricks https://stackoverflow.com/a/34128171
-xBGR = (lut[(xBGR & 0x001F)<<3]<<16) + (lut[(xBGR & 0x07E0)>>3]<<8) + lut[(xBGR & 0xF800)>>8]
+aBGR = 0xFF000000 + (lut[(aBGR & 0x001F)<<3]<<16) + (lut[(aBGR & 0x07E0)>>3]<<8) + lut[(aBGR & 0xF800)>>8]
 
 # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html
-# Image.frombuffer('RGBX', ...) expects xBGR byte sequence, ignoring most significant byte
-Image.frombuffer('RGBX', (320, 240), xBGR, 'raw', 'RGBX', 0, 1).save(str(sys.argv[1])+'.png')
+# Image.frombuffer('RGBA', ...) expects aBGR byte sequence, ignoring most significant byte
+Image.frombuffer('RGBA', (320, 240), aBGR, 'raw', 'RGBA', 0, 1).save(str(sys.argv[1])+'.png')
