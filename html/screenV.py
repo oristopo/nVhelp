@@ -40,35 +40,34 @@ ser.write(cmd.encode())
 # while NanoVNA churns, create a gamma LUT to better match LCD
 lut = np.array(np.rint(255*np.float_power(np.arange(256)/255,1.4)), dtype=np.uint32)
 
-# need to prune leading bytes
+# need to prune 9 leading bytes b'capture\r\n'
 prune = 9
-# nanoVNA has 320 x 240 RGB565 screen buffer
+# nanoVNA has 320 x 240 RGB565 screen buffer = 7680 half-words
 blen = prune + 320 * 240 * 2
-b = ser.read(blen)
-#print(len(b))
-#print(b[0:prune])
-#print(b.find(b"\n"))
+buffer = ser.read(blen)
+
+#print(len(buffer))
+#print(buffer[0:prune])
+#print(buffer.find(b"\n"))
 # Recalculate prune and blen based on newline
-#prune = 1 + b.find(b"\n")
+#prune = 1 + buffer.find(b"\n")
 #blen = prune + 320 * 240 * 2
 
 # unlikely to grab entire screen buffer in one read()
-while (blen > (len(b))):
+while (blen > (len(buffer))):
     sleep(0.1)
-    b += ser.read(blen)
+    buffer += ser.read(blen)
 
-# prune leading and trailing buffer:  b[prune:blen]
-# ">" for big-endian, "H" for 16-bit
-# This endian is WRONG but matches colors sent to nanoVNA LCD..
-x = struct.unpack(">76800H", b[prune:blen])
+# expand 16-bit RGB half-words from buffer to np.array of 32-bit words
+# prune leading and trailing buffer:  buffer[prune:blen]
+# ">" for big-endian, "H" for 16-bit half-words
+xBGR = np.array(struct.unpack(">76800H", buffer[prune:blen]), dtype=np.uint32)
 
-# pack uint16 to uint32
-arr = np.array(x, dtype=np.uint32)
-# convert pixel format 565(RGB) to 8888(RGBA)
-# while A (alpha) is unused, numpy cannot directly support 24-bit color values
+# convert nanoVNA pixel format 565(RGB) to 8888(RGBX)
+# X is unused and ignored; numpy cannot directly support 24-bit color words
 # could in theory use stride_tricks https://stackoverflow.com/a/34128171
-arr = 0xFF000000 + (lut[(arr & 0xF800) >> 8]) + (lut[(arr & 0x07E0) >> 3]<<8)  + (lut[(arr & 0x001F) << 3]<<16)
+xBGR = (lut[(xBGR & 0x001F)<<3]<<16) + (lut[(xBGR & 0x07E0)>>3]<<8) + lut[(xBGR & 0xF800)>>8]
 
-# wants alpha as most significant byte
-img = Image.frombuffer('RGBA', (320, 240), arr, 'raw', 'RGBA', 0, 1)
-img.save(str(sys.argv[1])+'.png')
+# https://pillow.readthedocs.io/en/3.1.x/reference/Image.html
+# Image.frombuffer('RGBX', ...) expects xBGR byte sequence, ignoring most significant byte
+Image.frombuffer('RGBX', (320, 240), xBGR, 'raw', 'RGBX', 0, 1).save(str(sys.argv[1])+'.png')
