@@ -3,6 +3,7 @@
 <title>nanoVNA software</title>
 </head>
 <body bgcolor=#bbccdd>
+
 <h3>nanoVNA software</h3>
 <ul compact>
 <li><a href="#firm">firmware management</a>
@@ -51,64 +52,94 @@ which is included as <code>STSW_STM32080_V3.0.0.zip</code> on
 An ST-Link connector can be soldered to the NanoVNA.<br>
 <a href="https://www.ebay.com/sch/i.html?_nkw=st-link">ST-Link</a> supports debugging as well as firmware management.
 </p>
+
 <h5><a href="https://zs1sci.com/blog/NanoVNA%20Build%20Source/">Building NanoVNA Source in Ubuntu 19.04</a></h5>
+
 <h4>firmware flavors</h4>
-<dl>
-<dt>by HuGen, nanoVNA developer
-<dd><a href="https://drive.google.com/drive/folders/1IRz6E1wlkRyV0u7sbqj0lhWST-GV1szY">HuGen's Firmware Drive</a>
-<dt>by edy555, nanoVNA creator
-<dd><a href="https://github.com/ttrftech/NanoVNA/releases/">GitHub ttrftech/NanoVNA</a>
-<dt>by Erik, presumably for TAPR VNA
-<dd><a href="https://groups.io/g/nanovna-users/files/Firmware/NanoVNA%20firmware%20build%20by%20Erik">Groups.io Firmware folder</a>
-<dt>by Hugen, Sept 19 edy555 firmware with TDR and touchscreen calibration
-<dd><a href="https://groups.io/g/nanovna-users/message/2671">zip file attached to email</a>
-<dt>by cho45, CircleCl automated firmware builds
-<dd><a href="https://cho45.stfuawsc.com/NanoVNA/dfu.html">unofficial</a>
-<dt>experimental 256 point FFT Firmware
-<dd><a href="https://groups.io/g/nanovna-users/message/3028">email attachment</a>
-</dl>
-<h4>loading firmware on macOS or linux</h4>
-Power nanoVNA off, jumper boot pins, power on.<br>
+On a <a href="firmware.htm">separate page</a>
+
+<h5>loading firmware on macOS or linux</h4>
+<ul compact>
+<li>Power nanoVNA off, jumper boot pins, power on.<br>
 <img src="https://oristopo.github.io/nVhelp/html/NanoVNAboot.jpg">
-<br clear=all>
-<dl>
-<dt><code>$ cd to folder</code>
-<dd><code>$ dfu-util -v -d 0483:df11 --alt 0 -D nanoVNA_0.1.0_ch.dfu</code>
+<li><dl>
+<dt><code>$ cd to/folder</code>
+<dd><code>$ dfu-util -v -d 0483:df11 --alt 0 -D nanoVNA_blah.dfu</code>
 </dl>
-Remove nanoVNA boot jumper and restart it.
+<li>Remove nanoVNA boot jumper and restart it.
+</ul>
 
 <a name="PC"><h3>PC apps for nanoVNA control</h3>
 <dl>
 <b><dt>NanoVNASharp</b>
-<dd>provided by Hugen without source; binary available on <a href="https://drive.google.com/drive/folders/1IZEtx2YdqchaTO8Aa9QbhQ8g_Pr5iNhr">Google Drive</a>
+<dd><a href="https://groups.io/g/nanovna-users/topic/36316642">NanoVNASharp MOD v3</a> by QRP RX
+<br> &nbsp - CAPTURE button gets screenshot from NanoVNA
+<br> &nbsp - communication layer now works more reliably
+<br> &nbsp - improved error handling
+<br> &nbsp - calibration now works as expected, added RESET button
+<br> &nbsp - improved user interface for calibration (button highlighting, etc)
+<br> &nbsp - fixed frequency setup issues
+<br> &nbsp - improved S1P and S2P export
+<br> &nbsp - improved support for different firmware versions
+<br> &nbsp - firmware version detect and display in the app title
+<br><a href="https://groups.io/g/nanovna-users/message/5894">MATLAB scripts</a>
+
+<dd>Originally provided by Hugen without source; binary available on
+ <a href="https://drive.google.com/drive/folders/1IZEtx2YdqchaTO8Aa9QbhQ8g_Pr5iNhr">Google Drive</a>
 <br><a href="https://www.youtube.com/watch?v=zw7Dp1nwvD8">YouTube video</a>
-<br><a href="http://www.epanorama.net/newepa/2019/08/11/nanovna-handheld-vector-network-analyzer-vna/">more from Tomi Engdahi</a>
+<br><a href="http://www.epanorama.net/newepa/2019/08/11/nanovna-handheld-vector-network-analyzer-vna/">more
+    from Tomi Engdahi</a>
+
 <br><br><b><dt>NanoVNA Saver</b>
-<dd>written in Python and nominally platform agnostic.
-<br>source on <a href="https://github.com/mihtjel/nanovna-saver">GitHub</a>
+<dd>written in Python, running on Windows, Mac, Linux, etc
+<ul><li><a href="https://groups.io/g/nanovna-users/message/5421">macOS installation</a>
+<li><a href="https://groups.io/g/nanovna-users/message/5480">OpenSuse Linux installation</a>
+</ul>
+<a href="https://github.com/mihtjel/nanovna-saver/releases/latest">Releases on GitHub</a>
  with helpful <a href="https://github.com/mihtjel/nanovna-saver/blob/master/README.md">README</a>
 <br><a href="https://zs1sci.com/blog/category/nanovna">Notes by Ohan Smit</a>
 <br><a href="https://zs1sci.com/blog/nanovnasaver/#Cal">calibration</a>
+<br><a href="https://groups.io/g/nanovna-users/wiki/NanoVNA-Saver_Calibration-Settings">NanoVNA-Saver_Calibration-Settings example</a>
+<br>JH4VAJ wrote a <a href="http://www.jh4vaj.com/archives/13425#NanoVNASaver">user guide</a> (Google translates from Japanese)
 <br><a href="https://hexandflex.com/2019/09/15/getting-started-with-the-nanovna-part-3-pc-software/">Windows guide</a>
-<br><a href="https://hexandflex.com/category/uncategorized/">more from HexAndFlex</a>
+and <a href="https://hexandflex.com/category/uncategorized/">more from HexAndFlex</a>
+
 <br><br><b><dt>TAPR VNA</b>
 <dd><a href="https://groups.io/g/nanovna-users/files/NanoVNA%20PC%20Software/TAPR%20VNA">groups.io folder</a>
 <br>source on <a href="https://github.com/erikkaashoek/Tapr-VNA">GitHub</a>
 <br>markdown instruction manual on <a href="https://github.com/oristopo/nanoTAPR/tree/nanoVNA">GitHub</a>
-<br><br><b><dt>NanoVNA-Web-Client</b>
+
+<br><br><b><dt>NanoVNA-Web-Client</b> - runs in some web browsers (but not on ChromeBook or iPhone/iPad)
 <dd>Available from cho45 on <a href="NanoVNA-Web-Client">GitHub</a>
-<br>Compile the code and run on a local web server<br>
+<ul compact>
+<li><a href="chrome://flags/#enable-experimental-web-platform-features">Enable Experimental Web Platform features</a>
+    <- copy link; paste in <i>PC or Mac Chrome</i> browser
+<li><a href="chrome://flags/#enable-experimental-web-platform-features">Enable Experimental Web Platform features</a>
+    <- copy link; paste in <i>Android or Chromebook</i> browser
+<br> &nbsp &nbsp <a href="https://cho45.stfuawsc.com/NanoVNA/">NanoVNA-Web-Client</a> <- launch here!
+<br>  &nbsp &nbsp  &nbsp &nbsp click <font color="00FFFF">CONNECT</font> in upper right corner
+<br>.. or compile the code and run on a local web server<br>
+<br><a href="https://play.google.com/store/apps/details?id=net.lowreal.nanovnawebapp">Android NanoVNA app in Google Play Store</a> for Android >= 6
+<br> &nbsp &nbsp Use a short USB OTG cable along with provided cable.
+<br> &nbsp &nbsp <a href="https://github.com/cho45/NanoVNA-Web-Client/releases">latest release</a>
+    and <a href="https://groups.io/g/nanovna-users/message/6132">side-loading tips</a>
 <img src="https://raw.githubusercontent.com/cho45/NanoVNA-Web-Client/master/images/DSC07514-900.jpg"><br clear=all>
+
 <br><br><b><dt>TDR</b>
 <dd>now supported by NanoVNA Saver: &nbsp
 <a href="https://imgur.com/eoLwv35">screen shot</a>
-<dd>edy555's nanovna.py on <a href="https://github.com/ttrftech/NanoVNA/blob/master/python/nanovna.py">GitHub</a> supports <code>./nanovna.py -T</code>
+<dd>edy555's nanovna.py on <a href="https://github.com/ttrftech/NanoVNA/blob/master/python/nanovna.py">GitHub</a>
+   supports <code>./nanovna.py -T</code>
+
 <br><br><b><dt>USB command instablility</b>
-<dd><a href="https://groups.io/g/nanovna-users/topic/temporary_workaround_to/34127733">david mugridge</a> found problems with "freq", "scan", "offset", "power".
-commands.
-<br>one workaround was to instead use "info", "sweep", "data", "frequencies".
-<br>problem is related to LCD screen DMA while <code>set_frequency()</code> and <code>ili9341_bulk()</code> called in parallel 
+<dd><a href="https://groups.io/g/nanovna-users/topic/temporary_workaround_to/34127733">David Mugridge</a>
+ found problems with "freq", "scan", "offset", "power" commands.
+<br><b><i>mostly addressed in recent firmwares</i></b>
+<br>One workaround was to instead use "info", "sweep", "data", "frequencies".
+<br>problem is related to LCD screen DMA while <code>set_frequency()</code>
+   and <code>ili9341_bulk()</code> called in parallel 
 </dl>
-<p> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp </p>
+<p> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br>
+    &nbsp <br> &nbsp <br> &nbsp <br> &nbsp <br> &nbsp </p>
 </body>
 </html>
