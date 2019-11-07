@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>nanoVNA shell command usage</title>
+</head>
+<body bgcolor=#ccddcc>
+<h3>nanoVNA shell command usage</h3>
+<h4>most important</h4>
+<i>many cannot be accomplished using touchscreen</i>
+<dl>
+<dt>clearconfig 1234
+<dd>Really <i>required</i> after firmware installations,<br>
+and recommended if behavior is flakey, e.g. bad calibrations.
+<dt>saveconfig
+<dd>wanted after e.g. offset, color, vbat_offset, touchcal and threshold.  Otherwise,<br>
+ those changes are lost at reboot, which occurs e.g. by unplugging USB
+<dt>touchcal
+<dd>required after saveconfig and otherwise for flakey touchscreen response
+<dt>touchtest
+<dd>verify touchcal
+<dt>threshold 300000000
+<dd>reduce frequency at which nanoVNA switches to harmonics.<br>
+Values larger than 300000000 are not accepted.<br>
+Some devices display artifacts for 300000000 threshold.
+</dl>
+
+<h4>more often</h4>
+<i>useful during typical operation</i>
+<dl>
+<dt>marker
+<dd>reports current marker configuration<br>
+or sets one marker configuration
+<br><br><dt>trace
+<dd>reports format, channel, display gain and offset for enabled traces
+<br><br><dt>sweep
+<dd>set recurring start Hz, stop Hz, 1 to 101 points<br>
+1 point renders freq command pointless
+<br><br><dt>recall
+<dd>restores values for corresponding save
+<br><br><dt>save
+<dd>Saves calibration data as well as setting for sweep, trace, marker.<br>
+'save 0' is automatically restored at power on/reboot.<br>
+The number of saved configurations varies among firmware versions.
+
+<br><br><dt>color - customize trace colors
+<dd> <details><summary>click for details</summary>
+<pre>Returns the following with no parameters:
+ch> color
+usage: color {id} {rgb24}
+ -3: 0x77EFBF
+ -2: 0xFFFFFF
+ -1: 0x878387
+ 0: 0xFFE31F
+ 1: 0x00BFE7
+ 2: 0x1FE300
+ 3: 0xE7079F
+NOTE: Colour parameters need to be entered with ‘0x’ hex prefix:
+Example: color 3 0xffffff (This turns trace 4 from purple to white)
+Refer to this post: https://groups.io/g/nanovna-users/message/5914
+** Only with QRP’s v0.4.2 and higher firmware release
+Examples: if you want to change track colors, just use the following commands:
+color 0 0xFF0000
+ it will change TRACE 0 color to red (web color #FF0000)
+color 1 0x00FF00
+ will change TRACE 1 color to green (web color #00FF00)
+color 2 0x0000FF
+ will change TRACE 2 color to blue (web color #0000FF)
+color 3 0x808080
+ will change TRACE 3 color to gray (web color #808080)
+color -1 0xFFFFFF
+ will change grid color to white (web color #FFFFFF)
+You can play with it and at any time, you can revert colors back just with power off and power on.
+If you want to store selected colors permanently, you need to use menu CONFIG => SAVE</pre>
+</details>
+
+<br><dt>vbat
+<dd>Battery millivolts, provided D2 = 1N4148
+
+<br><br><dt>cal - alternative to CH0, CH1 calibration by touchscreen
+<dd><pre>Usage: cal [load|open|short|thru|isoln|done|reset|on|off|in]
+After calibration, use the save command to save it</pre>
+</dl>
+
+<h4>tricky</h4>
+<i>Standalone use is generally counterproductive;<br>
+more likely wants app or script invocation:</i>
+<dl>
+<dt>edelay
+<dd>impacts calibrations
+<dt>frequencies
+<dd>dumps a column of Hz values for current sweep<br>
+or (if paused) latest scan or scanraw
+<dt>data
+<dd>dumps columns of S11 or S21 in-phase and quadrature (AKA real & imaginary)
+values corresponding to frequencies;  combining these yields .s1p or .s2p Touchstone files.
+<details><summary>click for details</summary>
+<preexample: data
+ produces columns of data points according to sweep / scan / scanraw / sample:
+0.999902069 -0.003914059
+0.999517679 -0.003805434
+0.999603867 -0.003855689
+0.999514162 -0.004347831
+...up to…
+0.998815953 -0.006629021
+0.997710704 -0.006602317
+0.998088240 -0.006423361
+0.998069703 -0.006385779
+0.998046994 -0.006417039
+NOTE: Left & right columns above - the Real part and the Imaginary part, respectively, of the reflection coefficient.
+Reading Calibration Data:
+The current firmware (edy555-0.2.2) allows dumping the internal calibration
+table with the data command:
+data [0-6] Where: 0: S11
+1: S21
+and
+2: /* error term directivity */
+3: /* error term source match */
+4: /* error term reflection tracking */
+5: /* error term transmission tracking */
+6: /* error term isolation */ </pre>
+</details>
+
+<dt>pause
+<dd>suspends current sweep; required for data from e.g scan or scanraw
+<dt>resume
+<dd>undo pause, back to latest sweep
+<dt>scanraw - uncalibrated CH0 and/or CH1 values using
+ <a href="https://github.com/qrp73/NanoVNA-Q/releases">QRP firmware</a>
+<dd><details><summary>click for details</summary>
+<pre>From the NanoVNA’s console interface:
+ch> scanraw
+usage: scanraw {channel(0|1)} {start(Hz)} {stEp(Hz)} {step-count} [average]
+The 'scanraw' command is similar to the 'scan' command,
+ which allows you to perform measurements for an unlimited number of points.
+ However, you can also specify which port (CH0 or CH1)
+ along with a user-specified number of points to average - up to 1000x.
+NOTE: As with the ‘scan’ command (see depreciated commands section),
+ the 'scanraw' command returns raw measured values with no calibration applied
+ so you will need to apply your own calibration corrections to the results.
+Example: The following command will return S11 measurements
+ (with no calibration applied) from 50 kHz to 10.050 MHz with 1 kHz step (10000 points)
+ and with 5x averaging:
+scanraw 0 50000 1000 10000 5
+where:
+0 - channel CH0 (S11)
+50000 - starting frequency (Hz)
+1000 - frequency per step (Hz) 100Hz minimum**
+10000 - total number of steps/points
+5 = number of times to average each step;  more is not appreciably better</pre>
+</details>
+
+<dt>scan 
+<dd>broken in some firmware, otherwise similar to sweep, but only runs once
+
+<dt>vbat_offset
+<dd>compensate for installing the wrong diode as D2<br>
+Should be 0 or some number of millivolts based on measurement<br>
+that could easily too result in damage.
+
+<dt>capture
+<dd>dumps touchscreen bitmap; wants an app or script to capture and convert for viewing
+</dl>
+
+<h4>avoid</h4>
+<i>If you already know enough to use these,
+then you can ignore <b>avoid</b>:</i>
+<dl>
+<dt>gain
+<dd>tlv320aic3204 DSP left and right gains 0-95
+<dt>offset - default is 5000 Hz
+<dd>AKA Intermediate Frequency (IF); difference between SI5351 stimulus and LO
+<dt>power
+<dd>Si5351A clock generator output 0-3
+<dt>sample
+<dd>switch data from gamma (default) to absolute ADC value for ref or ampl,<br>
+which is CH0 or CH1, depending on port
+
+<dt>stat
+<dd>processor status (for debugging)
+<dt>threads
+<dd>execution threads running in firmware (for debugging)
+</dl>
+
+<h4><i>really</i> avoid</h4>
+<i>basically useless:</i>
+<dl>
+<dt>dac
+<dd>sets STM32 micro analog out value; probably not connected..
+<dt>dump
+<dd>ADC output of SA602 mixers
+<dt>exit
+<dd>restarts nanoVNA shell; if it works, then probably not needed
+<br><dt>freq
+<dd>set CW frequency, redundant to sweep with single step
+<dt>port
+<dd>selects tlv320aic3204 DSP port; 0=CH0, 1=CH1, but unknown context
+<dt>reset
+<dd>restarts nanoVNA; if it works, then probably not needed
+<dt>test
+<dd>either ignored or hangs nanoVNAs
+<dt>time
+<dd>useless
+</dl>
+</body>
+</html>
