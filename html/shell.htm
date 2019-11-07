@@ -5,7 +5,7 @@
 <body bgcolor=#ccddcc>
 <h3>nanoVNA shell command usage</h3>
 <h4>most important</h4>
-<i>many cannot be accomplished using touchscreen</i>
+<i>threshold or clearconfig cannot be invoked by touchscreen</i>
 <dl>
 <dt>clearconfig 1234
 <dd>Really <i>required</i> after firmware installations,<br>
@@ -30,10 +30,12 @@ Some devices display artifacts for 300000000 threshold.
 <dd>reports current marker configuration<br>
 or sets one marker configuration
 <br><br><dt>trace
-<dd>reports format, channel, display gain and offset for enabled traces
+<dd>sets / reports format, channel, display gain and offset for enabled traces
 <br><br><dt>sweep
 <dd>set recurring start Hz, stop Hz, 1 to 101 points<br>
-1 point renders freq command pointless
+1 point renders <code>freq</code> command pointless
+<br><br><dt>transform - relevant to <code>trace delay</code> format
+<dd>Usage: <code>transform {on|off|impulse|step|bandpass|minimum|normal|maximum} [...]</code>
 <br><br><dt>recall
 <dd>restores values for corresponding save
 <br><br><dt>save
@@ -93,13 +95,13 @@ or (if paused) latest scan or scanraw
 <dd>dumps columns of S11 or S21 in-phase and quadrature (AKA real & imaginary)
 values corresponding to frequencies;  combining these yields .s1p or .s2p Touchstone files.
 <details><summary>click for details</summary>
-<preexample: data
+<pre>example: data
  produces columns of data points according to sweep / scan / scanraw / sample:
 0.999902069 -0.003914059
 0.999517679 -0.003805434
 0.999603867 -0.003855689
 0.999514162 -0.004347831
-...up to…
+...up to:
 0.998815953 -0.006629021
 0.997710704 -0.006602317
 0.998088240 -0.006423361
@@ -108,7 +110,7 @@ values corresponding to frequencies;  combining these yields .s1p or .s2p Touchs
 NOTE: Left & right columns above - the Real part and the Imaginary part, respectively, of the reflection coefficient.
 Reading Calibration Data:
 The current firmware (edy555-0.2.2) allows dumping the internal calibration
-table with the data command:
+table with the <code>data</code> command:
 data [0-6] Where: 0: S11
 1: S21
 and
@@ -120,9 +122,9 @@ and
 </details>
 
 <dt>pause
-<dd>suspends current sweep; required for data from e.g scan or scanraw
+<dd>suspends current sweep; required for <code>data</code> from e.g <code>scan</code> or <code>scanraw</code>
 <dt>resume
-<dd>undo pause, back to latest sweep
+<dd>undo pause, back to latest <code>sweep</code>
 <dt>scanraw - uncalibrated CH0 and/or CH1 values using
  <a href="https://github.com/qrp73/NanoVNA-Q/releases">QRP firmware</a>
 <dd><details><summary>click for details</summary>
@@ -131,7 +133,7 @@ ch> scanraw
 usage: scanraw {channel(0|1)} {start(Hz)} {stEp(Hz)} {step-count} [average]
 The 'scanraw' command is similar to the 'scan' command,
  which allows you to perform measurements for an unlimited number of points.
- However, you can also specify which port (CH0 or CH1)
+ However, 'scanraw' also specifies CH0 or CH1
  along with a user-specified number of points to average - up to 1000x.
 NOTE: As with the ‘scan’ command (see depreciated commands section),
  the 'scanraw' command returns raw measured values with no calibration applied
@@ -149,7 +151,9 @@ where:
 </details>
 
 <dt>scan 
-<dd>broken in some firmware, otherwise similar to sweep, but only runs once
+<dd>broken in some firmware, otherwise similar to <code>sweep</code>, but only runs once
+<dt>port
+<dd>selects tlv320aic3204 DSP port; 0=CH0, 1=CH1 for <code>sample</code> or <code>scan</code>
 
 <dt>vbat_offset
 <dd>compensate for installing the wrong diode as D2<br>
@@ -161,8 +165,7 @@ that could easily too result in damage.
 </dl>
 
 <h4>avoid</h4>
-<i>If you already know enough to use these,
-then you can ignore <b>avoid</b>:</i>
+<i>unless you already know enough to use these...</i>
 <dl>
 <dt>gain
 <dd>tlv320aic3204 DSP left and right gains 0-95
@@ -171,13 +174,13 @@ then you can ignore <b>avoid</b>:</i>
 <dt>power
 <dd>Si5351A clock generator output 0-3
 <dt>sample
-<dd>switch data from gamma (default) to absolute ADC value for ref or ampl,<br>
-which is CH0 or CH1, depending on port
+<dd>switch <code>data</code> from gamma (default) to absolute ADC value for ref or ampl,<br>
+which is CH0 or CH1, depending on <code>port</code>
 
 <dt>stat
 <dd>processor status (for debugging)
 <dt>threads
-<dd>execution threads running in firmware (for debugging)
+<dd>firmware currently executing (for debugging)
 </dl>
 
 <h4><i>really</i> avoid</h4>
@@ -190,9 +193,7 @@ which is CH0 or CH1, depending on port
 <dt>exit
 <dd>restarts nanoVNA shell; if it works, then probably not needed
 <br><dt>freq
-<dd>set CW frequency, redundant to sweep with single step
-<dt>port
-<dd>selects tlv320aic3204 DSP port; 0=CH0, 1=CH1, but unknown context
+<dd>set CW frequency, redundant to <code>sweep</code> with single step
 <dt>reset
 <dd>restarts nanoVNA; if it works, then probably not needed
 <dt>test
