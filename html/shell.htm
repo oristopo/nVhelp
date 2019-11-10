@@ -78,8 +78,10 @@ If you want to store selected colors permanently, you need to use menu CONFIG =>
 <dd>Battery millivolts, provided D2 = 1N4148
 
 <br><br><dt>cal - alternative to CH0, CH1 calibration by touchscreen
-<dd><pre>Usage: cal [load|open|short|thru|isoln|done|reset|on|off|in]
+<dd><pre>Usage: cal [load|open|short|thru|isoln|done|reset|on|off|in|data]
 After calibration, use the save command to save it</pre>
+<code>in i</code> interpolates for <code>save / restore i</code><br>
+<code>data</code> returns cal_data[0]<br>
 </dl>
 
 <h4>tricky</h4>
@@ -170,11 +172,16 @@ that could easily too result in damage.
 <dt>gain
 <dd>tlv320aic3204 DSP left and right gains 0-95
 <dt>offset - default is 5000 Hz
-<dd>AKA Intermediate Frequency (IF); difference between SI5351 stimulus and LO
+<dd>AKA Intermediate Frequency (IF); difference between SI5351 stimulus and LO<br>
+Increasing to 12000 increases performance, according to <a href="https://groups.io/g/nanovna-users/message/4729">Erik</a><br>
+ Recalibrate after changing this.
 <dt>power
-<dd>Si5351A clock generator output 0-3
+<dd>Si5351A clock generator output 0-3; <code>power -1</code>
+ default automatically adjusts based on frequency.<br>
+ <code>power 1</code> improves results, according to <a href="https://groups.io/g/nanovna-users/message/6721">Erik</a><br>
+ Recalibrate after changing this.
 <dt>sample
-<dd>switch <code>data</code> from gamma (default) to absolute ADC value for ref or ampl,<br>
+<dd>switches <code>data</code> results from gamma (default) to absolute ADC value for ref or ampl,<br>
 which is CH0 or CH1, depending on <code>port</code>
 
 <dt>stat
