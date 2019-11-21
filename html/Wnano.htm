@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hnano</title>
+<title>nanoVNA-H Touchscreen Menu interactive map</title>
 <style>
     *, *::before, *::after {
   -webkit-box-sizing: border-box;
@@ -92,7 +92,8 @@ a:visited {
 
 .tree ul {	/* sl fails */
   position: relative;
-  top: -35px;
+  top: 0px;
+  left: -50px;
   /* changing p width impacts this HHH */
   margin-left: 70px;
   margin-top: 0px;
@@ -130,17 +131,49 @@ a:visited {
   padding-bottom: 60px;
 }
 
+#p90 {
+  padding-bottom: 90px;
+}
+
+#p120 {
+  padding-bottom: 160px;
+}
+
+#u20 {
+  margin-bottom: -20px;
+}
+
 #u30 {
   margin-bottom: -30px;
+}
+
+#u45 {
+  margin-bottom: -45px;
 }
 
 #u60 {
   margin-bottom: -60px;
 }
 
+#u90 {
+  margin-bottom: -90px;
+}
+
+#u120 {
+  margin-bottom: -120px;
+}
+
+#ru120 {
+  margin-bottom: -120px;
+  margin-right: -50px;
+}
+
+
 /* horizontal branches */
 .tree dl {
   position: relative;
+  left: 90px;
+  top: -20px;
 }
 
 #li-child {
@@ -171,15 +204,6 @@ a:visited {
   z-index: 0;
 }
 
-.tree dd {
-  position: relative;
-  float: left;
-  padding-top: 10px;  /* unlike margin, adds height */
-  padding-right: 10px;
-  margin-right: 0px;
-  margin-left: 0px;
-}
-
 /* horizontal connectors ------------------ */
 /* horizontal stems before <li> entries */
 .tree li::before {
@@ -192,24 +216,24 @@ a:visited {
   left: -15px;
 }
 
-/* longer stem from first <li> to parent */
-.tree li:first-child::before  {
-  width: 30px;
-  left: -30px;
-}
-
-/* horizontal branches above <dl> entries */
+/* horizontal branches above <dt> entries */
 .tree dt::after, dd::after {
   position: absolute;
   content: "";
   border-top: 2px solid #000000;
   top: -4px;
   /* changing p width impacts this HHH */
-  left: 45px;	/* % fails if child dl */
+  left: -10px;	/* % fails if child dl */
   width: 100%;
 }
 
-.tree dt:last-child::after, .tree li:last-child::after {
+.tree dt:last-child::after {
+  /* changing p width impacts this HHH */
+  left: -10px;	/* % fails if child dl */
+  width: 55px;
+}
+
+.tree li:last-child::after {
   display: none;
 }
 
@@ -224,11 +248,10 @@ a:visited {
   top: 20px;
 }
 
-/* vertical branch for parent, left of horizontal entries */
-.tree dt:first-child::before {
-  height: 100%;
-  left: -15px;
-  top: 10px;
+/* longer branch from first <li> to parent */
+.tree li:first-child::after  {
+  height: 160%;
+  top: 0px;
 }
 
 /* vertical stems to branches */
@@ -240,17 +263,6 @@ a:visited {
   left: 45px;	/* % fails if child dl */
   height: 14px;
   top: -4px;
-}
-
-/* longer vertical stem from first entry to dl parent */
-.tree dl::before {
-  position: absolute;
-  content: "";
-  border-left: 2px solid #000000;
-  height: 22px;
-  top: -12px;
-  /* changing p width impacts this HHH */
-  left: 43px;
 }
 
 /* Hover effect: colorize boxes */
@@ -359,7 +371,7 @@ div {
 <body translate="no">
 <base href="https://oristopo.github.io/nVhelp/html/nVhelp.htm">
 <p align=center>
-<font size=+1><a href="#U0">nanoVNA</a> Menu for <font color=#999900><em>Sep 2019</em></font> firmware</font><br>
+<font size=+1><a href="#U0">nanoVNA</a> Menu for <font color=#999900><em>Oct 18 2019</em></font> firmware</font><br>
 
 <a href="">help is linked by selecting</a> for buttons with underlined text<br>
 tool tips for many buttons are launched by hovering mouse pointer<br>
@@ -372,9 +384,9 @@ tool tips for many buttons are launched by hovering mouse pointer<br>
 <div class="tree">
 <p>Press control or touch screen for menu</p>
 <ul>
-  <li><p><a href="#U1">DISPLAY</a></p>
+  <li id="p20"><p><tt>Select TRACE before FORMAT, SCAKE, or CHANNEL</tt> <a href="#U1">DISPLAY</a></p>
     <ul>
-      <li><p><tt>2/4 limit for aa/ch firmware</tt><a href="#U1L1">TRACE</a></p>
+      <li id="u30"><p><tt>2/4 limit for aa/ch firmware</tt><a href="#U1L1">TRACE</a></p>
         <dl>
           <dt><p id="yel">
 	    <tt>select, toggle off/on</tt>TRACE 0</p></dt>
@@ -386,30 +398,30 @@ tool tips for many buttons are launched by hovering mouse pointer<br>
 	        select, toggle off/on</tt>TRACE 3</p></dt>
         </dl> 
       </li>
-      <li><p>FORMAT</p>
+      <li id="u20"><p>FORMAT</p>
         <dl>
-          <dd><p><tt>measured magnitude log scaled</tt>LOGMAG</p></dd>
+          <dt><p><tt>measured magnitude log scaled</tt>LOGMAG</p></dt>
 	  <dt><p><tt>-180<=linear degrees<=+180</tt>PHASE</p></dt>
 	  <dt><p><tt>see TRANSFORM</tt>DELAY</p></dt>
 	  <dt><p><i>    </i>SMITH</p></dt>
 	  <dt><p><tt>Standing Wave Ratio</tt>SWR</p></dt>
-	  <dt><p><tt>..but better?</tt>MORE</p>
+	  <dt id="u20"><p><tt>..but better?</tt>MORE</p>
 	    <ul>
-	      <li><p><tt>(for S21) imaginary vs real</tt>POLAR</p></li>
+	      <li><p><tt>(for S21) quadrature vs in-phase</tt>POLAR</p></li>
 	      <li><p><tt>measured magnitude linear scaled</tt>LINEAR</p></li>
 	      <li><p><tt>inline component</tt>REAL</p></li>
 	      <li><p><tt>quaderature component</tt>IMAG</p></li>
-	      <li><p><tt>real impedance component</tt>RESISTANCE</p></li>
-	      <li><p><tt>imaginary impedance component</tt>REACTANCE</p></li>
+	      <li><p><tt>resistive impedance component</tt>RESISTANCE</p></li>
+	      <li><p><tt>inductive or capacitive component</tt>REACTANCE</p></li>
             </ul>
 	  </dt>
         </dl>
       </li>
-      <li><p>SCALE</p>
+      <li id="u30"><p>SCALE</p>
         <dl>
           <dt id="p60">
 	    <p><a href="#U131">SCALE/DIV</a></p>
-	    <p><tt>rescale trace vertically</tt>
+	    <p><tt>scale trace vertically</tt>
                <a href="#U133">NUM KEYS</a></p>
           </dt>
           <dt><p><tt>touch nanoVNA screen below menu to launch numeric keypad;<br>
@@ -420,65 +432,61 @@ tool tips for many buttons are launched by hovering mouse pointer<br>
 	  </dt>
 	  <dt><p><tt>compensate CAL by e.g. cable length in picoseconds</tt>
 		 <a href="#U134">ELECTRICAL DELAY</a></p>
-	      <p>NUM KEYS</p>
+	      <p><tt>touch below menu to launch</tt>NUM KEYS</p>
 	  </dt>
         </dl>
       </li>
-      <li><p><tt>for TDR</tt><a href="https://groups.io/g/nanovna-users/attachment/3083/0/TDR.pdf">TRANSFORM</a></p>
+      <li><p><tt>select port to measure;<br>
+	works for 2 and 4 trace firmware</tt>CHANNEL</p>
+        <dl>
+	  <dt><p>CH0 REFLECT</p></dt>
+	  <dt><p>CH1 THROUGH</p></dt>
+        </dl>
+      </li>
+      <li><p><tt>for DELAY (TDR)</tt><a href="https://groups.io/g/nanovna-users/attachment/3083/0/TDR.pdf">TRANSFORM</a></p>
         <dl>
           <dt><p><tt>enables LOW/BANDPASS</tt>TRANSFORM ON</p></dt>
           <dt><p><tt>set REAL start 50kHz</tt>LOW PASS IMPULSE</p></dt>
           <dt><p><tt>set REAL start 50kHz</tt>LOW PASS STEP</p></dt>
           <dt><p><tt>set SWR, LINEAR or LOGMAG</tt>BANDPASS</p></dt>
-          <dt id="u60"><p><tt>modifies LOW/BANDPASS</tt>WINDOW</p>
+          <dt id="ru120"><p><tt>modifies LOW/BANDPASS</tt>WINDOW</p>
 	    <ul>
 	      <li><p><tt>max resolution</tt>MINIMUM</p></li>
 	      <li><p>NORMAL</p></li>
 	      <li><p><tt>max dymanic range</tt>MAXIMUM</p></li>
             </ul>
           </dt>
-          <dt><p><tt>tweak for actual distance</tt>VELOCITY FACTOR</p>
+          <dt id="u120"><p><tt>tweak for actual distance</tt>VELOCITY FACTOR</p>
 	      <p>NUM KEYS</p>
           </dt>
         </dl> 
       </li>
-      <li><p><tt>select port to measure;<br>
-	works for 2 and 4 trace firmware</tt>CHANNEL</p>
-        <ul>
-	  <li><p>CH0 REFLECT</p></li>
-	  <li><p>CH1 THROUGH</p></li>
-        </ul>
-      </li>
     </ul>
   </li>
-  <li id="u30"><p><a href="#U2">MARKER</a></p>
+  <li id="p20"><p><a href="#U2">MARKER</a></p>
     <ul>
-	<li id="p20"><p><tt>with 2 markers enabled,
+      <li><p><tt>increase minimum sweep frequency<br>
+	to selected marker</tt>START</p></li>
+      <li><p><tt>decrease maximum sweep frequency<br>
+	to selected marker</tt>STOP</p></li>
+      <li id="u30"><p><tt>with 2 markers enabled,
 	 marker 2 will read DELTA Frequency in relation to marker 1</tt>SELECT MARKER
-	  <dl>
+        <dl>
 	  <dt><p>MARKER 1</p></dt>
 	  <dt><p>MARKER 2</p></dt>
 	  <dt><p>MARKER 3</p></dt>
 	  <dt><p>MARKER 4</p></dt>
 	  <dt><p>ALL OFF</p></dt>
-	  </dl>
-	</li>
-	<li>
-	<dl id="li-child">
-	<dd><p><tt>increase minimum sweep frequency<br>
-	to selected marker</tt>START</p></dd>
-	<dt><p><tt>decrease maximum sweep frequency<br>
-	to selected marker</tt>STOP</p></dt>
-	<dt><p><tt>shift center of frequency sweep<br>
-	to selected marker</tt>CENTER</p></dt>
-	<dt><p><tt>sweep frequency between 2 current markers</tt>SPAN</p></dt>
-	</dl>
-	</li>
+        </dl>
+      </li>
+      <li><p><tt>shift center of frequency sweep<br>
+	to selected marker</tt>CENTER</p></li>
+      <li><p><tt>sweep frequency between 2 current markers</tt>SPAN</p></li>
     </ul>
   </li>
-  <li><p><tt>set sweep or single frequency</tt>STIMULUS</p>
+  <li id="u20"><p><tt>set sweep or single frequency</tt>STIMULUS</p>
     <dl>
-      <dt id="p40"><p><tt>sweep lower limit &gt 50kHz</tt>START</p><p>
+      <dt><p><tt>sweep lower limit &gt 50kHz</tt>START</p><p>
 	<tt>touch below menu to launch</tt>NUM KEYS</p></dt>
       <dt><p><tt>sweep upper limit &lt 900mHz</tt>STOP</p><p>
 		<tt>touch below menu to launch</tt>NUM KEYS</p></dt>
@@ -490,19 +498,9 @@ tool tips for many buttons are launched by hovering mouse pointer<br>
 	click hyperlink for saving frozen data via USB</tt><a href="#U36">PAUSE SWEEP</a></p></dt>
     </dl>
   </li>
-  <li><p><a href="#N4">CAL</a></p>
+  <li id="p40"><p><a href="#N4">CAL</a></p>
     <ul>
-      <li><p><tt>press after CALIBRATE or to preserve other settings</tt>SAVE</p>
-            <dl>
-              <dt><p>SAVE 0</p></dt>
-              <dt><p>SAVE 1</p></dt>
-              <dt><p>SAVE 2</p></dt>
-              <dt><p>SAVE 3</p></dt>
-              <dt><p>SAVE 4</p></dt>
-            </dl>
-      </li>
-      <li><p><tt>press to clear data before CALIBRATE</tt>RESET</p></li>
-      <li><p><tt>press RESET to clear data before calibrating.<br>
+      <li id="u20"><p><tt>press RESET to clear data before calibrating.<br>
 	Make appropriate [dis]connections before touching associated button</tt>CALIBRATE</p>
         <dl>
           <dt><p>OPEN</p></dt>
@@ -521,10 +519,20 @@ tool tips for many buttons are launched by hovering mouse pointer<br>
           </dt>
         </dl>
       </li>
-      <li id="u30"><p><tt>toggle calibration<br>on / off</tt>CORRECTION</p></li>
+      <li id="u30"><p><tt>press after CALIBRATE or to preserve other settings</tt>SAVE</p>
+            <dl>
+              <dt><p>SAVE 0</p></dt>
+              <dt><p>SAVE 1</p></dt>
+              <dt><p>SAVE 2</p></dt>
+              <dt><p>SAVE 3</p></dt>
+            </dl>
+      </li>
+      <li><p><tt>press to clear data before CALIBRATE</tt>RESET</p></li>
+      <li id="u20"><p><tt>toggle calibration<br>on / off</tt>CORRECTION</p></li>
     </ul>
   </li>
-  <li><p>RECALL</p>
+  <li>
+    <p>RECALL</p>
       <dl>
         <dt><p>RECALL 0</p></dt>
         <dt><p>RECALL 1</p></dt>
@@ -539,15 +547,15 @@ tool tips for many buttons are launched by hovering mouse pointer<br>
 	CONFIG
     </p>
       <dl>
-        <dd><p><a href="#TSC">TOUCH CAL</a></p></dd>
+        <dt><p><a href="#TSC">TOUCH CAL</a></p></dt>
         <dt><p><a href="#TSC">TOUCH TEST</a></p></dt>
         <dt><p><tt>touchscreen calibration</tt>SAVE</p></dt>
         <dt><p>VERSION</p></dt>
         <dt><p>DFU</p>
-	  <ul>
-	    <li><p>RESET AND ENTER DFU</p></li>
-	    <li><p>CANCEL</p></li>
-	  </ul>
+	  <dl>
+	    <dt><p>RESET AND ENTER DFU</p></dt>
+	    <dt><p>CANCEL</p></dt>
+	  </dl>
 	</dt>
       </dl>
   </li>
