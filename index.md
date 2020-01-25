@@ -192,14 +192,16 @@ Some nanoVNAs fail when overclocked to `300MHz` by standard firmware;
 [Get latest edy555 firmware *here*](https://cho45.stfuawsc.com/NanoVNA/dfu.html) as `ch.bin`  
 On powered-off nanoVNA connected to PC by USB:  
 -  jumper BOOT0 pins, then power on.  
--  flash firmware from Command Prompt:  
+-  flash firmware from Bash or Windows Command Prompt:  
 ```
   dfu-util -d 0483:df11 -a 0 -s 0x08000000:leave -D ch.bin
 ```
 
 [*Here*](html/software.htm) is more software information.  
 
-[*Here*](https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%209-5-25.pdf) are Console Commands  [command instability workaround](https://groups.io/g/nanovna-users/topic/temporary_workaround_to/34127733)
+[*Here*](https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%209-5-25.pdf) are nanoVNA Console (shell) Commands
+* [command instability workaround](https://groups.io/g/nanovna-users/topic/temporary_workaround_to/34127733)
+* [Integrating nanoVNA shell with Bash or Windows Command Prompt](html/nVargs.htm) e.g. for gnuplot
 
 Technical
 ---------
