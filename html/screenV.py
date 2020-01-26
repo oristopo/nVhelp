@@ -1,4 +1,4 @@
-import serial
+from serial import Serial
 import numpy as np
 import struct
 import sys
@@ -10,7 +10,7 @@ from time import sleep
 def open():
     port = 'COM3'
     try:
-        ser = serial.Serial(port, 9600, timeout=0)
+        ser = Serial(port, 9600, timeout=0)
         try:
 # sync with nanoVNA, already in progress
             data = "a"
@@ -44,8 +44,9 @@ lut = np.array(np.rint(255*np.float_power(np.arange(256)/255,1.4)), dtype=np.uin
 prune = 9
 # nanoVNA has 320 x 240 RGB565 screen buffer = 7680 half-words
 blen = prune + 320 * 240 * 2
+#print(blen)
+sleep(0.1)
 buffer = ser.read(blen)
-
 #print(len(buffer))
 #print(buffer[0:prune])
 #print(buffer.find(b"\n"))
@@ -54,7 +55,14 @@ buffer = ser.read(blen)
 #blen = prune + 320 * 240 * 2
 
 # unlikely to grab entire screen buffer in one read()
+# for some unknown reason, first attempts using Windows 10 Store Python 3.7.3
+# failed to return enough bytes after looping many times..
+# It started working after a half dozen or so attempts..??
 while (blen > (len(buffer))):
+#sofar = 0
+#while (sofar < (len(buffer))):
+#   sofar = len(buffer)
+#   print(sofar)
     sleep(0.1)
     buffer += ser.read(blen)
 

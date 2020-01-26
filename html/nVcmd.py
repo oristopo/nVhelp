@@ -1,6 +1,6 @@
 # send a single nanoVNA command and delete that command string from return
 import sys
-import serial
+from serial import Serial
 import re
 from time import sleep
 
@@ -10,14 +10,14 @@ from time import sleep
 if 1 < len(sys.argv) :
     port = 'COM3'
     try:
-        ser = serial.Serial(port, 9600, timeout=0)
+        ser = Serial(port, 9600, timeout=0)
         try:
 # sync with nanoVNA, already in progress
             data = "a"
             while data != "":
                 data = ser.readline().decode('ascii')
 # send any valid nanoVNA command
-# https://groups.io/g/nanovna-users/files/NanoVNA%20Console%20Commands%20Oct-16-19.pdf
+# https://groups.io/g/nanovna-users/wiki/shellcommands
             command = str(sys.argv[1])+"\r"
             ser.write(command.encode('ascii'))
             sleep(0.1)
