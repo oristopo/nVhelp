@@ -42,26 +42,21 @@ lut = np.array(np.rint(255*np.float_power(np.arange(256)/255,1.4)), dtype=np.uin
 
 # need to prune 9 leading bytes b'capture\r\n'
 prune = 9
-# nanoVNA has 320 x 240 RGB565 screen buffer = 7680 half-words
-blen = prune + 320 * 240 * 2
-#print(blen)
+# nanoVNA has 320 x 240 RGB565 screen buffer = 76800 half-words
+# nanoVNA-H4 has 480 x 320 RGB565 screen buffer = 153600 half-words
+blen = prune + 480 * 320 * 2
 sleep(0.1)
 buffer = ser.read(blen)
-#print(len(buffer))
-#print(buffer[0:prune])
-#print(buffer.find(b"\n"))
-# Recalculate prune and blen based on newline
-#prune = 1 + buffer.find(b"\n")
-#blen = prune + 320 * 240 * 2
 
 # unlikely to grab entire screen buffer in one read()
 # for some unknown reason, first attempts using Windows 10 Store Python 3.7.3
 # failed to return enough bytes after looping many times..
 # It started working after a half dozen or so attempts..??
-while (blen > (len(buffer))):
-#sofar = 0
-#while (sofar < (len(buffer))):
-#   sofar = len(buffer)
+#print(blen)
+sofar = 0
+#while (blen > (len(buffer))):
+while (sofar < (len(buffer))):
+    sofar = len(buffer)
 #   print(sofar)
     sleep(0.1)
     buffer += ser.read(blen)
@@ -69,7 +64,11 @@ while (blen > (len(buffer))):
 # expand 16-bit RGB half-words from buffer to np.array of 32-bit words
 # prune leading and trailing buffer:  buffer[prune:blen]
 # ">" for big-endian, "H" for 16-bit half-words
-aBGR = np.array(struct.unpack(">76800H", buffer[prune:blen]), dtype=np.uint32)
+if (sofar > 200000):
+    aBGR = np.array(struct.unpack(">153600H", buffer[prune:blen]), dtype=np.uint32)
+else:
+    blen = prune + 320 * 240 * 2
+    aBGR = np.array(struct.unpack(">76800H", buffer[prune:blen]), dtype=np.uint32)
 
 # convert nanoVNA pixel format 565(RGB) to 8888(RGBA)
 # A is unused and ignored; numpy cannot directly support 24-bit color words
@@ -78,4 +77,7 @@ aBGR = 0xFF000000 + (lut[(aBGR & 0x001F)<<3]<<16) + (lut[(aBGR & 0x07E0)>>3]<<8)
 
 # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html
 # Image.frombuffer('RGBA', ...) expects aBGR byte sequence, ignoring most significant byte
-Image.frombuffer('RGBA', (320, 240), aBGR, 'raw', 'RGBA', 0, 1).save(str(sys.argv[1])+'.png')
+if (sofar > 200000):
+    Image.frombuffer('RGBA', (480, 320), aBGR, 'raw', 'RGBA', 0, 1).save(str(sys.argv[1])+'.png')
+else:
+    Image.frombuffer('RGBA', (320, 240), aBGR, 'raw', 'RGBA', 0, 1).save(str(sys.argv[1])+'.png')
