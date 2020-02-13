@@ -11,20 +11,20 @@ def open():
     port = 'COM3'
     try:
         ser = Serial(port, 9600, timeout=0)
-        try:
-# sync with nanoVNA, already in progress
-            data = "a"
-            while data != "":
-                data = ser.readline().decode('ascii')
-            return ser
-
-        except ser.SerialException:
-            sys.stderr.write('nanoVNA could not be read')
-            exit(3)
-
-    except (OSError, serial.SerialException):
+    except:
         sys.stderr.write(port+' not found')
         exit(2)
+
+    try:
+# sync with nanoVNA, already in progress
+        data = "a"
+        while data != "":
+            data = ser.readline().decode('ascii')
+        return ser
+
+    except ser.SerialException:
+        sys.stderr.write('nanoVNA could not be read')
+        exit(3)
 
 #
 # if there were main(), then it would be here
