@@ -401,4 +401,4 @@ data is flushed and replaced.
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <p>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br> </p>
 <a href="html/index.html"><i>html files</i></a><br>
-<i>page source at</i> <a href="https://github.com/oristopo/nVhelp/blob/master/index.md">https://github.com/oristopo/nVhelp</a>
+<i>page source at</i> <a href="https://github.com/oristopo/nVhelp">https://github.com/oristopo/nVhelp</a>
